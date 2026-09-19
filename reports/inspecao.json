@@ -1,0 +1,109 @@
+{
+  "arquivo": "petfinder-mini.csv",
+  "registros": 11537,
+  "numero_colunas": 15,
+  "colunas": [
+    "Type",
+    "Age",
+    "Breed1",
+    "Gender",
+    "Color1",
+    "Color2",
+    "MaturitySize",
+    "FurLength",
+    "Vaccinated",
+    "Sterilized",
+    "Health",
+    "Fee",
+    "Description",
+    "PhotoAmt",
+    "AdoptionSpeed"
+  ],
+  "vazios_por_coluna": {
+    "Type": 0,
+    "Age": 0,
+    "Breed1": 0,
+    "Gender": 0,
+    "Color1": 0,
+    "Color2": 0,
+    "MaturitySize": 0,
+    "FurLength": 0,
+    "Vaccinated": 0,
+    "Sterilized": 0,
+    "Health": 0,
+    "Fee": 0,
+    "Description": 9,
+    "PhotoAmt": 0,
+    "AdoptionSpeed": 0
+  },
+  "duplicatas_excedentes": 143,
+  "definicao_duplicata": "Linha identica nas 15 colunas; primeira ocorrencia preservada na contagem. Nao prova duplicidade de animal.",
+  "categorias": {
+    "Type": {
+      "Cat": 4936,
+      "Dog": 6601
+    },
+    "Gender": {
+      "Male": 5071,
+      "Female": 6466
+    },
+    "MaturitySize": {
+      "Small": 2480,
+      "Medium": 8016,
+      "Large": 1041
+    },
+    "Vaccinated": {
+      "No": 4962,
+      "Not Sure": 1515,
+      "Yes": 5060
+    },
+    "Sterilized": {
+      "No": 7497,
+      "Not Sure": 1343,
+      "Yes": 2697
+    },
+    "Health": {
+      "Healthy": 11098,
+      "Minor Injury": 409,
+      "Serious Injury": 30
+    },
+    "AdoptionSpeed": {
+      "2": 3153,
+      "0": 329,
+      "3": 2543,
+      "1": 2432,
+      "4": 3080
+    }
+  },
+  "numericas": {
+    "Age": {
+      "min": 0.0,
+      "max": 255.0,
+      "negativos": 0,
+      "zeros": 78,
+      "nao_numericos_ou_vazios": 0
+    },
+    "Fee": {
+      "min": 0.0,
+      "max": 2000.0,
+      "negativos": 0,
+      "zeros": 9572,
+      "nao_numericos_ou_vazios": 0
+    },
+    "PhotoAmt": {
+      "min": 0.0,
+      "max": 30.0,
+      "negativos": 0,
+      "zeros": 235,
+      "nao_numericos_ou_vazios": 0
+    },
+    "AdoptionSpeed": {
+      "min": 0.0,
+      "max": 4.0,
+      "negativos": 0,
+      "zeros": 329,
+      "nao_numericos_ou_vazios": 0
+    }
+  },
+  "criterio_vazio": "Campo vazio ou composto somente por espacos; Not Sure nao e contado como vazio."
+}

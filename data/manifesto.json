@@ -1,0 +1,12 @@
+{
+  "nome": "PetFinder.my mini",
+  "arquivo": "petfinder-mini.csv",
+  "membro_zip": "petfinder-mini/petfinder-mini.csv",
+  "url": "https://storage.googleapis.com/download.tensorflow.org/data/petfinder-mini.zip",
+  "documentacao": "https://www.tensorflow.org/tutorials/structured_data/preprocessing_layers",
+  "origem": "https://www.kaggle.com/competitions/petfinder-adoption-prediction/data",
+  "data_inspecao": "2026-09-16",
+  "registros": 11537,
+  "colunas": 15,
+  "redistribuicao": "CSV não incluído no repositório; a fonte e as instruções para obtenção estão disponíveis em data/README.md."
+}
