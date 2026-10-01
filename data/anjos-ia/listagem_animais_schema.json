@@ -1,0 +1,44 @@
+{
+  "versao": "1.0",
+  "descricao": "Configuração lógica do fluxo de listagem de animais disponíveis com fotos.",
+  "variavel_controle": {
+    "nome": "listar_animais",
+    "tipo": "string",
+    "valores": [
+      "sim",
+      "não"
+    ],
+    "valor_inicial": "não"
+  },
+  "nos": [
+    "SE/SENÃO - LISTAR ANIMAIS",
+    "Modelo - CONSULTA LISTA DE ANIMAIS",
+    "Recuperação - LISTA DE ANIMAIS",
+    "LLM - LISTAR ANIMAIS",
+    "Resposta - LISTA DE ANIMAIS"
+  ],
+  "filtros_perfil": [
+    "perfil_especie",
+    "perfil_porte",
+    "perfil_idade",
+    "perfil_moradia",
+    "perfil_outros_animais",
+    "perfil_criancas",
+    "perfil_atividade"
+  ],
+  "regras_saida": {
+    "status_permitido": "Disponível",
+    "maximo_animais": 3,
+    "foto_obrigatoria": true,
+    "usar_foto_url_exata": true,
+    "somente_contexto": true
+  },
+  "recuperacao": {
+    "top_k_testado": [
+      5,
+      10
+    ],
+    "filtro_metadados": false,
+    "observacao": "A recuperação semântica pode não respeitar exatamente filtros estruturados."
+  }
+}
