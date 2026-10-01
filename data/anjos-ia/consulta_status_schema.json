@@ -1,0 +1,31 @@
+{
+  "versao": "1.0",
+  "descricao": "Configuração lógica da consulta de status da Anjos IA.",
+  "variavel_controle": {
+    "nome": "consultar_status",
+    "tipo": "string",
+    "valores": [
+      "sim",
+      "não"
+    ],
+    "preservar_durante_consulta": true,
+    "valor_apos_finalizacao": "não"
+  },
+  "parametros_get": [
+    "email",
+    "whatsapp",
+    "animal"
+  ],
+  "retorno": [
+    "encontrado",
+    "nome",
+    "animal",
+    "status",
+    "protocolo",
+    "mensagem"
+  ],
+  "identificacao": {
+    "contato": "email OU whatsapp",
+    "animal": "opcional"
+  }
+}
