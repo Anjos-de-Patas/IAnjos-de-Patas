@@ -1,0 +1,82 @@
+{
+  "versao": "1.0",
+  "descricao": "Variáveis de conversa utilizadas para representar o perfil do adotante na Anjos IA.",
+  "plataforma": "Dify",
+  "tipo_padrao": "string",
+  "variaveis": {
+    "perfil_especie": {
+      "descricao": "Espécie de interesse do usuário.",
+      "exemplos": [
+        "cachorro",
+        "gato"
+      ]
+    },
+    "perfil_moradia": {
+      "descricao": "Tipo de moradia informada pelo usuário.",
+      "exemplos": [
+        "casa",
+        "apartamento"
+      ]
+    },
+    "perfil_criancas": {
+      "descricao": "Indica a presença ou contexto de crianças na residência.",
+      "exemplos": [
+        "sim",
+        "não"
+      ]
+    },
+    "perfil_outros_animais": {
+      "descricao": "Registra a presença de outros animais no ambiente.",
+      "exemplos": [
+        "gato",
+        "cachorro",
+        "não"
+      ]
+    },
+    "perfil_porte": {
+      "descricao": "Preferência de porte do animal.",
+      "exemplos": [
+        "pequeno",
+        "médio",
+        "grande"
+      ]
+    },
+    "perfil_idade": {
+      "descricao": "Preferência de faixa etária.",
+      "exemplos": [
+        "filhote",
+        "adulto",
+        "idoso"
+      ]
+    },
+    "perfil_tempo_sozinho": {
+      "descricao": "Tempo aproximado em que o animal poderá ficar sozinho.",
+      "exemplos": [
+        "1 hora",
+        "até 4 horas"
+      ]
+    },
+    "perfil_rotina": {
+      "descricao": "Resumo da rotina informada pelo usuário.",
+      "exemplos": [
+        "tranquila",
+        "agitada"
+      ]
+    },
+    "perfil_quintal": {
+      "descricao": "Registra se a moradia possui quintal ou espaço externo.",
+      "exemplos": [
+        "sim",
+        "não"
+      ]
+    },
+    "perfil_atividade": {
+      "descricao": "Nível de atividade desejado ou compatível com a rotina.",
+      "exemplos": [
+        "baixo",
+        "moderado",
+        "alto"
+      ]
+    }
+  }
+}
