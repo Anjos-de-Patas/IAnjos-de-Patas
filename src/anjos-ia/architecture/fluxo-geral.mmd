@@ -1,0 +1,31 @@
+flowchart TD
+    U[Usuário] --> D[Dify - Anjos IA]
+    D --> P[Coleta de perfil]
+    P --> I[Identificação de interesse]
+
+    I --> L{Listar animais?}
+    L -- Sim --> K[Knowledge - Base de animais]
+    K --> LL[LLM - Listagem]
+    LL --> R[Resposta com fotos]
+    R --> S[Seleção de animal]
+
+    L -- Não --> N[Recomendação]
+    N --> K2[Knowledge - Base de animais]
+    K2 --> REC[LLM - Recomendação]
+    REC --> S
+
+    S --> A{Iniciar adoção?}
+    A -- Sim --> C[Coleta de dados]
+    C --> V[Validação]
+    V --> POST[HTTP POST]
+    POST --> GAS[Google Apps Script]
+    GAS --> SHEETS[Google Planilhas]
+    SHEETS --> PROT[Protocolo ADP]
+
+    D --> ST{Consultar status?}
+    ST -- Sim --> CONT[E-mail ou WhatsApp]
+    CONT --> GET[HTTP GET]
+    GET --> GAS
+    GAS --> SHEETS
+    SHEETS --> STATUS[Status + protocolo]
+    STATUS --> D

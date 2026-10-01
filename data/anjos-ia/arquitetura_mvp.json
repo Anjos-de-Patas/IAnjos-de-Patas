@@ -1,0 +1,54 @@
+{
+  "versao": "1.0",
+  "nome": "Anjos IA",
+  "tipo": "MVP conversacional para apoio ao processo de adoção",
+  "componentes": [
+    {
+      "nome": "Dify",
+      "responsabilidade": "Orquestração do workflow e interface conversacional"
+    },
+    {
+      "nome": "Gemini 3.5 Flash",
+      "responsabilidade": "Geração e interpretação textual nos nós LLM testados"
+    },
+    {
+      "nome": "Knowledge do Dify",
+      "responsabilidade": "Recuperação de dados da base fictícia de animais"
+    },
+    {
+      "nome": "Google Apps Script",
+      "responsabilidade": "API intermediária para gravação e consulta"
+    },
+    {
+      "nome": "Google Planilhas",
+      "responsabilidade": "Persistência das solicitações do MVP"
+    },
+    {
+      "nome": "GitHub",
+      "responsabilidade": "Versionamento de documentação, dados e código auxiliar"
+    }
+  ],
+  "modulos": [
+    "coleta de perfil",
+    "identificação de interesse",
+    "recomendação",
+    "listagem com fotos",
+    "seleção de animal",
+    "solicitação de adoção",
+    "persistência",
+    "protocolo",
+    "consulta de status",
+    "controle de estado"
+  ],
+  "integracoes": {
+    "cadastro": "Dify -> HTTP POST -> Apps Script -> Google Sheets",
+    "consulta": "Dify -> HTTP GET -> Apps Script -> Google Sheets"
+  },
+  "pendencias": [
+    "filtragem determinística",
+    "bloqueio formal de adoção sem animal selecionado",
+    "refino da seleção pós-listagem",
+    "novo teste ponta a ponta",
+    "integração futura com o site"
+  ]
+}
