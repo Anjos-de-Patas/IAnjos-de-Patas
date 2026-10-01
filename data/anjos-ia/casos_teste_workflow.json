@@ -1,0 +1,117 @@
+{
+  "versao": "1.0",
+  "tipo": "testes técnicos e funcionais do MVP",
+  "observacao": "Não substitui validação com usuários reais.",
+  "casos": [
+    {
+      "id": "CT-01",
+      "cenario": "Saudação inicial",
+      "esperado": "Responder normalmente sem entrar em adoção ou status",
+      "situacao": "Validado tecnicamente"
+    },
+    {
+      "id": "CT-02",
+      "cenario": "Coleta de espécie",
+      "esperado": "Registrar cachorro ou gato no perfil",
+      "situacao": "Validado tecnicamente"
+    },
+    {
+      "id": "CT-03",
+      "cenario": "Coleta progressiva do perfil",
+      "esperado": "Fazer uma pergunta por vez e preservar respostas anteriores",
+      "situacao": "Corrigido durante os testes"
+    },
+    {
+      "id": "CT-04",
+      "cenario": "Recomendação baseada na base",
+      "esperado": "Usar apenas dados presentes no contexto recuperado",
+      "situacao": "Corrigido durante os testes"
+    },
+    {
+      "id": "CT-05",
+      "cenario": "Animal indisponível",
+      "esperado": "Informar indisponibilidade e oferecer no máximo 2 alternativas",
+      "situacao": "Pendente de validação final"
+    },
+    {
+      "id": "CT-06",
+      "cenario": "Preservação de interesse_animal",
+      "esperado": "Manter o animal escolhido durante adoção e consulta",
+      "situacao": "Corrigido durante os testes"
+    },
+    {
+      "id": "CT-07",
+      "cenario": "Início da adoção",
+      "esperado": "Entrar no cadastro somente quando houver intenção clara",
+      "situacao": "Validado tecnicamente"
+    },
+    {
+      "id": "CT-08",
+      "cenario": "Autorização de contato",
+      "esperado": "Preservar aceita_contato após resposta do usuário",
+      "situacao": "Corrigido durante os testes"
+    },
+    {
+      "id": "CT-09",
+      "cenario": "Recusa de e-mail",
+      "esperado": "Não repetir a pergunta de e-mail após recusa explícita",
+      "situacao": "Validado tecnicamente"
+    },
+    {
+      "id": "CT-10",
+      "cenario": "WhatsApp com DDD",
+      "esperado": "Capturar e preservar o número completo",
+      "situacao": "Corrigido durante os testes"
+    },
+    {
+      "id": "CT-11",
+      "cenario": "Registro no Google Sheets",
+      "esperado": "Criar nova linha com dados da solicitação",
+      "situacao": "Validado tecnicamente"
+    },
+    {
+      "id": "CT-12",
+      "cenario": "Geração de protocolo",
+      "esperado": "Gerar protocolo ADP e retornar ao fluxo",
+      "situacao": "Validado tecnicamente"
+    },
+    {
+      "id": "CT-13",
+      "cenario": "Consulta de status",
+      "esperado": "Buscar solicitação por e-mail ou WhatsApp",
+      "situacao": "Validado tecnicamente"
+    },
+    {
+      "id": "CT-14",
+      "cenario": "Reset após adoção",
+      "esperado": "Definir quer_iniciar_adocao = não após concluir",
+      "situacao": "Corrigido durante os testes"
+    },
+    {
+      "id": "CT-15",
+      "cenario": "Reset após consulta",
+      "esperado": "Definir consultar_status = não após concluir",
+      "situacao": "Corrigido durante os testes"
+    },
+    {
+      "id": "CT-16",
+      "cenario": "Listagem com fotos",
+      "esperado": "Exibir animais disponíveis com imagem, nome e dados",
+      "situacao": "Validado tecnicamente"
+    },
+    {
+      "id": "CT-17",
+      "cenario": "Filtragem exata na listagem",
+      "esperado": "Priorizar corretamente espécie, porte e idade",
+      "situacao": "Parcial",
+      "observacao": "Recuperação semântica não priorizou Bento no teste cachorro + pequeno + filhote."
+    }
+  ],
+  "pendencias": [
+    "impedir adoção sem interesse_animal",
+    "concluir seleção após listagem",
+    "aplicar filtragem determinística",
+    "retestar conversa ponta a ponta",
+    "validar com público-alvo real"
+  ]
+}
