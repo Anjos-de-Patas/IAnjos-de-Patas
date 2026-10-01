@@ -1,186 +1,413 @@
-# Anjos IA — Registro de Desenvolvimento
+# Anjos IA — Documentação do MVP
 
 ## Visão geral
 
-A **Anjos IA** é o agente conversacional do projeto **IAnjos de Patas**, construído no Dify para apoiar o processo de adoção de animais.
+A **Anjos IA** é o agente conversacional do projeto **IAnjos de Patas**, desenvolvido no Dify para apoiar o processo de adoção de animais.
 
-O fluxo foi desenvolvido de forma iterativa e atualmente contempla:
-
-- coleta progressiva do perfil do adotante;
-- recomendação de animais com base no perfil;
-- consulta de animal específico;
-- tratamento de animais indisponíveis e sugestão de alternativas;
-- início do processo de adoção;
-- coleta de nome, WhatsApp e e-mail;
-- autorização ou recusa de contato;
-- suporte à recusa de e-mail;
-- registro da solicitação em Google Planilhas;
-- geração automática de protocolo;
-- consulta do status da solicitação;
-- encerramento correto dos estados de adoção e consulta;
-- listagem de animais disponíveis;
-- exibição de nome, características e foto dos animais.
-
-## Principais variáveis de perfil
-
-- `perfil_especie`
-- `perfil_moradia`
-- `perfil_criancas`
-- `perfil_outros_animais`
-- `perfil_porte`
-- `perfil_idade`
-- `perfil_tempo_sozinho`
-- `perfil_rotina`
-- `perfil_quintal`
-- `perfil_atividade`
-
-## Variáveis de interesse e adoção
-
-- `interesse_animal`
-- `especie_animal`
-- `adotante_nome`
-- `adotante_whatsapp`
-- `adotante_email`
-- `aceita_contato`
-- `recusou_email`
-- `quer_iniciar_adocao`
-- `consultar_status`
-- `listar_animais`
-
-## Fluxo de adoção
-
-1. O usuário demonstra interesse em um animal.
-2. A Anjos IA confirma o animal de interesse.
-3. O fluxo identifica `quer_iniciar_adocao = sim`.
-4. O agente coleta nome, autorização de contato e WhatsApp.
-5. O e-mail é coletado quando informado.
-6. Se o usuário recusar o e-mail, `recusou_email = sim` permite continuar somente com WhatsApp.
-7. A solicitação é enviada ao Google Apps Script.
-8. O Apps Script grava a solicitação na planilha.
-9. Um protocolo no formato `ADP-XXXX` é gerado.
-10. `quer_iniciar_adocao` é redefinido para `não` ao final do fluxo.
-
-## Consulta de status
-
-A intenção `consultar_status` direciona o usuário para o fluxo de acompanhamento.
-
-A consulta utiliza:
-
-- e-mail; ou
-- WhatsApp;
-- animal de interesse, quando disponível.
-
-O Apps Script retorna:
-
-- nome;
-- animal;
-- status;
-- protocolo.
-
-Depois da consulta concluída, `consultar_status` é redefinido para `não`.
-
-## Listagem de animais disponíveis
-
-Foi criado um fluxo exclusivo para a intenção `listar_animais`.
-
-Fluxo atual:
+Esta documentação registra a evolução do MVP de forma incremental, mantendo cada etapa separada em commits na branch:
 
 ```text
-SE/SENÃO - LISTAR ANIMAIS
-        ↓
-Modelo - CONSULTA LISTA DE ANIMAIS
-        ↓
-Recuperação - LISTA DE ANIMAIS
-        ↓
-LLM - LISTAR ANIMAIS
-        ↓
-Resposta - LISTA DE ANIMAIS
+feature/anjos-ia
 ```
 
-A resposta pode apresentar:
+A branch foi criada a partir da `main`, mas todas as alterações específicas da Anjos IA estão sendo versionadas separadamente para não modificar diretamente o código principal do repositório.
 
-- nome;
-- foto;
-- espécie;
-- porte;
-- idade;
-- descrição.
+## Estado atual do MVP
 
-As imagens são exibidas via Markdown usando URLs públicas diretas.
+Atualmente, a Anjos IA contempla:
 
-## Integração com Google Planilhas
+- coleta progressiva do perfil do adotante;
+- identificação de interesse em um animal;
+- recomendação baseada em dados da base de conhecimento;
+- tratamento de animal indisponível;
+- listagem de animais disponíveis;
+- exibição de fotos em Markdown;
+- seleção de animal;
+- início do processo de adoção;
+- coleta de nome, WhatsApp e e-mail;
+- tratamento de recusa de e-mail;
+- autorização de contato;
+- registro da solicitação no Google Sheets;
+- geração automática de protocolo;
+- consulta de status;
+- controle e preservação de variáveis de conversa;
+- testes técnicos do workflow;
+- documentação da arquitetura geral.
 
-A planilha de solicitações utiliza, atualmente, os campos:
+---
 
-| Coluna | Campo |
-|---|---|
-| A | Data/Hora |
-| B | Nome |
-| C | WhatsApp |
-| D | E-mail |
-| E | Animal de interesse |
-| F | Autoriza contato |
-| G | Status |
-| H | Protocolo |
-| I | Espécie |
+# Índice da documentação
 
-Status previstos:
+## 01 — Visão geral
 
-- Novo interesse
-- Em contato
-- Em avaliação
-- Aprovado
-- Não aprovado
-- Concluído
+Arquivo:
 
-## Regras importantes implementadas
+```text
+docs/anjos-ia/README.md
+```
 
-- fazer apenas uma pergunta por vez;
-- não repetir dados já informados;
-- preservar variáveis relevantes durante o fluxo ativo;
-- não inventar informações de animais;
-- evitar garantias de compatibilidade;
-- usar somente informações presentes na base/contexto;
-- não pedir e-mail novamente quando houver recusa explícita;
-- não manter o usuário preso no fluxo de adoção após a conclusão;
-- não manter o usuário preso no fluxo de consulta de status;
-- exibir somente animais com status disponível na listagem.
+Documento principal que centraliza a navegação e o estado atual da Anjos IA.
 
-## Correções realizadas
+## 02 — Base de conhecimento
 
-Entre os principais problemas corrigidos durante os testes:
+Arquivo:
 
-- repetição de perguntas;
-- perda do animal de interesse;
-- autorização de contato sendo sobrescrita;
-- consulta de status sendo interrompida após informar e-mail/WhatsApp;
-- geração de protocolo ausente em versão antiga do Apps Script;
-- fluxo normal interrompido após remoção acidental de um SE/SENÃO;
-- e-mail solicitado novamente após recusa;
-- WhatsApp extraído apenas como DDD;
-- listagem de animais sem fotos;
-- URLs de imagem incompatíveis com a renderização do Dify.
+```text
+docs/anjos-ia/02-base-conhecimento.md
+```
 
-## Situação atual
+Conteúdo:
 
-O MVP da Anjos IA já possui os principais fluxos funcionais. O desenvolvimento atual está concentrado em:
+- base fictícia de animais;
+- estrutura dos dados;
+- status de disponibilidade;
+- fotos;
+- integração com Knowledge do Dify;
+- limitações da recuperação semântica.
 
-- aumentar a precisão da recuperação dos animais por perfil;
-- validar todos os animais da base com URLs de imagem diretas;
-- concluir os testes de regressão;
-- validar a solução com o público-alvo;
-- preparar a futura integração com o site Anjos de Patas.
+Arquivo de dados:
 
-## Próximos passos de versionamento
+```text
+data/anjos-ia/base_teste_animais_com_fotos.csv
+```
 
-Os próximos commits desta branch devem separar as mudanças por responsabilidade, incluindo:
+## 03 — Coleta de perfil
 
-1. documentação da Anjos IA;
-2. base de conhecimento de teste;
-3. fluxo de perfil e recomendação;
-4. fluxo de adoção;
-5. integração com Google Planilhas;
-6. protocolo e consulta de status;
-7. recusa de e-mail e preservação de variáveis;
-8. listagem de animais com fotos;
-9. documentação de validação e testes.
+Arquivo:
+
+```text
+docs/anjos-ia/03-coleta-perfil.md
+```
+
+Conteúdo:
+
+- coleta progressiva;
+- variáveis do perfil;
+- perguntas uma por vez;
+- persistência das respostas;
+- prevenção de repetição de perguntas.
+
+Schema:
+
+```text
+data/anjos-ia/perfil_adotante_schema.json
+```
+
+## 04 — Interesse e recomendação
+
+Arquivo:
+
+```text
+docs/anjos-ia/04-interesse-recomendacao.md
+```
+
+Conteúdo:
+
+- `interesse_animal`;
+- consulta à base;
+- recomendação;
+- animal indisponível;
+- alternativas;
+- uso do perfil na recomendação;
+- regras para evitar invenção de informações.
+
+Schema:
+
+```text
+data/anjos-ia/interesse_recomendacao_schema.json
+```
+
+## 05 — Solicitação de adoção
+
+Arquivo:
+
+```text
+docs/anjos-ia/05-fluxo-solicitacao-adocao.md
+```
+
+Conteúdo:
+
+- `quer_iniciar_adocao`;
+- coleta de dados;
+- autorização de contato;
+- WhatsApp;
+- e-mail;
+- `recusou_email`;
+- validação do cadastro;
+- encerramento do fluxo.
+
+Schema:
+
+```text
+data/anjos-ia/adocao_schema.json
+```
+
+## 06 — Integração com Google Planilhas
+
+Arquivo:
+
+```text
+docs/anjos-ia/06-integracao-google-sheets.md
+```
+
+Conteúdo:
+
+- HTTP POST;
+- Google Apps Script;
+- Google Sheets;
+- estrutura da planilha;
+- geração de protocolo;
+- status inicial da solicitação.
+
+Código:
+
+```text
+src/anjos-ia/google-apps-script/Code.gs
+```
+
+Exemplo de payload:
+
+```text
+data/anjos-ia/exemplo_solicitacao_post.json
+```
+
+## 07 — Consulta de status
+
+Arquivo:
+
+```text
+docs/anjos-ia/07-consulta-status.md
+```
+
+Conteúdo:
+
+- `consultar_status`;
+- consulta por e-mail ou WhatsApp;
+- filtro opcional pelo animal;
+- retorno do status;
+- retorno do protocolo;
+- tratamento de solicitação não encontrada.
+
+Código auxiliar do Dify:
+
+```text
+src/anjos-ia/dify/ler_status.py
+```
+
+Schema:
+
+```text
+data/anjos-ia/consulta_status_schema.json
+```
+
+## 08 — Listagem de animais com fotos
+
+Arquivo:
+
+```text
+docs/anjos-ia/08-listagem-animais-com-fotos.md
+```
+
+Conteúdo:
+
+- `listar_animais`;
+- busca de animais disponíveis;
+- integração com perfil;
+- fotos;
+- Markdown;
+- URLs diretas;
+- limitação atual da recuperação semântica.
+
+Prompt:
+
+```text
+src/anjos-ia/dify/prompt_listar_animais.md
+```
+
+Schema:
+
+```text
+data/anjos-ia/listagem_animais_schema.json
+```
+
+## 09 — Estado e preservação de variáveis
+
+Arquivo:
+
+```text
+docs/anjos-ia/09-estado-e-preservacao-variaveis.md
+```
+
+Conteúdo:
+
+- preservação de `interesse_animal`;
+- reset de `quer_iniciar_adocao`;
+- preservação e reset de `consultar_status`;
+- preservação de `aceita_contato`;
+- preservação de `recusou_email`;
+- tratamento de `listar_animais`.
+
+Schema:
+
+```text
+data/anjos-ia/estado_conversa_schema.json
+```
+
+## 10 — Testes do workflow
+
+Arquivo:
+
+```text
+docs/anjos-ia/10-testes-workflow.md
+```
+
+Conteúdo:
+
+- 17 casos de teste;
+- resultados técnicos;
+- erros encontrados;
+- correções;
+- cenários parciais;
+- pendências;
+- roteiro de teste ponta a ponta.
+
+Casos de teste estruturados:
+
+```text
+data/anjos-ia/casos_teste_workflow.json
+```
+
+## 11 — Arquitetura e fluxo geral
+
+Arquivo:
+
+```text
+docs/anjos-ia/11-arquitetura-fluxo-geral.md
+```
+
+Conteúdo:
+
+- arquitetura do MVP;
+- módulos;
+- Dify;
+- Gemini;
+- Knowledge;
+- Google Apps Script;
+- Google Sheets;
+- fluxo de adoção;
+- consulta de status;
+- controle de estado;
+- limitações e evolução futura.
+
+Diagrama Mermaid:
+
+```text
+src/anjos-ia/architecture/fluxo-geral.mmd
+```
+
+Schema:
+
+```text
+data/anjos-ia/arquitetura_mvp.json
+```
+
+---
+
+# Principais variáveis
+
+## Perfil
+
+```text
+perfil_especie
+perfil_moradia
+perfil_criancas
+perfil_outros_animais
+perfil_porte
+perfil_idade
+perfil_tempo_sozinho
+perfil_rotina
+perfil_quintal
+perfil_atividade
+```
+
+## Interesse, adoção e status
+
+```text
+interesse_animal
+especie_animal
+adotante_nome
+adotante_whatsapp
+adotante_email
+aceita_contato
+recusou_email
+quer_iniciar_adocao
+consultar_status
+listar_animais
+```
+
+---
+
+# Fluxo resumido
+
+```text
+Usuário
+  ↓
+Coleta de perfil
+  ↓
+Identificação de intenção
+  ↓
+Recomendação ou listagem
+  ↓
+Escolha do animal
+  ↓
+Solicitação de adoção
+  ↓
+Google Apps Script
+  ↓
+Google Sheets
+  ↓
+Protocolo
+  ↓
+Consulta de status
+```
+
+---
+
+# Histórico dos commits da Anjos IA
+
+Todos os commits abaixo pertencem à branch `feature/anjos-ia`.
+
+| Etapa | Commit | Descrição |
+|---|---|---|
+| 01 | `42ebea7` | `docs: registra desenvolvimento inicial da Anjos IA` |
+| 02 | `7c97b61` | `feat: adiciona base de conhecimento da Anjos IA` |
+| 03 | `089b27a` | `feat: documenta coleta de perfil do adotante` |
+| 04 | `920c0cc` | `feat: documenta interesse e recomendação de animais` |
+| 05 | `ac0c6cb` | `feat: documenta fluxo de solicitação de adoção` |
+| 06 | `97bbfd7` | `feat: integra solicitações com Google Planilhas` |
+| 07 | `9fe4e21` | `feat: implementa consulta de status da adoção` |
+| 08 | `7da8b47` | `feat: adiciona fluxo de listagem de animais com fotos` |
+| 09 | `e1afe69` | `fix: organiza preservação e reset de estado do workflow` |
+| 10 | `c07828b` | `test: documenta testes funcionais da Anjos IA` |
+| 11 | `7fbe9b8` | `docs: adiciona arquitetura e fluxo geral da Anjos IA` |
+
+---
+
+# Pendências atuais
+
+As principais evoluções ainda previstas são:
+
+1. impedir formalmente o início da adoção quando nenhum animal estiver selecionado;
+2. concluir o fluxo de seleção do animal após a listagem;
+3. tornar os filtros de espécie, porte e idade mais determinísticos;
+4. substituir URLs de teste restantes por imagens diretas ou fotos oficiais;
+5. revisar respostas sobre saúde e procedimentos para evitar informações não documentadas;
+6. executar novo teste completo de regressão;
+7. realizar validação com usuários reais;
+8. preparar a futura integração da Anjos IA com o site.
+
+## Observação
+
+Os dados de animais utilizados atualmente são fictícios e destinados ao desenvolvimento e validação do MVP.
+
+Resultados de validação com usuários reais devem ser registrados somente após a aplicação efetiva dos testes com o público-alvo.
