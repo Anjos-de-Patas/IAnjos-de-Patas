@@ -1,0 +1,49 @@
+{
+  "versao": "1.0",
+  "descricao": "Regras de preservação e reset de estado da Anjos IA.",
+  "variaveis": {
+    "interesse_animal": {
+      "preservar_quando": [
+        "quer_iniciar_adocao = sim",
+        "consultar_status = sim",
+        "fluxo atual ainda depende do animal selecionado"
+      ],
+      "limpar_ou_substituir_quando": [
+        "não há fluxo ativo relacionado",
+        "o usuário muda claramente de animal ou assunto"
+      ]
+    },
+    "quer_iniciar_adocao": {
+      "valor_ativo": "sim",
+      "reset_apos": "solicitação registrada",
+      "valor_reset": "não"
+    },
+    "consultar_status": {
+      "valor_ativo": "sim",
+      "preservar_enquanto": "aguarda email ou WhatsApp e durante a consulta",
+      "reset_apos": "status apresentado ou consulta encerrada",
+      "valor_reset": "não"
+    },
+    "aceita_contato": {
+      "preservar_apos_resposta": true,
+      "alterar_apenas_com_mudanca_explicita": true
+    },
+    "recusou_email": {
+      "preservar_se_sim": true,
+      "ignorar_respostas_genericas_sem_contexto_de_email": true,
+      "pode_ser_atualizada_se_usuario_fornecer_email": true
+    },
+    "listar_animais": {
+      "natureza": "intenção de curta duração",
+      "valor_em_pedido_de_listagem": "sim",
+      "valor_em_nova_intencao": "não"
+    }
+  },
+  "principios": [
+    "preservar dados necessários ao fluxo ativo",
+    "atualizar somente com informação explícita",
+    "não usar respostas genéricas para alterar variáveis não relacionadas",
+    "resetar variáveis de controle após conclusão",
+    "permitir transição para novas intenções"
+  ]
+}
