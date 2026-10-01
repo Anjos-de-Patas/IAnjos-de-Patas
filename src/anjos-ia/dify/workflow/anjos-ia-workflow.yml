@@ -1,0 +1,3233 @@
+app:
+  description: Assistente virtual inteligente da ONG Anjos de Patas para atendimento,
+    orientação sobre adoção e recomendação de animais de acordo com o perfil do adotante.
+  icon: guide_dog
+  icon_background: '#FFEAD5'
+  icon_type: emoji
+  mode: advanced-chat
+  name: IANJOS
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/gemini:0.9.10@4979b8843fa46c3c2143d339f5868f04d9d77166616c00dd9f811a4adfce03ab
+    version: null
+kind: app
+version: 0.7.0
+workflow:
+  conversation_variables:
+  - description: ''
+    id: b36f3dd5-9da0-43e7-9169-bd7bdcdb18b1
+    name: listar_animais
+    selector:
+    - conversation
+    - listar_animais
+    value: não
+    value_type: string
+  - description: ''
+    id: ecb06964-d226-4c4b-9c93-d8c5b10e5549
+    name: recusou_email
+    selector:
+    - conversation
+    - recusou_email
+    value: ''
+    value_type: string
+  - description: ''
+    id: 81cbacf2-7fbb-47f4-ae1a-20780a16f850
+    name: especie_animal
+    selector:
+    - conversation
+    - especie_animal
+    value: ''
+    value_type: string
+  - description: ''
+    id: f82807f4-f7e9-4a2f-acca-44a649ea91a8
+    name: consultar_status
+    selector:
+    - conversation
+    - consultar_status
+    value: ''
+    value_type: string
+  - description: ''
+    id: 6225a442-eaca-4bf6-b3a2-0ff70b430be2
+    name: aceita_contato
+    selector:
+    - conversation
+    - aceita_contato
+    value: ''
+    value_type: string
+  - description: ''
+    id: d8613e9f-7016-4249-81e6-dbb30c27981c
+    name: adotante_email
+    selector:
+    - conversation
+    - adotante_email
+    value: ''
+    value_type: string
+  - description: ''
+    id: 68616faa-dff5-4acb-bb39-0cc540655e25
+    name: adotante_whatsapp
+    selector:
+    - conversation
+    - adotante_whatsapp
+    value: ''
+    value_type: string
+  - description: ''
+    id: 92161799-63b7-4ba3-9af8-287f10d46f70
+    name: adotante_nome
+    selector:
+    - conversation
+    - adotante_nome
+    value: ''
+    value_type: string
+  - description: ''
+    id: 00639c25-b248-4d0a-8c3a-14fee04c8f45
+    name: quer_iniciar_adocao
+    selector:
+    - conversation
+    - quer_iniciar_adocao
+    value: ''
+    value_type: string
+  - description: ''
+    id: 76cbbc83-b884-408a-bb93-89584c40a9a6
+    name: interesse_animal
+    selector:
+    - conversation
+    - interesse_animal
+    value: ''
+    value_type: string
+  - description: ''
+    id: 4a4060a2-400d-40e1-8673-be1714b67c8b
+    name: perfil_atividade
+    selector:
+    - conversation
+    - perfil_atividade
+    value: ''
+    value_type: string
+  - description: ''
+    id: b0e491ad-8903-48ce-83e5-a5d2fb42c2e8
+    name: perfil_quintal
+    selector:
+    - conversation
+    - perfil_quintal
+    value: ''
+    value_type: string
+  - description: ''
+    id: 8615f7db-eabb-4be6-bb81-238f707d4db5
+    name: perfil_rotina
+    selector:
+    - conversation
+    - perfil_rotina
+    value: ''
+    value_type: string
+  - description: ''
+    id: e389ced1-5c0b-408c-a396-45db67fb070c
+    name: perfil_tempo_sozinho
+    selector:
+    - conversation
+    - perfil_tempo_sozinho
+    value: ''
+    value_type: string
+  - description: ''
+    id: 10959918-672a-4386-b07f-008e6bff4051
+    name: perfil_idade
+    selector:
+    - conversation
+    - perfil_idade
+    value: ''
+    value_type: string
+  - description: ''
+    id: dcf9e8ed-b711-448b-a611-eea631dd6e05
+    name: perfil_porte
+    selector:
+    - conversation
+    - perfil_porte
+    value: ''
+    value_type: string
+  - description: ''
+    id: ff0338e9-01e8-4596-92d4-0e4195a591d4
+    name: perfil_outros_animais
+    selector:
+    - conversation
+    - perfil_outros_animais
+    value: ''
+    value_type: string
+  - description: ''
+    id: 89bf1700-014c-4314-b5fe-8f815204cadd
+    name: perfil_criancas
+    selector:
+    - conversation
+    - perfil_criancas
+    value: ''
+    value_type: string
+  - description: ''
+    id: 70e64bb3-613e-420e-816f-53ec73c8c063
+    name: perfil_moradia
+    selector:
+    - conversation
+    - perfil_moradia
+    value: ''
+    value_type: string
+  - description: ''
+    id: 01eb0abf-2687-482f-b647-a7cc8f98beb8
+    name: perfil_especie
+    selector:
+    - conversation
+    - perfil_especie
+    value: ''
+    value_type: string
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        attachment_image_file_size_limit: 2
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        file_upload_limit: 50
+        image_file_batch_limit: 10
+        image_file_size_limit: 10
+        knowledge_file_size_limit: 15
+        single_chunk_attachment_limit: 10
+        skill_file_size_limit: 50
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: template-transform
+      id: 1790352431850-source-1790356858707-target
+      selected: false
+      source: '1790352431850'
+      sourceHandle: source
+      target: '1790356858707'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: template-transform
+        targetType: parameter-extractor
+      id: 1790356858707-source-1790354731306-target
+      selected: false
+      source: '1790356858707'
+      sourceHandle: source
+      target: '1790354731306'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: parameter-extractor
+        targetType: assigner
+      id: 1790354731306-source-1790358973518-target
+      selected: false
+      source: '1790354731306'
+      sourceHandle: source
+      target: '1790358973518'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: template-transform
+        targetType: knowledge-retrieval
+      id: 1790364583352--1790365270794-target
+      selected: false
+      source: '1790364583352'
+      sourceHandle: source
+      target: '1790365270794'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: assigner
+        targetType: template-transform
+      id: 1790358973518-source-1790368185708-target
+      selected: false
+      source: '1790358973518'
+      sourceHandle: source
+      target: '1790368185708'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: template-transform
+        targetType: parameter-extractor
+      id: 1790368185708-source-1790368750340-target
+      selected: false
+      source: '1790368185708'
+      sourceHandle: source
+      target: '1790368750340'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: knowledge-retrieval
+        targetType: code
+      id: 1790365270794-source-1790419052498-target
+      selected: false
+      source: '1790365270794'
+      sourceHandle: source
+      target: '1790419052498'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: template-transform
+        targetType: knowledge-retrieval
+      id: 1790424319767--1790436857757-target
+      selected: false
+      source: '1790424319767'
+      sourceHandle: source
+      target: '1790436857757'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: knowledge-retrieval
+        targetType: llm
+      id: 1790436857757--1790442002801-target
+      selected: false
+      source: '1790436857757'
+      sourceHandle: source
+      target: '1790442002801'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 1790442002801-source-1790444014721-target
+      selected: false
+      source: '1790442002801'
+      sourceHandle: source
+      target: '1790444014721'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 1790423928551-source-1790449039246-target
+      selected: false
+      source: '1790423928551'
+      sourceHandle: source
+      target: '1790449039246'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 1790529501080-source-1790532108925-target
+      selected: false
+      source: '1790529501080'
+      sourceHandle: source
+      target: '1790532108925'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: parameter-extractor
+        targetType: assigner
+      id: 1790368750340-source-1790369373761-target
+      selected: false
+      source: '1790368750340'
+      sourceHandle: source
+      target: '1790369373761'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: assigner
+        targetType: if-else
+      id: 1790369373761-source-1790624748888-target
+      selected: false
+      source: '1790369373761'
+      sourceHandle: source
+      target: '1790624748888'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: if-else
+      id: 1790624748888-true-1790625496393-target
+      selected: false
+      source: '1790624748888'
+      sourceHandle: 'true'
+      target: '1790625496393'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1790625496393-false-1790626409529-target
+      selected: false
+      source: '1790625496393'
+      sourceHandle: 'false'
+      target: '1790626409529'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 1790626409529--1790626800614-target
+      selected: false
+      source: '1790626409529'
+      sourceHandle: source
+      target: '1790626800614'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: answer
+      id: 1790625496393-true-1790689043901-target
+      selected: false
+      source: '1790625496393'
+      sourceHandle: 'true'
+      target: '1790689043901'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: http-request
+      id: 1790625496393-4924f8d6-0453-4bd2-80c7-b2398c327a30-1790691063274-target
+      source: '1790625496393'
+      sourceHandle: 4924f8d6-0453-4bd2-80c7-b2398c327a30
+      target: '1790691063274'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: assigner
+        targetType: answer
+      id: 1790694114238-source-1790687213412-target
+      source: '1790694114238'
+      sourceHandle: source
+      target: '1790687213412'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: http-request
+        targetType: template-transform
+      id: 1790691063274-source-1790694907800-target
+      source: '1790691063274'
+      sourceHandle: source
+      target: '1790694907800'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: template-transform
+        targetType: assigner
+      id: 1790694907800-source-1790694114238-target
+      source: '1790694907800'
+      sourceHandle: source
+      target: '1790694114238'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: assigner
+        targetType: if-else
+      id: 1790369373761-source-1790699631116-target
+      source: '1790369373761'
+      sourceHandle: source
+      target: '1790699631116'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: if-else
+      id: 1790699631116-false-1790624748888-target
+      selected: false
+      source: '1790699631116'
+      sourceHandle: 'false'
+      target: '1790624748888'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: http-request
+        targetType: code
+      id: 1790700855563--1790701404615-target
+      source: '1790700855563'
+      sourceHandle: source
+      target: '1790701404615'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: if-else
+      id: 1790701404615--1790701834802-target
+      source: '1790701404615'
+      sourceHandle: source
+      target: '1790701834802'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: answer
+      id: 1790701834802-false-1790702386662-target
+      source: '1790701834802'
+      sourceHandle: 'false'
+      target: '1790702386662'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: if-else
+      id: 1790699631116-true-1790703808117-target
+      source: '1790699631116'
+      sourceHandle: 'true'
+      target: '1790703808117'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: http-request
+      id: 1790703808117-true-1790700855563-target
+      source: '1790703808117'
+      sourceHandle: 'true'
+      target: '1790700855563'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: answer
+      id: 1790703808117-false-1790704176170-target
+      source: '1790703808117'
+      sourceHandle: 'false'
+      target: '1790704176170'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: template-transform
+      id: 1790701834802-true-1790705660217-target
+      source: '1790701834802'
+      sourceHandle: 'true'
+      target: '1790705660217'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: template-transform
+        targetType: assigner
+      id: 1790705660217-source-1790706305997-target
+      source: '1790705660217'
+      sourceHandle: source
+      target: '1790706305997'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: assigner
+        targetType: answer
+      id: 1790706305997-source-1790702019971-target
+      source: '1790706305997'
+      sourceHandle: source
+      target: '1790702019971'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: if-else
+      id: 1790624748888-false-1790713031109-target
+      selected: false
+      source: '1790624748888'
+      sourceHandle: 'false'
+      target: '1790713031109'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1790713031109-true-1790423928551-target
+      source: '1790713031109'
+      sourceHandle: 'true'
+      target: '1790423928551'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: http-request
+      id: 1790625496393-ab43ae2a-1b6a-4768-b9b9-4367b56b9247-1790691063274-target
+      source: '1790625496393'
+      sourceHandle: ab43ae2a-1b6a-4768-b9b9-4367b56b9247
+      target: '1790691063274'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: assigner
+        targetType: if-else
+      id: 1790369373761--1790783177323-target
+      source: '1790369373761'
+      sourceHandle: source
+      target: '1790783177323'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: if-else
+      id: 1790783177323-false-1790624748888-target
+      source: '1790783177323'
+      sourceHandle: 'false'
+      target: '1790624748888'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: template-transform
+      id: 1790783177323-true-1790783470734-target
+      source: '1790783177323'
+      sourceHandle: 'true'
+      target: '1790783470734'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: template-transform
+        targetType: knowledge-retrieval
+      id: 1790783470734--1790785728517-target
+      source: '1790783470734'
+      sourceHandle: source
+      target: '1790785728517'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: knowledge-retrieval
+        targetType: llm
+      id: 1790785728517--1790786305106-target
+      source: '1790785728517'
+      sourceHandle: source
+      target: '1790786305106'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 1790786305106--1790787415810-target
+      source: '1790786305106'
+      sourceHandle: source
+      target: '1790787415810'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        selected: false
+        title: Iniciar
+        type: start
+        variables: []
+      height: 89
+      id: '1790352431850'
+      position:
+        x: 63.22026865766816
+        y: 523.7696013530419
+      positionAbsolute:
+        x: 63.22026865766816
+        y: 523.7696013530419
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 303
+      zIndex: 0
+    - data:
+        instruction: 'Você receberá o PERFIL ATUAL DO ADOTANTE e uma NOVA MENSAGEM
+          DO USUÁRIO.
+
+
+          Sua tarefa é retornar o perfil atualizado.
+
+
+          REGRAS:
+
+
+          1. Preserve as informações que já existem no perfil atual.
+
+          2. Atualize somente os campos sobre os quais a nova mensagem fornecer uma
+          informação nova.
+
+          3. Se a nova mensagem corrigir uma informação anterior, use a informação
+          mais recente.
+
+          4. Nunca apague uma informação existente somente porque ela não foi mencionada
+          novamente.
+
+          5. Nunca invente informações.
+
+          6. Nunca faça suposições.
+
+          7. Se determinado campo ainda não possui informação, deixe-o vazio.
+
+          8. Retorne todos os parâmetros em cada execução.
+
+
+          Padronização:
+
+
+          - especie_preferida: cachorro, gato, outro ou sem preferência.
+
+          - tipo_moradia: casa, apartamento ou outro.
+
+          - possui_criancas: sim ou não.
+
+          - outros_animais: animais existentes na residência.
+
+          - porte_preferido: pequeno, médio, grande ou sem preferência.
+
+          - idade_preferida: filhote, adulto, idoso ou sem preferência.
+
+          - tempo_sozinho: tempo aproximado informado.
+
+          - rotina: informações relevantes sobre trabalho, horários e disponibilidade.
+
+          - possui_quintal: sim ou não.
+
+          - nivel_atividade: tranquilo, moderado, ativo ou informação equivalente
+          fornecida pelo usuário.'
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gemini-3.5-flash
+          provider: langgenius/gemini/google
+        parameters:
+        - description: Espécie de animal que o usuário deseja adotar. Use valores
+            como cachorro, gato, outro ou sem preferência. Extraia somente quando
+            o usuário informar essa preferência.
+          name: especie_preferida
+          required: false
+          type: string
+        - description: Tipo de residência do usuário, como casa, apartamento ou outro.
+          name: tipo_moradia
+          required: false
+          type: string
+        - description: Indica se existem crianças na residência. Use sim ou não quando
+            informado.
+          name: possui_criancas
+          required: false
+          type: string
+        - description: Animais que já vivem com o usuário, como gatos, cachorros ou
+            outros.
+          name: outros_animais
+          required: false
+          type: string
+        - description: 'Porte desejado: pequeno, médio, grande ou sem preferência.'
+          name: porte_preferido
+          required: false
+          type: string
+        - description: 'Faixa etária desejada: filhote, adulto, idoso ou sem preferência.'
+          name: idade_preferida
+          required: false
+          type: string
+        - description: Tempo aproximado que o animal ficará sozinho durante o dia.
+          name: tempo_sozinho
+          required: false
+          type: string
+        - description: 'Rotina diária do adotante.
+
+
+            Extraia informações sobre trabalho, horários, tempo em casa e hábitos
+            cotidianos.
+
+
+            Exemplos:
+
+            - "Trabalho durante o dia."
+
+            - "Fico mais em casa à noite."
+
+            - "Trabalho em casa."
+
+            - "Minha rotina é tranquila."
+
+
+            Não use este campo para definir o nível de atividade desejado para o animal.'
+          name: rotina
+          required: false
+          type: string
+        - description: Indica se a residência possui quintal ou espaço externo.
+          name: possui_quintal
+          required: false
+          type: string
+        - description: 'Nível de atividade desejado para o animal.
+
+
+            Preencha este campo somente quando o usuário informar claramente qual
+            nível de atividade deseja no animal.
+
+
+            Exemplos:
+
+            - "Quero um cachorro tranquilo."
+
+            - "Prefiro um animal pouco ativo."
+
+            - "Quero um cachorro ativo."
+
+            - "Prefiro passeios leves."
+
+
+            Não deduza este campo pela rotina do usuário.
+
+
+            Exemplo:
+
+            "Minha rotina é tranquila" NÃO significa que perfil_atividade = tranquilo.
+
+
+            Se o usuário apenas estiver descrevendo a própria rotina, deixe este campo
+            vazio.'
+          name: nivel_atividade
+          required: false
+          type: string
+        query:
+        - '1790356858707'
+        - output
+        reasoning_mode: prompt
+        selected: false
+        title: Extrator de parâmetros
+        type: parameter-extractor
+        vision:
+          enabled: false
+      height: 108
+      id: '1790354731306'
+      position:
+        x: -435.0462143942304
+        y: -474.5361201331921
+      positionAbsolute:
+        x: -435.0462143942304
+        y: -474.5361201331921
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 302
+      zIndex: 0
+    - data:
+        selected: false
+        template: "PERFIL ATUAL DO ADOTANTE\r\n\r\nEspécie preferida: {{ perfil_especie\
+          \ }}\r\nTipo de moradia: {{ perfil_moradia }}\r\nPossui crianças: {{ perfil_criancas\
+          \ }}\r\nOutros animais: {{ perfil_outros_animais }}\r\nPorte preferido:\
+          \ {{ perfil_porte }}\r\nIdade preferida: {{ perfil_idade }}\r\nTempo sozinho:\
+          \ {{ perfil_tempo_sozinho }}\r\nRotina: {{ perfil_rotina }}\r\nPossui quintal:\
+          \ {{ perfil_quintal }}\r\nNível de atividade: {{ perfil_atividade }}\r\n\
+          \r\nNOVA MENSAGEM DO USUÁRIO\r\n\r\n{{ nova_mensagem }}"
+        title: Modelo
+        type: template-transform
+        variables:
+        - value_selector:
+          - conversation
+          - perfil_especie
+          value_type: string
+          variable: perfil_especie
+        - value_selector:
+          - conversation
+          - perfil_moradia
+          value_type: string
+          variable: perfil_moradia
+        - value_selector:
+          - conversation
+          - perfil_criancas
+          value_type: string
+          variable: perfil_criancas
+        - value_selector:
+          - conversation
+          - perfil_outros_animais
+          value_type: string
+          variable: perfil_outros_animais
+        - value_selector:
+          - conversation
+          - perfil_porte
+          value_type: string
+          variable: perfil_porte
+        - value_selector:
+          - conversation
+          - perfil_idade
+          value_type: string
+          variable: perfil_idade
+        - value_selector:
+          - conversation
+          - perfil_tempo_sozinho
+          value_type: string
+          variable: perfil_tempo_sozinho
+        - value_selector:
+          - conversation
+          - perfil_rotina
+          value_type: string
+          variable: perfil_rotina
+        - value_selector:
+          - conversation
+          - perfil_quintal
+          value_type: string
+          variable: perfil_quintal
+        - value_selector:
+          - conversation
+          - perfil_atividade
+          value_type: string
+          variable: perfil_atividade
+        - value_selector:
+          - sys
+          - query
+          value_type: string
+          variable: nova_mensagem
+      height: 63
+      id: '1790356858707'
+      position:
+        x: 613.3222423636497
+        y: 315.3605454210484
+      positionAbsolute:
+        x: 613.3222423636497
+        y: 315.3605454210484
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 302
+      zIndex: 0
+    - data:
+        items:
+        - input_type: variable
+          operation: over-write
+          value:
+          - '1790354731306'
+          - especie_preferida
+          variable_selector:
+          - conversation
+          - perfil_especie
+        - input_type: variable
+          operation: over-write
+          value:
+          - '1790354731306'
+          - tipo_moradia
+          variable_selector:
+          - conversation
+          - perfil_moradia
+        - input_type: variable
+          operation: over-write
+          value:
+          - '1790354731306'
+          - possui_criancas
+          variable_selector:
+          - conversation
+          - perfil_criancas
+        - input_type: variable
+          operation: over-write
+          value:
+          - '1790354731306'
+          - outros_animais
+          variable_selector:
+          - conversation
+          - perfil_outros_animais
+        - input_type: variable
+          operation: over-write
+          value:
+          - '1790354731306'
+          - porte_preferido
+          variable_selector:
+          - conversation
+          - perfil_porte
+        - input_type: variable
+          operation: over-write
+          value:
+          - '1790354731306'
+          - idade_preferida
+          variable_selector:
+          - conversation
+          - perfil_idade
+        - input_type: variable
+          operation: over-write
+          value:
+          - '1790354731306'
+          - tempo_sozinho
+          variable_selector:
+          - conversation
+          - perfil_tempo_sozinho
+        - input_type: variable
+          operation: over-write
+          value:
+          - '1790354731306'
+          - rotina
+          variable_selector:
+          - conversation
+          - perfil_rotina
+        - input_type: variable
+          operation: over-write
+          value:
+          - '1790354731306'
+          - possui_quintal
+          variable_selector:
+          - conversation
+          - perfil_quintal
+        - input_type: variable
+          operation: over-write
+          value:
+          - '1790354731306'
+          - nivel_atividade
+          variable_selector:
+          - conversation
+          - perfil_atividade
+        - input_type: variable
+          operation: over-write
+          value:
+          - '1790354731306'
+          - especie_preferida
+          variable_selector:
+          - conversation
+          - especie_animal
+        selected: false
+        title: Atribuidor de Variáveis
+        type: assigner
+        version: '2'
+      height: 428
+      id: '1790358973518'
+      position:
+        x: 618.7068954523477
+        y: 407.25883806526105
+      positionAbsolute:
+        x: 618.7068954523477
+        y: 407.25883806526105
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 302
+      zIndex: 0
+    - data:
+        selected: false
+        template: "BUSCA DE ANIMAL ESPECÍFICO\r\n\r\nnome: {{ interesse_animal }}\r\
+          \nstatus: Disponível\r\n\r\nAnimal solicitado pelo usuário: {{ interesse_animal\
+          \ }}\r\n\r\nespecie: {{ perfil_especie }}\r\nporte: {{ perfil_porte }}\r\
+          \nfaixa_etaria: {{ perfil_idade }}\r\n\r\n{% if perfil_moradia == \"apartamento\"\
+          \ %}\r\napto_apartamento: Sim\r\n{% endif %}\r\n\r\n{% if perfil_criancas\
+          \ == \"sim\" %}\r\nconvive_criancas: Sim\r\n{% endif %}\r\n\r\n{% if \"\
+          gato\" in perfil_outros_animais|lower %}\r\nconvive_gatos: Sim\r\n{% endif\
+          \ %}\r\n\r\n{% if \"cachorro\" in perfil_outros_animais|lower or \"cão\"\
+          \ in perfil_outros_animais|lower %}\r\nconvive_caes: Sim\r\n{% endif %}\r\
+          \n\r\n{% if perfil_quintal == \"não\" %}\r\nprecisa_quintal: Não\r\n{% endif\
+          \ %}\r\n\r\ntempo_sozinho: {{ perfil_tempo_sozinho }}\r\nnivel_atividade:\
+          \ {{ perfil_atividade }}\r\nrotina: {{ perfil_rotina }}"
+        title: Modelo 2
+        type: template-transform
+        variables:
+        - value_selector:
+          - conversation
+          - perfil_especie
+          value_type: string
+          variable: perfil_especie
+        - value_selector:
+          - conversation
+          - perfil_moradia
+          value_type: string
+          variable: perfil_moradia
+        - value_selector:
+          - conversation
+          - perfil_criancas
+          value_type: string
+          variable: perfil_criancas
+        - value_selector:
+          - conversation
+          - perfil_outros_animais
+          value_type: string
+          variable: perfil_outros_animais
+        - value_selector:
+          - conversation
+          - perfil_porte
+          value_type: string
+          variable: perfil_porte
+        - value_selector:
+          - conversation
+          - perfil_idade
+          value_type: string
+          variable: perfil_idade
+        - value_selector:
+          - conversation
+          - perfil_tempo_sozinho
+          value_type: string
+          variable: perfil_tempo_sozinho
+        - value_selector:
+          - conversation
+          - perfil_rotina
+          value_type: string
+          variable: perfil_rotina
+        - value_selector:
+          - conversation
+          - perfil_quintal
+          value_type: string
+          variable: perfil_quintal
+        - value_selector:
+          - conversation
+          - perfil_atividade
+          value_type: string
+          variable: perfil_atividade
+        - value_selector:
+          - conversation
+          - interesse_animal
+          value_type: string
+          variable: interesse_animal
+      height: 63
+      id: '1790364583352'
+      position:
+        x: 950.6048530565181
+        y: 657.6049663511263
+      positionAbsolute:
+        x: 950.6048530565181
+        y: 657.6049663511263
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 302
+      zIndex: 0
+    - data:
+        dataset_ids:
+        - sHa8vvpBrwMYgYpGBcFJyZDCHGKkKLaGpmRKhv/9Ip6qjZOuBIjuarJacQF8UPHS
+        multiple_retrieval_config:
+          reranking_enable: false
+          reranking_mode: reranking_model
+          score_threshold: null
+          top_k: 10
+        query_attachment_selector: []
+        query_variable_selector:
+        - '1790364583352'
+        - output
+        retrieval_mode: multiple
+        selected: false
+        title: Recuperação de conhecimento
+        type: knowledge-retrieval
+      height: 111
+      id: '1790365270794'
+      position:
+        x: 1194.8170156665706
+        y: 343.87401797037995
+      positionAbsolute:
+        x: 1194.8170156665706
+        y: 343.87401797037995
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 302
+      zIndex: 0
+    - data:
+        selected: false
+        template: "DADOS ATUAIS DO INTERESSE EM ADOÇÃO\r\n\r\nAnimal de interesse:\
+          \ {{ interesse_animal }}\r\nDeseja iniciar a adoção: {{ quer_iniciar_adocao\
+          \ }}\r\nNome do adotante: {{ adotante_nome }}\r\nWhatsApp: {{ adotante_whatsapp\
+          \ }}\r\nE-mail: {{ adotante_email }}\r\nAceita contato da ONG: {{ aceita_contato\
+          \ }}\r\n\r\nNOVA MENSAGEM DO USUÁRIO\r\n\r\n{{ nova_mensagem }}"
+        title: Modelo  de interesse
+        type: template-transform
+        variables:
+        - value_selector:
+          - conversation
+          - interesse_animal
+          value_type: string
+          variable: interesse_animal
+        - value_selector:
+          - conversation
+          - quer_iniciar_adocao
+          value_type: string
+          variable: quer_iniciar_adocao
+        - value_selector:
+          - conversation
+          - adotante_nome
+          value_type: string
+          variable: adotante_nome
+        - value_selector:
+          - conversation
+          - adotante_whatsapp
+          value_type: string
+          variable: adotante_whatsapp
+        - value_selector:
+          - conversation
+          - adotante_email
+          value_type: string
+          variable: adotante_email
+        - value_selector:
+          - conversation
+          - aceita_contato
+          value_type: string
+          variable: aceita_contato
+        - value_selector:
+          - sys
+          - query
+          value_type: string
+          variable: nova_mensagem
+      height: 63
+      id: '1790368185708'
+      position:
+        x: 1209.549404014745
+        y: 31.866372876631402
+      positionAbsolute:
+        x: 1209.549404014745
+        y: 31.866372876631402
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 302
+      zIndex: 0
+    - data:
+        instruction: "Você receberá os DADOS ATUAIS DO INTERESSE EM ADOÇÃO e a NOVA\
+          \ MENSAGEM DO USUÁRIO.\n\nSua tarefa é atualizar os dados do interesse em\
+          \ adoção.\n\nREGRAS:\n- As regras específicas de aceita_contato têm prioridade\
+          \ sobre as regras gerais de extração.\n\n- Se quer_iniciar_adocao = \"não\"\
+          \ e consultar_status = \"não\", não preserve interesse_animal automaticamente.\n\
+          \n- Se a nova mensagem não mencionar nenhum animal e for apenas uma saudação,\
+          \ conversa geral ou mudança de assunto, deixe interesse_animal vazio.\n\
+          - As regras acima sobre interesse_animal têm prioridade sobre as regras\
+          \ gerais de preservação.\n\n- Preserve interesse_animal somente enquanto\
+          \ o usuário estiver:\n  1. iniciando um processo de adoção; ou\n  2. consultando\
+          \ o status de uma solicitação.\n- Preserve as informações que já estiverem\
+          \ preenchidas.\n- Atualize um campo somente quando a nova mensagem trouxer\
+          \ uma informação nova ou corrigir uma informação anterior.\n- Nunca apague\
+          \ uma informação existente apenas porque ela não foi mencionada novamente.\n\
+          - Nunca invente nome, telefone, e-mail ou animal de interesse.\n- Nunca\
+          \ deduza autorização de contato.\n- Se o usuário demonstrar claramente que\
+          \ deseja iniciar a adoção, use:\n  quer_iniciar_adocao = sim\n- Se o usuário\
+          \ disser claramente que não deseja continuar, use:\n  quer_iniciar_adocao\
+          \ = não\n- Se o usuário autorizar a ONG a entrar em contato, use:\n  aceita_contato\
+          \ = sim\n- Se o usuário recusar contato, use:\n  aceita_contato = não\n\
+          - Se uma informação ainda não existir, deixe o campo vazio.\n- Retorne todos\
+          \ os parâmetros em cada execução.\n\nREGRAS PARA AUTORIZAÇÃO DE CONTATO:\n\
+          \n- Se aceita_contato já estiver preenchido com \"sim\" ou \"não\", preserve\
+          \ esse valor nas próximas mensagens.\n- Nunca substitua aceita_contato por\
+          \ vazio apenas porque o usuário não falou novamente sobre autorização.\n\
+          - Se aceita_contato = \"sim\", mantenha \"sim\" quando o usuário informar\
+          \ nome, WhatsApp, e-mail ou outro dado solicitado.\n- Se aceita_contato\
+          \ = \"não\", mantenha \"não\" até que o usuário diga claramente que mudou\
+          \ de decisão.\n- Só altere aceita_contato quando o usuário autorizar ou\
+          \ recusar o contato de forma explícita.\n- Ao receber apenas um nome, número\
+          \ de WhatsApp ou endereço de e-mail, não altere aceita_contato.\n\nREGRAS\
+          \ PARA WHATSAPP E ANIMAL:\n\n- Ao identificar um WhatsApp, extraia o número\
+          \ completo com DDD.\n- Nunca salve apenas o DDD.\n- Preserve adotante_whatsapp\
+          \ depois que estiver preenchido.\n- Preserve interesse_animal enquanto quer_iniciar_adocao\
+          \ = \"sim\".\n- Não apague interesse_animal enquanto estiver coletando nome,\
+          \ autorização, WhatsApp ou e-mail.\n- Só altere interesse_animal se o usuário\
+          \ mencionar claramente outro animal.\nVALORES ATUAIS DA CONVERSA:\n\nAnimal\
+          \ de interesse: {{#conversation.interesse_animal#}}\nQuer iniciar adoção:\
+          \ {{#conversation.quer_iniciar_adocao#}}\nNome: {{#conversation.adotante_nome#}}\n\
+          WhatsApp: {{#conversation.adotante_whatsapp#}}\nE-mail: {{#conversation.adotante_email#}}\n\
+          Aceita contato: {{#conversation.aceita_contato#}}\nConsultar status: /\n\
+          \nREGRAS DE PRESERVAÇÃO:\n\n- Se consultar_status já estiver como \"sim\"\
+          , mantenha \"sim\" enquanto o usuário estiver fornecendo informações para\
+          \ localizar a solicitação.\n\n- Se consultar_status = \"sim\" e o usuário\
+          \ responder apenas com e-mail, WhatsApp, nome do animal ou outra informação\
+          \ solicitada para realizar a consulta, mantenha consultar_status = \"sim\"\
+          .\n\n- Não altere consultar_status para \"não\" apenas porque a mensagem\
+          \ atual contém somente um e-mail ou WhatsApp.\n\n- Só altere consultar_status\
+          \ para \"não\" quando a consulta tiver sido finalizada ou quando o usuário\
+          \ claramente mudar de assunto.\n\n- Sempre considere os VALORES ATUAIS DA\
+          \ CONVERSA antes de extrair novos dados.\n- Se o usuário fornecer um novo\
+          \ valor para um campo, use o novo valor.\n- Se o usuário não mencionar novamente\
+          \ um campo que já possui valor, mantenha o valor atual.\n- Nunca substitua\
+          \ um valor já preenchido por vazio.\n- Só altere um valor existente quando\
+          \ o usuário fornecer explicitamente uma nova informação.\n- Se quer_iniciar_adocao\
+          \ já estiver como \"sim\", mantenha \"sim\" enquanto o processo de adoção\
+          \ estiver em andamento.\n- Se interesse_animal já estiver preenchido, mantenha\
+          \ esse animal enquanto o usuário estiver continuando o mesmo processo.\n\
+          - Preserve também nome, WhatsApp, e-mail e autorização de contato já informados.\n\
+          - Retorne todos os campos em todas as execuções."
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gemini-3.5-flash
+          provider: langgenius/gemini/google
+        parameters:
+        - description: Nome do animal pelo qual o usuário demonstrou interesse em
+            adotar. Extraia somente quando o usuário mencionar claramente um animal
+            específico.
+          name: interesse_animal
+          required: false
+          type: string
+        - description: 'Indica se o usuário deseja iniciar o processo de adoção. Use
+            "sim" ou "não" somente quando isso estiver claramente informado.
+
+            '
+          name: quer_iniciar_adocao
+          required: false
+          type: string
+        - description: 'Nome da pessoa interessada em adotar. Extraia somente quando
+            o usuário informar seu próprio nome.
+
+            '
+          name: adotante_nome
+          required: false
+          type: string
+        - description: 'Número completo de WhatsApp informado pelo usuário.
+
+
+            Extraia o número inteiro, incluindo DDD.
+
+
+            Exemplo:
+
+            "Meu WhatsApp é (99) 98456-3065"
+
+            → adotante_whatsapp = "(99) 98456-3065"
+
+
+            Nunca retorne somente o DDD.
+
+            Nunca corte ou resuma o número.
+
+            Se já estiver preenchido e o usuário não informar outro número, preserve
+            o valor atual.'
+          name: adotante_whatsapp
+          required: false
+          type: string
+        - description: adotante_email
+          name: adotante_email
+          required: false
+          type: string
+        - description: Indica se o usuário autorizou a ONG a entrar em contato. Use
+            "sim" ou "não" somente quando houver autorização ou recusa clara.
+          name: aceita_contato
+          required: false
+          type: string
+        - description: 'Use "sim" quando o usuário quiser saber o andamento ou status
+            de uma adoção já iniciada.
+
+
+            Exemplos:
+
+            "Como está minha solicitação?"
+
+            "Qual o status da adoção do Bento?"
+
+            "Minha adoção foi aprovada?"
+
+
+            Use "não" quando o usuário não estiver consultando o status de uma solicitação.'
+          name: consultar_status
+          required: false
+          type: string
+        - description: 'Espécie do animal de interesse.
+
+
+            Use apenas:
+
+            - "Cachorro"
+
+            - "Gato"
+
+
+            Exemplos:
+
+            "Quero adotar um cachorro" → Cachorro
+
+            "Quero adotar uma gata" → Gato
+
+
+            Se a espécie já estiver identificada durante o processo de adoção, preserve
+            o valor.
+
+
+            Não confunda espécie com raça.'
+          name: especie_animal
+          required: false
+          type: string
+        - description: 'Indica se o usuário recusou fornecer o e-mail.
+
+
+            Use "sim" somente quando o usuário recusar claramente informar o e-mail.
+
+
+            Exemplos:
+
+            - "não quero informar meu e-mail"
+
+            - "prefiro não passar o e-mail"
+
+            - "não vou informar"
+
+            - se a pergunta atual for sobre o e-mail e o usuário responder apenas
+            "não"
+
+
+            REGRAS IMPORTANTES:
+
+
+            - Se recusou_email já estiver como "sim", preserve "sim".
+
+            - Nunca altere recusou_email por causa de respostas genéricas como "sim",
+            "não", "ok", "certo" ou "agitado" dadas a outras perguntas.
+
+            - Uma resposta "sim" só pode alterar recusou_email se estiver claramente
+            respondendo a uma pergunta sobre fornecer o e-mail.
+
+            - Só altere recusou_email de "sim" para "não" se o usuário fornecer um
+            endereço de e-mail ou disser explicitamente que agora deseja informar
+            o e-mail.
+
+            - Se a mensagem atual não tratar de e-mail, mantenha o valor atual.'
+          name: recusou_email
+          required: false
+          type: string
+        - description: 'Indica se o usuário deseja ver, listar ou conhecer os animais
+            disponíveis para adoção.
+
+
+            Retorne "sim" quando o usuário pedir uma lista ou quiser ver animais disponíveis.
+
+
+            Exemplos:
+
+            - "Quais animais estão disponíveis?" → sim
+
+            - "Me mostra os cachorros disponíveis" → sim
+
+            - "Quero ver os gatos para adoção" → sim
+
+            - "Pode me passar a lista de animais?" → sim
+
+            - "Tem algum cachorro disponível?" → sim
+
+            - "Quais filhotes estão disponíveis?" → sim
+
+
+            Retorne "não" quando o usuário estiver falando sobre um animal específico
+            ou outro assunto.
+
+
+            Exemplos:
+
+            - "Quero conhecer o Bento" → não
+
+            - "Como está minha adoção?" → não
+
+            - "Quero adotar a Amora" → não
+
+
+            IMPORTANTE:
+
+            Se o usuário fizer um novo pedido para ver animais disponíveis, retorne
+            "sim".'
+          name: listar_animais
+          required: false
+          type: string
+        query:
+        - '1790356858707'
+        - output
+        reasoning_mode: prompt
+        selected: false
+        title: Extrator de interesse
+        type: parameter-extractor
+        vision:
+          enabled: false
+      height: 108
+      id: '1790368750340'
+      position:
+        x: 1802.0838816498808
+        y: 335.87401797037995
+      positionAbsolute:
+        x: 1802.0838816498808
+        y: 335.87401797037995
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 302
+      zIndex: 0
+    - data:
+        items:
+        - input_type: variable
+          operation: over-write
+          value:
+          - '1790368750340'
+          - interesse_animal
+          variable_selector:
+          - conversation
+          - interesse_animal
+        - input_type: variable
+          operation: over-write
+          value:
+          - '1790368750340'
+          - adotante_nome
+          variable_selector:
+          - conversation
+          - adotante_nome
+        - input_type: variable
+          operation: over-write
+          value:
+          - '1790368750340'
+          - adotante_whatsapp
+          variable_selector:
+          - conversation
+          - adotante_whatsapp
+        - input_type: variable
+          operation: over-write
+          value:
+          - '1790368750340'
+          - adotante_email
+          variable_selector:
+          - conversation
+          - adotante_email
+        - input_type: variable
+          operation: over-write
+          value:
+          - '1790368750340'
+          - quer_iniciar_adocao
+          variable_selector:
+          - conversation
+          - quer_iniciar_adocao
+        - input_type: variable
+          operation: over-write
+          value:
+          - '1790368750340'
+          - aceita_contato
+          variable_selector:
+          - conversation
+          - aceita_contato
+        - input_type: variable
+          operation: over-write
+          value:
+          - '1790368750340'
+          - consultar_status
+          variable_selector:
+          - conversation
+          - consultar_status
+        - input_type: variable
+          operation: over-write
+          value:
+          - '1790368750340'
+          - recusou_email
+          variable_selector:
+          - conversation
+          - recusou_email
+        - input_type: variable
+          operation: over-write
+          value:
+          - '1790368750340'
+          - listar_animais
+          variable_selector:
+          - conversation
+          - listar_animais
+        selected: false
+        title: Atribuidor de Variáveis interesse
+        type: assigner
+        version: '2'
+      height: 363
+      id: '1790369373761'
+      position:
+        x: -233.19459237089646
+        y: 106.86717429907938
+      positionAbsolute:
+        x: -233.19459237089646
+        y: 106.86717429907938
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 302
+      zIndex: 0
+    - data:
+        code: "import json\nimport unicodedata\n\ndef normalizar(texto):\n    texto\
+          \ = str(texto or \"\")\n    texto = unicodedata.normalize(\"NFD\", texto)\n\
+          \    texto = \"\".join(\n        c for c in texto\n        if unicodedata.category(c)\
+          \ != \"Mn\"\n    )\n    return texto.lower().strip()\n\ndef main(resultados:\
+          \ list, animal_desejado: str) -> dict:\n    nome = normalizar(animal_desejado)\n\
+          \n    if not nome:\n        return {\n            \"animal_encontrado\"\
+          : \"nao\",\n            \"animal_resultado\": \"\"\n        }\n\n    for\
+          \ item in resultados or []:\n        texto_original = json.dumps(\n    \
+          \        item,\n            ensure_ascii=False\n        )\n\n        texto\
+          \ = normalizar(texto_original)\n\n        nome_encontrado = nome in texto\n\
+          \        esta_disponivel = \"status: disponivel\" in texto\n\n        if\
+          \ nome_encontrado and esta_disponivel:\n            return {\n         \
+          \       \"animal_encontrado\": \"sim\",\n                \"animal_resultado\"\
+          : texto_original\n            }\n\n    return {\n        \"animal_encontrado\"\
+          : \"nao\",\n        \"animal_resultado\": \"\"\n    }"
+        code_language: python3
+        outputs:
+          animal_encontrado:
+            children: null
+            type: string
+          animal_resultado:
+            children: null
+            type: string
+        selected: false
+        title: Verificar animal disponível
+        type: code
+        variables:
+        - value_selector:
+          - '1790365270794'
+          - result
+          value_type: array[object]
+          variable: resultados
+        - value_selector:
+          - conversation
+          - interesse_animal
+          value_type: string
+          variable: animal_desejado
+      height: 63
+      id: '1790419052498'
+      position:
+        x: 1376.3331342590366
+        y: 554.3192820070492
+      positionAbsolute:
+        x: 1376.3331342590366
+        y: 554.3192820070492
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 302
+      zIndex: 0
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1790365270794'
+          - result
+        memory:
+          query_prompt_template: '{{#sys.query#}}
+
+
+            {{#sys.files#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 50
+        model:
+          completion_params: {}
+          mode: chat
+          name: gemini-3.5-flash
+          provider: langgenius/gemini/google
+        prompt_template:
+        - id: f09e720c-0c51-4433-a0ee-1c3e6a8c673d
+          role: system
+          text: 'Você é o Anjos IA, assistente virtual da ONG Anjos de Patas.
+
+
+            Use o PERFIL ATUAL DO ADOTANTE e os animais presentes no CONTEXTO para
+            conduzir a conversa.
+
+
+            Se o usuário mencionar um animal específico que está disponível no contexto,
+            fale sobre esse animal.
+
+
+            Se nenhum animal específico tiver sido informado, continue conhecendo
+            o perfil do adotante naturalmente.
+
+
+            Não invente animais ou características.
+
+
+            - Se "Animal solicitado" estiver preenchido e esse animal estiver disponível
+            no CONTEXTO, responda diretamente sobre ele antes de fazer qualquer outra
+            pergunta.
+
+            - Não se apresente novamente durante uma conversa já iniciada.
+
+            REGRAS PARA SAÚDE DO ANIMAL:
+
+
+            - Ao responder sobre saúde, use somente as informações presentes no CONTEXTO.
+
+            - Não faça diagnóstico nem dê orientação veterinária por conta própria.
+
+            - Não prescreva exercícios, medicamentos, alimentação ou tratamentos.
+
+            - Se houver uma condição de saúde na ficha, informe-a de forma simples.
+
+            - Se a ficha mencionar acompanhamento veterinário, informe isso sem acrescentar
+            frequência ou tratamento que não estejam no CONTEXTO.
+
+            - Diferencie claramente informações da ficha de recomendações.
+
+            - Para dúvidas específicas de saúde, oriente o adotante a conversar com
+            a ONG ou com um médico-veterinário.
+
+            REGRAS DE CONVERSA
+
+            REGRAS PARA ANIMAL ESPECÍFICO:
+
+
+            - Ao mencionar cuidados de saúde, deixe claro quando a informação vem
+            da ficha do animal.
+
+            - Evite transformar informações da ficha em recomendações próprias.
+
+            - Em respostas sobre saúde, não faça perguntas adicionais ao final, a
+            menos que sejam necessárias.
+
+            - Ao responder perguntas sobre um animal específico, use somente informações
+            presentes no CONTEXTO.
+
+            - Responda diretamente à pergunta do usuário.
+
+            - Não transforme características do animal em garantias de adaptação.
+
+            - Se o CONTEXTO informar que o animal convive bem com gatos, diga apenas
+            que ele possui boa convivência com gatos.
+
+            - Não diga que isso garante compatibilidade com os animais do adotante.
+
+            - Não diga que a adaptação "será tranquila", "tende a ser tranquila" ou
+            expressões semelhantes.
+
+            - Prefira frases como "isso pode ser um ponto positivo para a convivência".
+
+            - Não use palavras absolutas como "ideal", "perfeito", "garantido", "certamente"
+            ou "perfeitamente".
+
+            - Mantenha a resposta curta, natural e acolhedora.
+
+            - Faça no máximo uma pergunta ao final.
+
+            - Faça somente uma pergunta por vez, sem juntar duas informações diferentes
+            na mesma pergunta.
+
+            - Se precisar saber sobre rotina e tempo para passeios, pergunte primeiro
+            sobre a rotina. Pergunte sobre passeios somente na mensagem seguinte.
+
+            - Enquanto o perfil ainda estiver incompleto, não mencione nomes de animais
+            recuperados.
+
+            - Primeiro complete as informações essenciais do adotante.
+
+            - Considere essenciais: espécie, moradia, outros animais, porte, idade,
+            tempo sozinho e rotina.
+
+            - Enquanto faltar alguma dessas informações, faça apenas uma pergunta
+            por vez.
+
+            - Só apresente animais quando houver informações suficientes para avaliar
+            compatibilidade.
+
+            - Se o usuário pedir diretamente por um animal específico disponível,
+            pode falar sobre esse animal mesmo que o perfil ainda esteja incompleto.
+
+            - Responda com no máximo 60 palavras.
+
+            - Faça apenas uma pergunta por vez.
+
+            - Nunca pergunte novamente algo que já esteja preenchido no PERFIL ATUAL
+            DO ADOTANTE.
+
+            - Antes de perguntar, verifique todas as variáveis do perfil.
+
+            - Não diga que um animal é "ideal", "perfeito" ou que certamente dará
+            certo.
+
+            - Prefira "pode combinar com seu perfil" ou "parece compatível com as
+            informações fornecidas".
+
+            - Se o usuário mencionar um animal específico que está disponível, responda
+            primeiro sobre esse animal.
+
+            - Não sugira outros animais se o usuário estiver perguntando sobre um
+            animal específico disponível.
+
+            PERFIL ATUAL DO ADOTANTE
+
+
+            Espécie: {{#conversation.perfil_especie#}}
+
+            Moradia: {{#conversation.perfil_moradia#}}
+
+            Crianças: {{#conversation.perfil_criancas#}}
+
+            Outros animais: {{#conversation.perfil_outros_animais#}}
+
+            Porte: {{#conversation.perfil_porte#}}
+
+            Idade: {{#conversation.perfil_idade#}}
+
+            Tempo sozinho: {{#conversation.perfil_tempo_sozinho#}}
+
+            Rotina: {{#conversation.perfil_rotina#}}
+
+            Quintal: {{#conversation.perfil_quintal#}}
+
+            Nível de atividade: {{#conversation.perfil_atividade#}}
+
+            ANIMAL DE INTERESSE ATUAL
+
+
+            Animal solicitado: {{#conversation.interesse_animal#}}
+
+
+            ANIMAIS RECUPERADOS
+
+
+            {{#context#}}'
+        - id: af5d28a8-76f6-4dbb-983f-48e86afeef4b
+          role: user
+          text: '{{#sys.query#}}'
+        selected: false
+        title: LLM 2
+        type: llm
+        vision:
+          enabled: false
+      height: 108
+      id: '1790423928551'
+      position:
+        x: 661.2749115011969
+        y: -486.67658725847235
+      positionAbsolute:
+        x: 661.2749115011969
+        y: -486.67658725847235
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 302
+      zIndex: 0
+    - data:
+        selected: false
+        template: "BUSCA DE ALTERNATIVAS PARA ADOÇÃO\r\n\r\nO animal solicitado pelo\
+          \ usuário foi:\r\n{{ interesse_animal }}\r\n\r\nEsse animal não foi encontrado\
+          \ entre os animais disponíveis.\r\n\r\nProcure OUTROS animais disponíveis\
+          \ com características semelhantes ao perfil do adotante.\r\n\r\nstatus:\
+          \ Disponível\r\nespecie: {{ perfil_especie }}\r\nporte: {{ perfil_porte\
+          \ }}\r\nfaixa_etaria: {{ perfil_idade }}\r\n\r\n{% if perfil_moradia ==\
+          \ \"apartamento\" %}\r\napto_apartamento: Sim\r\n{% endif %}\r\n\r\n{% if\
+          \ perfil_criancas == \"sim\" %}\r\nconvive_criancas: Sim\r\n{% endif %}\r\
+          \n\r\n{% if \"gato\" in perfil_outros_animais|lower %}\r\nconvive_gatos:\
+          \ Sim\r\n{% endif %}\r\n\r\n{% if \"cachorro\" in perfil_outros_animais|lower\
+          \ or \"cão\" in perfil_outros_animais|lower %}\r\nconvive_caes: Sim\r\n\
+          {% endif %}\r\n\r\n{% if perfil_quintal == \"não\" %}\r\nprecisa_quintal:\
+          \ Não\r\n{% endif %}\r\n\r\ntempo_sozinho: {{ perfil_tempo_sozinho }}\r\n\
+          nivel_atividade: {{ perfil_atividade }}\r\n\r\nNão priorize o nome do animal\
+          \ solicitado.\r\nPriorize animais disponíveis semelhantes ao perfil."
+        title: Modelo de alternativas
+        type: template-transform
+        variables:
+        - value_selector:
+          - conversation
+          - perfil_especie
+          value_type: string
+          variable: perfil_especie
+        - value_selector:
+          - conversation
+          - perfil_moradia
+          value_type: string
+          variable: perfil_moradia
+        - value_selector:
+          - conversation
+          - perfil_criancas
+          value_type: string
+          variable: perfil_criancas
+        - value_selector:
+          - conversation
+          - perfil_outros_animais
+          value_type: string
+          variable: perfil_outros_animais
+        - value_selector:
+          - conversation
+          - perfil_porte
+          value_type: string
+          variable: perfil_porte
+        - value_selector:
+          - conversation
+          - perfil_idade
+          value_type: string
+          variable: perfil_idade
+        - value_selector:
+          - conversation
+          - perfil_tempo_sozinho
+          value_type: string
+          variable: perfil_tempo_sozinho
+        - value_selector:
+          - conversation
+          - perfil_rotina
+          value_type: string
+          variable: perfil_rotina
+        - value_selector:
+          - conversation
+          - perfil_quintal
+          value_type: string
+          variable: perfil_quintal
+        - value_selector:
+          - conversation
+          - perfil_atividade
+          value_type: string
+          variable: perfil_atividade
+        - value_selector:
+          - conversation
+          - interesse_animal
+          value_type: string
+          variable: interesse_animal
+      height: 63
+      id: '1790424319767'
+      position:
+        x: 2682.3457895969723
+        y: 554.3192820070492
+      positionAbsolute:
+        x: 2682.3457895969723
+        y: 554.3192820070492
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 302
+      zIndex: 0
+    - data:
+        dataset_ids:
+        - gz1Yn59V2MfNUJJoQN1c3mLjV3+jLiPB6//yPz5znw2mS5tbGZHxasEr9wyoqOm8
+        multiple_retrieval_config:
+          reranking_enable: false
+          reranking_mode: reranking_model
+          score_threshold: null
+          top_k: 5
+        query_attachment_selector: []
+        query_variable_selector:
+        - '1790424319767'
+        - output
+        retrieval_mode: multiple
+        selected: false
+        title: Recuperação de conhecimento 2
+        type: knowledge-retrieval
+      height: 111
+      id: '1790436857757'
+      position:
+        x: 2159.6379503213307
+        y: 427.0375837721616
+      positionAbsolute:
+        x: 2159.6379503213307
+        y: 427.0375837721616
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 302
+      zIndex: 0
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1790436857757'
+          - result
+        model:
+          completion_params: {}
+          mode: chat
+          name: gemini-3.5-flash
+          provider: langgenius/gemini/google
+        prompt_template:
+        - id: fe0a2da2-88b3-415e-92d6-43318ae0fc73
+          role: system
+          text: "O animal solicitado pelo usuário não está disponível entre os animais\
+            \ consultados.\n\nUse somente os animais presentes no CONTEXTO.\n\nEscolha\
+            \ no máximo 2 animais disponíveis com características semelhantes ao perfil\
+            \ do adotante.\nPERFIL ATUAL DO ADOTANTE\n\nEspécie: {{#conversation.perfil_especie#}}\n\
+            Moradia: {{#conversation.perfil_moradia#}}\nCrianças: {{#conversation.perfil_criancas#}}\n\
+            Outros animais: {{#conversation.perfil_outros_animais#}}\nPorte: {{#conversation.perfil_porte#}}\n\
+            Idade: {{#conversation.perfil_idade#}}\nTempo sozinho: {{#conversation.perfil_tempo_sozinho#}}\n\
+            Rotina: {{#conversation.perfil_rotina#}}\nQuintal: {{#conversation.perfil_quintal#}}\n\
+            Nível de atividade: {{#conversation.perfil_atividade#}}\nANIMAL SOLICITADO:\n\
+            interesse_animal: {{#conversation.interesse_animal#}}\n    \nREGRAS:\n\
+            - O campo ANIMAL SOLICITADO contém o nome do animal pedido pelo usuário.\n\
+            - Quando ANIMAL SOLICITADO estiver preenchido, mencione esse nome na primeira\
+            \ frase.\n- Nunca substitua o nome por expressões genéricas como \"o animal\
+            \ solicitado\".\n- Exemplo: se ANIMAL SOLICITADO = Cacau, diga:\n  \"\
+            A Cacau não está disponível para adoção no momento.\"\n- Quando o usuário\
+            \ pedir um animal específico que não esteja disponível, mencione primeiro\
+            \ o nome desse animal e informe de forma breve e gentil que ele não está\
+            \ disponível para adoção no momento.\n- Depois, apresente no máximo duas\
+            \ alternativas disponíveis com características semelhantes.\n- Não se\
+            \ apresente novamente.\n- Evite introduções genéricas como \"Que alegria\
+            \ saber que você está pensando em adotar\".\n- Seja curto e direto.\n\
+            - Termine perguntando qual das duas opções o usuário gostaria de conhecer\
+            \ melhor.\n- Recomende somente animais com status \"Disponível\".\n- Não\
+            \ invente animais.\n- Não invente características.\n- Considere espécie,\
+            \ porte, faixa etária, moradia, crianças, outros animais, nível de energia\
+            \ e rotina.\n- Responda de forma curta, amigável e acolhedora.\n- Explique\
+            \ brevemente por que cada alternativa pode combinar com o perfil.\n- Não\
+            \ diga que a compatibilidade é garantida.\n- Termine perguntando qual\
+            \ das duas opções o usuário gostaria de conhecer melhor.\n{{#context#}}\n\
+            \nFORMATO DA RESPOSTA:\n\n1. Primeiro informe brevemente que o animal\
+            \ solicitado não está disponível no momento.\n2. Depois apresente no máximo\
+            \ duas alternativas disponíveis.\n3. Para cada alternativa, informe:\n\
+            \   - nome;\n   - porte;\n   - faixa etária;\n   - uma ou duas características\
+            \ relevantes;\n   - por que pode combinar com o perfil do adotante.\n\
+            4. Não diga que a compatibilidade é garantida.\n5. Não invente nenhuma\
+            \ informação que não esteja no CONTEXTO.\n6. Termine com apenas uma pergunta:\n\
+            \   \"Qual dessas duas opções você gostaria de conhecer melhor?\"\n7.\
+            \ Mantenha a resposta curta, preferencialmente com até 100 palavras."
+        selected: false
+        title: LLM alternativas
+        type: llm
+        vision:
+          enabled: false
+      height: 108
+      id: '1790442002801'
+      position:
+        x: 1546.615262724887
+        y: 835.057968396053
+      positionAbsolute:
+        x: 1546.615262724887
+        y: 835.057968396053
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 302
+      zIndex: 0
+    - data:
+        answer: '{{#1790442002801.text#}}'
+        selected: false
+        title: Resposta 2 alternativas
+        type: answer
+        variables: []
+      height: 123
+      id: '1790444014721'
+      position:
+        x: 1735.6885341684347
+        y: 522.9030077314433
+      positionAbsolute:
+        x: 1735.6885341684347
+        y: 522.9030077314433
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 302
+      zIndex: 0
+    - data:
+        answer: '{{#1790423928551.text#}}'
+        selected: false
+        title: 'Resposta 3 normal '
+        type: answer
+        variables: []
+      height: 123
+      id: '1790449039246'
+      position:
+        x: 2278.8936930159425
+        y: 66.95657704319686
+      positionAbsolute:
+        x: 2278.8936930159425
+        y: 66.95657704319686
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 302
+      zIndex: 0
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params: {}
+          mode: chat
+          name: gemini-3.5-flash
+          provider: langgenius/gemini/google
+        prompt_template:
+        - id: 786392b4-7124-4a0e-9582-2dde9d107441
+          role: system
+          text: 'Você é o Anjos IA, assistente virtual da ONG Anjos de Patas.
+
+
+            Neste momento, sua função é conhecer melhor o perfil da pessoa interessada
+            em adoção.
+
+
+            Use as informações já preenchidas no perfil.
+
+
+            REGRAS:
+
+
+            - Responda sempre em português brasileiro.
+
+            - Seja natural, amigável, acolhedor e direto.
+
+            - Use no máximo 60 palavras por resposta.
+
+            - Faça exatamente uma pergunta por resposta.
+
+            - Não faça duas perguntas na mesma mensagem.
+
+            - Não pergunte novamente informações que já estejam preenchidas no PERFIL
+            ATUAL DO ADOTANTE.
+
+            - Antes de responder, verifique quais informações do perfil ainda estão
+            vazias.
+
+            - Priorize completar os campos ainda vazios.
+
+            - Não invente, suponha ou deduza informações que o usuário não tenha fornecido.
+
+            - Não altere o sentido das informações fornecidas pelo usuário.
+
+            - Evite repetir ou reformular desnecessariamente a resposta que o usuário
+            acabou de dar.
+
+            - Quando possível, faça diretamente a próxima pergunta necessária.
+
+            - Não recomende animais nesta etapa.
+
+            - Não mencione nomes de animais nesta etapa.
+
+            - Não diga que encontrou animais nesta etapa.
+
+            - Não se apresente novamente durante uma conversa já iniciada.
+
+            - Evite frases de preenchimento ou elogios desnecessários.
+
+
+            ORDEM DAS PERGUNTAS:
+
+
+            - Se perfil_rotina estiver vazio, pergunte somente sobre a rotina.
+
+            - Se perfil_rotina estiver preenchido e perfil_tempo_sozinho estiver vazio,
+            pergunte somente quanto tempo o animal ficará sozinho.
+
+            - Se perfil_tempo_sozinho estiver preenchido e perfil_criancas estiver
+            vazio, pergunte somente sobre crianças na residência ou convivência frequente
+            com crianças.
+
+            - Se perfil_criancas estiver preenchido e perfil_quintal estiver vazio,
+            pergunte somente se possui quintal ou espaço externo.
+
+            - Se perfil_quintal estiver preenchido e perfil_atividade estiver vazio,
+            pergunte somente sobre o nível de atividade desejado.
+
+            - Não junte rotina, tempo sozinho, crianças, quintal ou nível de atividade
+            na mesma pergunta.
+
+
+            ESTILO DAS RESPOSTAS:
+
+
+            - Prefira frases simples e curtas.
+
+            - Evite expressões como “animal ideal”, “companheiro ideal” ou “perfeito”.
+
+            - Prefira expressões como “animal que possa combinar com seu perfil” ou
+            “animal compatível com as informações fornecidas”.
+
+            - Evite frases como “É maravilhoso conhecer um pouco mais sobre você”.
+
+            - Se a resposta anterior já foi clara, apenas reconheça brevemente e faça
+            a próxima pergunta.
+
+            PERFIL ATUAL DO ADOTANTE
+
+
+            Espécie: {{#conversation.perfil_especie#}}
+
+            Moradia: {{#conversation.perfil_moradia#}}
+
+            Crianças: {{#conversation.perfil_criancas#}}
+
+            Outros animais: {{#conversation.perfil_outros_animais#}}
+
+            Porte: {{#conversation.perfil_porte#}}
+
+            Idade: {{#conversation.perfil_idade#}}
+
+            Tempo sozinho: {{#conversation.perfil_tempo_sozinho#}}
+
+            Rotina: {{#conversation.perfil_rotina#}}
+
+            Quintal: {{#conversation.perfil_quintal#}}
+
+            Nível de atividade: {{#conversation.perfil_atividade#}}'
+        - id: 1dadcf11-2ce1-4029-b935-4faa7284735a
+          role: user
+          text: Com base no PERFIL ATUAL DO ADOTANTE acima, responda ao usuário de
+            forma natural e faça somente a próxima pergunta necessária para completar
+            o perfil.
+        selected: false
+        title: LLM 3 - Coleta de Perfil
+        type: llm
+        vision:
+          enabled: false
+      height: 108
+      id: '1790529501080'
+      position:
+        x: 2473.6736130099107
+        y: -1009.8445004186029
+      positionAbsolute:
+        x: 2473.6736130099107
+        y: -1009.8445004186029
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 302
+      zIndex: 0
+    - data:
+        answer: '{{#1790529501080.text#}}'
+        selected: false
+        title: Resposta 3 coleta
+        type: answer
+        variables: []
+      height: 123
+      id: '1790532108925'
+      position:
+        x: 2865.053472263589
+        y: -1214.6639070869046
+      positionAbsolute:
+        x: 2865.053472263589
+        y: -1214.6639070869046
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 302
+      zIndex: 0
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: is
+            id: 53b9f953-f55a-4d8c-88f2-bfdbbd973f98
+            value: sim
+            varType: string
+            variable_selector:
+            - conversation
+            - quer_iniciar_adocao
+          logical_operator: and
+        selected: false
+        title: SE/SENÃO 3
+        type: if-else
+      height: 153
+      id: '1790624748888'
+      position:
+        x: 226.20425253290853
+        y: -420.94943012850774
+      positionAbsolute:
+        x: 226.20425253290853
+        y: -420.94943012850774
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 302
+      zIndex: 0
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: not empty
+            id: 550b4df1-ba83-45d4-883d-f8714745f4f1
+            value: ''
+            varType: string
+            variable_selector:
+            - conversation
+            - adotante_nome
+          - comparison_operator: is
+            id: 82a6679a-26de-4ce6-b316-264ffee14e14
+            value: não
+            varType: string
+            variable_selector:
+            - conversation
+            - aceita_contato
+          logical_operator: and
+        - case_id: 4924f8d6-0453-4bd2-80c7-b2398c327a30
+          conditions:
+          - comparison_operator: not empty
+            id: 8ca90415-a34f-44b4-a14a-cfa1a0d5e747
+            value: ''
+            varType: string
+            variable_selector:
+            - conversation
+            - adotante_nome
+          - comparison_operator: is
+            id: 6cc90b84-dc07-4545-9161-3b5766be0cd1
+            value: sim
+            varType: string
+            variable_selector:
+            - conversation
+            - aceita_contato
+          - comparison_operator: not empty
+            id: dbc5ab4d-76b8-4c77-ba13-c93b06226199
+            value: ''
+            varType: string
+            variable_selector:
+            - conversation
+            - adotante_email
+          - comparison_operator: not empty
+            id: 9247d99b-9342-427a-a955-f2481264ad67
+            value: ''
+            varType: string
+            variable_selector:
+            - conversation
+            - adotante_whatsapp
+          logical_operator: and
+        - case_id: ab43ae2a-1b6a-4768-b9b9-4367b56b9247
+          conditions:
+          - comparison_operator: not empty
+            id: 0fd52ca5-5f48-421b-9045-6024939c84d0
+            value: ''
+            varType: string
+            variable_selector:
+            - conversation
+            - adotante_nome
+          - comparison_operator: is
+            id: 8a2493ab-4b80-4376-98ca-640915f3e711
+            value: sim
+            varType: string
+            variable_selector:
+            - conversation
+            - aceita_contato
+          - comparison_operator: not empty
+            id: ed8b12cc-2bf8-44d6-b240-9a83baa33140
+            value: ''
+            varType: string
+            variable_selector:
+            - conversation
+            - adotante_whatsapp
+          - comparison_operator: is
+            id: 3da805b1-773f-41d9-a4ac-b4718bb65643
+            value: sim
+            varType: string
+            variable_selector:
+            - conversation
+            - recusou_email
+          logical_operator: and
+        selected: false
+        title: SE/SENÃO 4
+        type: if-else
+      height: 501
+      id: '1790625496393'
+      position:
+        x: 361.89717555227094
+        y: -1597.7612939508767
+      positionAbsolute:
+        x: 361.89717555227094
+        y: -1597.7612939508767
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 302
+      zIndex: 0
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params: {}
+          mode: chat
+          name: gemini-3.5-flash
+          provider: langgenius/gemini/google
+        prompt_template:
+        - id: e6ad9005-69e3-4341-a27c-4519fa41b5d0
+          role: system
+          text: "Você é o Anjos IA, assistente virtual da ONG Anjos de Patas.\n\n\
+            O usuário demonstrou interesse em iniciar um processo de adoção.\n\nSua\
+            \ função nesta etapa é coletar somente os dados necessários para que a\
+            \ ONG possa dar continuidade ao atendimento.\n\nDADOS ATUAIS:\n\nNome:\
+            \ {{#conversation.adotante_nome#}}\nWhatsApp: {{#conversation.adotante_whatsapp#}}\n\
+            E-mail: {{#conversation.adotante_email#}}\nAutoriza contato: {{#conversation.aceita_contato#}}\n\
+            Animal de interesse: {{#conversation.interesse_animal#}}\nRecusou e-mail:\
+            \ {{#conversation.recusou_email#}}\n\nREGRAS:\n- Se recusou_email = \"\
+            sim\", nunca peça o e-mail novamente.\n\n- Se o usuário já informou WhatsApp\
+            \ e recusou fornecer o e-mail, considere os dados de contato suficientes.\n\
+            \n- Não tente convencer o usuário a fornecer o e-mail.\n\n- Depois da\
+            \ recusa do e-mail, continue o processo normalmente usando o WhatsApp\
+            \ informado.\n- Responda sempre em português brasileiro.\n- Seja natural,\
+            \ acolhedor, educado e direto.\n- Faça exatamente uma pergunta por resposta.\n\
+            - Antes de perguntar, verifique os DADOS ATUAIS.\n- Nunca pergunte novamente\
+            \ uma informação já preenchida.\n- Não invente informações.\n- Não diga\
+            \ que a adoção foi aprovada, garantida ou concluída.\n- Não solicite CPF,\
+            \ RG, endereço completo ou outros documentos pessoais nesta etapa.\n-\
+            \ Não solicite WhatsApp ou e-mail antes de obter autorização para contato.\n\
+            - Se o usuário não autorizar contato, não peça WhatsApp nem e-mail.\n\
+            - Não se apresente novamente durante uma conversa já iniciada.\n- Use\
+            \ respostas curtas.\n\nORDEM DA COLETA:\n\n1. Se Nome estiver vazio, pergunte\
+            \ somente o nome da pessoa.\n\n2. Se Nome estiver preenchido e Autoriza\
+            \ contato estiver vazio, pergunte somente se a pessoa autoriza a ONG Anjos\
+            \ de Patas a entrar em contato para dar continuidade ao processo de adoção.\n\
+            \n3. Se Autoriza contato = \"não\":\n   - não solicite WhatsApp;\n   -\
+            \ não solicite e-mail;\n   - não faça novas perguntas de contato.\n\n\
+            4. Se Autoriza contato = \"sim\" e WhatsApp estiver vazio, peça somente\
+            \ o número de WhatsApp.\n\n5. Se Autoriza contato = \"sim\", WhatsApp\
+            \ estiver preenchido e E-mail estiver vazio, peça somente o e-mail.\n\n\
+            6. Se Nome, WhatsApp e E-mail estiverem preenchidos e Autoriza contato\
+            \ = \"sim\", não solicite mais dados.\n\nESTILO:\n\n- Prefira perguntas\
+            \ simples.\n- Evite textos longos antes da pergunta.\n- Não faça duas\
+            \ perguntas na mesma mensagem.\n- Não diga que os dados foram enviados\
+            \ para a ONG antes que o fluxo confirme isso."
+        - id: ea22355c-fe8d-45c8-85f8-e574a91bc78c
+          role: user
+          text: '{{#sys.query#}}'
+        selected: false
+        title: LLM 4 - Coleta de Dados da Adoção4
+        type: llm
+        vision:
+          enabled: false
+      height: 108
+      id: '1790626409529'
+      position:
+        x: 73.88163663971142
+        y: -627.0968066657351
+      positionAbsolute:
+        x: 73.88163663971142
+        y: -627.0968066657351
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 302
+      zIndex: 0
+    - data:
+        answer: '{{#1790626409529.text#}}'
+        selected: false
+        title: Resposta 4 - Coleta de Dados
+        type: answer
+        variables: []
+      height: 123
+      id: '1790626800614'
+      position:
+        x: 819.6523229806448
+        y: -889.0214415655497
+      positionAbsolute:
+        x: 819.6523229806448
+        y: -889.0214415655497
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 302
+      zIndex: 0
+    - data:
+        answer: 'Obrigado {{#conversation.adotante_nome#}}Já tenho os dados necessários
+          para dar continuidade ao seu interesse na adoção de {{#conversation.interesse_animal#}}.
+
+
+          Suas informações estão prontas para serem encaminhadas à equipe da ONG Anjos
+          de Patas para continuidade do processo.
+
+
+          A adoção ainda passará pelas etapas de avaliação da ONG.'
+        selected: false
+        title: Resposta 5 - Dados completos
+        type: answer
+        variables: []
+      height: 288
+      id: '1790687213412'
+      position:
+        x: 2014.5334922951633
+        y: -1318.6649504558518
+      positionAbsolute:
+        x: 2014.5334922951633
+        y: -1318.6649504558518
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 302
+      zIndex: 0
+    - data:
+        answer: 'Tudo bem, {{#conversation.adotante_nome#}}. Respeitamos sua decisão
+          de não autorizar o contato.
+
+
+          Se mudar de ideia e quiser continuar o processo de adoção de {{#conversation.interesse_animal#}},
+          é só me avisar.'
+        selected: false
+        title: Resposta 6 - Contato não autorizado
+        type: answer
+        variables: []
+      height: 208
+      id: '1790689043901'
+      position:
+        x: 1160.0281341097216
+        y: -1019.3045172974921
+      positionAbsolute:
+        x: 1160.0281341097216
+        y: -1019.3045172974921
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 302
+      zIndex: 0
+    - data:
+        authorization:
+          config: null
+          type: no-auth
+        body:
+          data:
+          - id: key-value-101
+            key: ''
+            type: text
+            value: "{\n  \"nome\": {{#conversation.adotante_nome#}},\n  \"whatsapp\"\
+              : {{#conversation.adotante_whatsapp#}},\n  \"email\": {{#conversation.adotante_email#}},\n\
+              \  \"animal\": {{#conversation.interesse_animal#}},\n  \"aceita_contato\"\
+              : {{#conversation.aceita_contato#}}\n \"especie\": {{#conversation.especie_animal#}}\n\
+              }"
+          type: json
+        headers: Content-Type:application/json
+        method: post
+        params: ''
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 100
+        selected: false
+        ssl_verify: true
+        timeout:
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+        title: Salvar solicitação na planilha
+        type: http-request
+        url: https://script.google.com/macros/s/REPLACE_WITH_POST_WEB_APP_ID/exec
+        variables: []
+      height: 242
+      id: '1790691063274'
+      position:
+        x: 1180.995705199955
+        y: -1518.6495122876095
+      positionAbsolute:
+        x: 1180.995705199955
+        y: -1518.6495122876095
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 302
+      zIndex: 0
+    - data:
+        items:
+        - input_type: variable
+          operation: over-write
+          value:
+          - '1790694907800'
+          - output
+          variable_selector:
+          - conversation
+          - quer_iniciar_adocao
+        selected: false
+        title: Finalizar processo de adoção
+        type: assigner
+        version: '2'
+      height: 103
+      id: '1790694114238'
+      position:
+        x: 2082.615262724887
+        y: -799.4771478344675
+      positionAbsolute:
+        x: 2082.615262724887
+        y: -799.4771478344675
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 302
+      zIndex: 0
+    - data:
+        selected: false
+        template: não
+        title: Modelo 5
+        type: template-transform
+        variables: []
+      height: 63
+      id: '1790694907800'
+      position:
+        x: 1546.615262724887
+        y: -845.8983043999369
+      positionAbsolute:
+        x: 1546.615262724887
+        y: -845.8983043999369
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 302
+      zIndex: 0
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: is
+            id: 8277d220-9237-444b-96db-aa52818d4df3
+            value: sim
+            varType: string
+            variable_selector:
+            - conversation
+            - consultar_status
+          logical_operator: and
+        selected: false
+        title: SE/SENÃO 4 - consultar_status
+        type: if-else
+      height: 153
+      id: '1790699631116'
+      position:
+        x: 1232.0216211981822
+        y: -666.7348721574378
+      positionAbsolute:
+        x: 1232.0216211981822
+        y: -666.7348721574378
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 302
+      zIndex: 0
+    - data:
+        authorization:
+          config: null
+          type: no-auth
+        body:
+          data: []
+          type: none
+        headers: ''
+        method: get
+        params: 'email:{{#conversation.adotante_email#}}
+
+          whatsapp:{{#conversation.adotante_whatsapp#}}
+
+          animal:{{#conversation.interesse_animal#}}'
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 100
+        selected: false
+        ssl_verify: true
+        timeout:
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+        title: Requisição HTTP 2- Consultar solicitação na planilha
+        type: http-request
+        url: https://script.google.com/macros/s/REPLACE_WITH_GET_WEB_APP_ID/exec
+        variables: []
+      height: 242
+      id: '1790700855563'
+      position:
+        x: 1886.768909107107
+        y: -548.4007267341619
+      positionAbsolute:
+        x: 1886.768909107107
+        y: -548.4007267341619
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 302
+      zIndex: 0
+    - data:
+        code: "import json\n\ndef main(body: str):\n    try:\n        dados = json.loads(body)\n\
+          \n        return {\n            \"encontrado\": \"sim\" if dados.get(\"\
+          encontrado\") else \"não\",\n            \"nome\": str(dados.get(\"nome\"\
+          , \"\")),\n            \"animal\": str(dados.get(\"animal\", \"\")),\n \
+          \           \"status\": str(dados.get(\"status\", \"\")),\n            \"\
+          protocolo\": str(dados.get(\"protocolo\", \"\")),\n            \"mensagem\"\
+          : str(dados.get(\"mensagem\", \"\"))\n        }\n\n    except Exception:\n\
+          \        return {\n            \"encontrado\": \"não\",\n            \"\
+          nome\": \"\",\n            \"animal\": \"\",\n            \"status\": \"\
+          \",\n            \"protocolo\": \"\",\n            \"mensagem\": \"Não foi\
+          \ possível consultar a solicitação.\"\n        }"
+        code_language: python3
+        outputs:
+          animal:
+            children: null
+            type: string
+          encontrado:
+            children: null
+            type: string
+          mensagem:
+            children: null
+            type: string
+          nome:
+            children: null
+            type: string
+          protocolo:
+            children: null
+            type: string
+          status:
+            children: null
+            type: string
+        selected: false
+        title: Código 2 Ler status da solicitação
+        type: code
+        variables:
+        - value_selector:
+          - '1790700855563'
+          - body
+          value_type: string
+          variable: body
+      height: 63
+      id: '1790701404615'
+      position:
+        x: 2065.0174707267734
+        y: -45.79560462699328
+      positionAbsolute:
+        x: 2065.0174707267734
+        y: -45.79560462699328
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 302
+      zIndex: 0
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: is
+            id: 5d99efd5-48f2-4580-8bd3-e235e45b648f
+            value: sim
+            varType: string
+            variable_selector:
+            - '1790701404615'
+            - encontrado
+          logical_operator: and
+        selected: false
+        title: SE/SENÃO 5 - Solicitação encontrada
+        type: if-else
+      height: 153
+      id: '1790701834802'
+      position:
+        x: 2193.9549455585106
+        y: -320.9394763113727
+      positionAbsolute:
+        x: 2193.9549455585106
+        y: -320.9394763113727
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 302
+      zIndex: 0
+    - data:
+        answer: 'Olá, {{#1790701404615.nome#}}!
+
+
+          A sua solicitação de adoção de {{#1790701404615.animal#}} está atualmente
+          com o status:
+
+
+          {{#1790701404615.status#}}
+
+
+          Protocolo: {{#1790701404615.protocolo#}}'
+        selected: false
+        title: Resposta 7 - Status da solicitação
+        type: answer
+        variables: []
+      height: 231
+      id: '1790702019971'
+      position:
+        x: 3039.125702536632
+        y: -529.3623520645338
+      positionAbsolute:
+        x: 3039.125702536632
+        y: -529.3623520645338
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 302
+      zIndex: 0
+    - data:
+        answer: 'Não encontrei uma solicitação com os dados informados.
+
+
+          Confira se o e-mail, WhatsApp ou animal estão corretos e tente novamente.'
+        selected: false
+        title: Resposta 8 - Solicitação não encontrada
+        type: answer
+        variables: []
+      height: 180
+      id: '1790702386662'
+      position:
+        x: 2688.685819264968
+        y: -101.4121238386403
+      positionAbsolute:
+        x: 2688.685819264968
+        y: -101.4121238386403
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 302
+      zIndex: 0
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: not empty
+            id: a4473833-c0f9-4457-b791-87559ce92103
+            value: ''
+            varType: string
+            variable_selector:
+            - conversation
+            - adotante_email
+          - comparison_operator: not empty
+            id: 5c259afb-b0e6-4e25-82fc-0b1b8618b821
+            value: ''
+            varType: string
+            variable_selector:
+            - conversation
+            - adotante_whatsapp
+          logical_operator: or
+        selected: false
+        title: SE/SENÃO 6
+        type: if-else
+      height: 186
+      id: '1790703808117'
+      position:
+        x: 1282.8170156665706
+        y: -349.8509378213462
+      positionAbsolute:
+        x: 1282.8170156665706
+        y: -349.8509378213462
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 302
+      zIndex: 0
+    - data:
+        answer: Para localizar sua solicitação, preciso que você informe o e-mail
+          ou o WhatsApp usado no cadastro.
+        selected: false
+        title: Resposta 9 Pedir contato para consulta
+        type: answer
+        variables: []
+      height: 160
+      id: '1790704176170'
+      position:
+        x: 1608.1325200804552
+        y: 44.09305187180644
+      positionAbsolute:
+        x: 1608.1325200804552
+        y: 44.09305187180644
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 302
+      zIndex: 0
+    - data:
+        selected: false
+        template: não
+        title: Valor - Finalizar consulta
+        type: template-transform
+        variables: []
+      height: 63
+      id: '1790705660217'
+      position:
+        x: 2583.9394504333386
+        y: -529.3623520645338
+      positionAbsolute:
+        x: 2583.9394504333386
+        y: -529.3623520645338
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 302
+      zIndex: 0
+    - data:
+        items:
+        - input_type: variable
+          operation: over-write
+          value:
+          - '1790705660217'
+          - output
+          variable_selector:
+          - conversation
+          - consultar_status
+        selected: false
+        title: Atribuidor de Variáveis 4
+        type: assigner
+        version: '2'
+      height: 103
+      id: '1790706305997'
+      position:
+        x: 2796.032809848977
+        y: -799.4771478344675
+      positionAbsolute:
+        x: 2796.032809848977
+        y: -799.4771478344675
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 302
+      zIndex: 0
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: empty
+            id: 3c503f79-fc98-4932-b555-2c12e7ed84f8
+            value: ''
+            varType: string
+            variable_selector:
+            - conversation
+            - interesse_animal
+          logical_operator: and
+        selected: false
+        title: SE/SENÃO 2 - Fluxo normal
+        type: if-else
+      height: 153
+      id: '1790713031109'
+      position:
+        x: 681.8971755522709
+        y: -179.76129395087673
+      positionAbsolute:
+        x: 681.8971755522709
+        y: -179.76129395087673
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 302
+      zIndex: 0
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: is
+            id: 7d16ef0c-a60d-49fc-b09e-971f533cd094
+            value: sim
+            varType: string
+            variable_selector:
+            - conversation
+            - listar_animais
+          logical_operator: and
+        selected: false
+        title: SE/SENÃO - LISTAR ANIMAIS
+        type: if-else
+      height: 153
+      id: '1790783177323'
+      position:
+        x: -357.2664105400745
+        y: -191.9256558385571
+      positionAbsolute:
+        x: -357.2664105400745
+        y: -191.9256558385571
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 302
+      zIndex: 0
+    - data:
+        selected: false
+        template: "BUSCA DE ANIMAIS DISPONÍVEIS PARA ADOÇÃO\r\n\r\nEncontrar animais\
+          \ com status Disponível.\r\n\r\nPreferências do usuário:\r\nEspécie: {{\
+          \ especie }}\r\nPorte: {{ porte }}\r\nIdade: {{ idade }}\r\nMoradia: {{\
+          \ moradia }}\r\nOutros animais: {{ outros_animais }}\r\nCrianças: {{ criancas\
+          \ }}\r\nNível de atividade: {{ nivel_de_atividade }}\r\n\r\nPriorize animais\
+          \ que correspondam às preferências preenchidas.\r\nRetorne animais disponíveis\
+          \ mesmo quando algumas preferências estiverem vazias."
+        title: Modelo - CONSULTA LISTA DE ANIMAIS
+        type: template-transform
+        variables:
+        - value_selector:
+          - conversation
+          - perfil_especie
+          value_type: string
+          variable: especie
+        - value_selector:
+          - conversation
+          - perfil_porte
+          value_type: string
+          variable: porte
+        - value_selector:
+          - conversation
+          - perfil_idade
+          value_type: string
+          variable: idade
+        - value_selector:
+          - conversation
+          - perfil_moradia
+          value_type: string
+          variable: moradia
+        - value_selector:
+          - conversation
+          - perfil_outros_animais
+          value_type: string
+          variable: outros_animais
+        - value_selector:
+          - conversation
+          - perfil_criancas
+          value_type: string
+          variable: criancas
+        - value_selector:
+          - conversation
+          - perfil_atividade
+          value_type: string
+          variable: nivel_de_atividade
+      height: 63
+      id: '1790783470734'
+      position:
+        x: 93.17443155717035
+        y: -163.4228602380369
+      positionAbsolute:
+        x: 93.17443155717035
+        y: -163.4228602380369
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 302
+      zIndex: 0
+    - data:
+        dataset_ids:
+        - sHa8vvpBrwMYgYpGBcFJyZDCHGKkKLaGpmRKhv/9Ip6qjZOuBIjuarJacQF8UPHS
+        multiple_retrieval_config:
+          reranking_enable: false
+          reranking_mode: reranking_model
+          score_threshold: null
+          top_k: 10
+        query_attachment_selector: []
+        query_variable_selector:
+        - '1790783470734'
+        - output
+        retrieval_mode: multiple
+        selected: false
+        title: Recuperação - LISTA DE ANIMAIS
+        type: knowledge-retrieval
+      height: 111
+      id: '1790785728517'
+      position:
+        x: 314.8943126387851
+        y: -81.94181094303222
+      positionAbsolute:
+        x: 314.8943126387851
+        y: -81.94181094303222
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 302
+      zIndex: 0
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1790785728517'
+          - result
+        model:
+          completion_params: {}
+          mode: chat
+          name: gemini-3.5-flash
+          provider: langgenius/gemini/google
+        prompt_template:
+        - id: 20180009-642d-4260-b349-c7ce721cbe96
+          role: system
+          text: "Você é o Anjos IA, assistente virtual da ONG Anjos de Patas.\n\n\
+            Sua tarefa é apresentar ao usuário os animais disponíveis para adoção\
+            \ usando SOMENTE os dados fornecidos no CONTEXTO.\n\nCONTEXTO DOS ANIMAIS:\n\
+            {{#context#}}\n\nREGRAS:\n\n1. Mostre somente animais cujo status seja\
+            \ \"Disponível\".\n2. Nunca invente animais ou informações que não estejam\
+            \ no contexto.\n3. Mostre no máximo 3 animais por resposta.\n4. Priorize\
+            \ os animais que melhor correspondem ao perfil informado pelo usuário.\n\
+            5. Para cada animal, mostre:\n   - Nome\n   - Foto\n   - Espécie\n   -\
+            \ Porte\n   - Idade\n   - Breve descrição\n6. Para mostrar a foto, utilize\
+            \ Markdown no formato:\n   ![Nome do animal](foto_url)\n7. Use exatamente\
+            \ a foto_url encontrada no contexto.\n8. Não invente ou modifique a URL\
+            \ da foto.\n9. Não mostre animais com status Adotado, Indisponível ou\
+            \ outro status diferente de Disponível.\n10. Ao final, pergunte qual animal\
+            \ o usuário gostaria de conhecer melhor.\nREGRA OBRIGATÓRIA PARA AS FOTOS:\n\
+            \n- A foto é obrigatória para cada animal apresentado.\n- Todo animal\
+            \ mostrado deve possuir foto_url no CONTEXTO.\n- Imediatamente abaixo\
+            \ do nome do animal, gere a imagem em Markdown usando EXATAMENTE este\
+            \ formato:\n\n![Nome do animal](URL_EXATA_DA_FOTO)\n\n- Substitua \"Nome\
+            \ do animal\" pelo nome verdadeiro.\n- Substitua \"URL_EXATA_DA_FOTO\"\
+            \ pelo valor exato de foto_url encontrado no CONTEXTO.\n- Nunca omita\
+            \ a imagem quando foto_url estiver disponível.\n- Nunca invente, encurte\
+            \ ou altere a URL.\n- Não escreva apenas o link da foto.\n- Não escreva\
+            \ \"Foto:\".\n- Gere obrigatoriamente a sintaxe Markdown da imagem.\n\n\
+            FORMATO OBRIGATÓRIO PARA CADA ANIMAL:\n\n### Nome do animal\n\n![Nome\
+            \ do animal](foto_url)\n\n- Espécie: ...\n- Porte: ...\n- Idade: ...\n\
+            - Descrição: ...\n\nSe um animal não possuir foto_url no CONTEXTO, não\
+            \ apresente esse animal.\n\nSe nenhum animal disponível for encontrado\
+            \ no contexto, informe isso de forma simples e não invente resultados.\n\
+            ANTES DE RESPONDER:\nVerifique se cada animal apresentado contém:\n1.\
+            \ nome;\n2. imagem Markdown;\n3. espécie;\n4. porte;\n5. idade;\n6. descrição.\n\
+            \nSe faltar a imagem Markdown, corrija a resposta antes de enviá-la."
+        selected: false
+        title: LLM - LISTAR ANIMAIS
+        type: llm
+        vision:
+          enabled: false
+      height: 108
+      id: '1790786305106'
+      position:
+        x: 786.8388672797482
+        y: 66.95657704319686
+      positionAbsolute:
+        x: 786.8388672797482
+        y: 66.95657704319686
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 302
+      zIndex: 0
+    - data:
+        answer: '{{#1790786305106.text#}}'
+        selected: false
+        title: Resposta - LISTA DE ANIMAIS
+        type: answer
+        variables: []
+      height: 123
+      id: '1790787415810'
+      position:
+        x: 1232.0216211981822
+        y: 174.27642097527522
+      positionAbsolute:
+        x: 1232.0216211981822
+        y: 174.27642097527522
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 302
+      zIndex: 0
+    viewport:
+      x: 93.82232946529751
+      y: 478.88195001335487
+      zoom: 0.2826658687803076
+  rag_pipeline_variables: []
