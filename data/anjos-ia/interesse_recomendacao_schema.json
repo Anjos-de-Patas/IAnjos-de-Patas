@@ -1,0 +1,33 @@
+{
+  "versao": "1.0",
+  "descricao": "Variáveis relacionadas à identificação de interesse e recomendação na Anjos IA.",
+  "plataforma": "Dify",
+  "variaveis": {
+    "interesse_animal": {
+      "tipo": "string",
+      "descricao": "Nome do animal específico pelo qual o usuário demonstrou interesse.",
+      "exemplos": [
+        "Bento",
+        "Amora",
+        "Thor"
+      ],
+      "regra_preservacao": "Preservar enquanto adoção ou consulta de status relacionada estiver ativa."
+    },
+    "especie_animal": {
+      "tipo": "string",
+      "descricao": "Espécie do animal de interesse quando conhecida pela base.",
+      "valores_esperados": [
+        "Cachorro",
+        "Gato"
+      ],
+      "regra": "Não inferir somente pelo nome; usar informação disponível no contexto ou base."
+    }
+  },
+  "regras_recomendacao": {
+    "somente_contexto": true,
+    "exigir_status_disponivel_para_oferta": true,
+    "maximo_alternativas_indisponivel": 2,
+    "evitar_garantia_de_compatibilidade": true,
+    "evitar_orientacao_veterinaria_nao_fundamentada": true
+  }
+}
