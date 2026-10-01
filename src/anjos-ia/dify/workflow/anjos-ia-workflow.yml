@@ -1351,7 +1351,7 @@ workflow:
           \ de interesse: {{#conversation.interesse_animal#}}\nQuer iniciar adoção:\
           \ {{#conversation.quer_iniciar_adocao#}}\nNome: {{#conversation.adotante_nome#}}\n\
           WhatsApp: {{#conversation.adotante_whatsapp#}}\nE-mail: {{#conversation.adotante_email#}}\n\
-          Aceita contato: {{#conversation.aceita_contato#}}\nConsultar status: /\n\
+          Aceita contato: {{#conversation.aceita_contato#}}\nConsultar status: {{#conversation.consultar_status#}}\n\
           \nREGRAS DE PRESERVAÇÃO:\n\n- Se consultar_status já estiver como \"sim\"\
           , mantenha \"sim\" enquanto o usuário estiver fornecendo informações para\
           \ localizar a solicitação.\n\n- Se consultar_status = \"sim\" e o usuário\
@@ -1554,7 +1554,7 @@ workflow:
         - '1790356858707'
         - output
         reasoning_mode: prompt
-        selected: false
+        selected: true
         title: Extrator de interesse
         type: parameter-extractor
         vision:
@@ -1567,7 +1567,7 @@ workflow:
       positionAbsolute:
         x: 1802.0838816498808
         y: 335.87401797037995
-      selected: false
+      selected: true
       sourcePosition: right
       targetPosition: left
       type: custom
@@ -2598,7 +2598,7 @@ workflow:
             value: "{\n  \"nome\": {{#conversation.adotante_nome#}},\n  \"whatsapp\"\
               : {{#conversation.adotante_whatsapp#}},\n  \"email\": {{#conversation.adotante_email#}},\n\
               \  \"animal\": {{#conversation.interesse_animal#}},\n  \"aceita_contato\"\
-              : {{#conversation.aceita_contato#}}\n \"especie\": {{#conversation.especie_animal#}}\n\
+              : {{#conversation.aceita_contato#}},\n \"especie\": {{#conversation.especie_animal#}}\n\
               }"
           type: json
         headers: Content-Type:application/json
@@ -3227,7 +3227,7 @@ workflow:
       width: 302
       zIndex: 0
     viewport:
-      x: 93.82232946529751
-      y: 478.88195001335487
-      zoom: 0.2826658687803076
+      x: -573.8920383335446
+      y: 161.5015018940249
+      zoom: 0.5743491774985178
   rag_pipeline_variables: []
