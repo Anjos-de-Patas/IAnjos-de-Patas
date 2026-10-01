@@ -1,0 +1,86 @@
+{
+  "versao": "1.0",
+  "descricao": "Variáveis e regras do fluxo de solicitação de adoção da Anjos IA.",
+  "plataforma": "Dify",
+  "variaveis": {
+    "quer_iniciar_adocao": {
+      "tipo": "string",
+      "valores": [
+        "sim",
+        "não"
+      ],
+      "descricao": "Indica se o fluxo formal de adoção está ativo.",
+      "valor_apos_finalizacao": "não"
+    },
+    "adotante_nome": {
+      "tipo": "string",
+      "descricao": "Nome informado pelo interessado."
+    },
+    "adotante_whatsapp": {
+      "tipo": "string",
+      "descricao": "Número completo de WhatsApp com DDD.",
+      "exemplo": "(99) 98856-8975"
+    },
+    "adotante_email": {
+      "tipo": "string",
+      "descricao": "E-mail do interessado quando fornecido.",
+      "obrigatorio": false
+    },
+    "aceita_contato": {
+      "tipo": "string",
+      "valores": [
+        "sim",
+        "não"
+      ],
+      "descricao": "Autorização para contato pela ONG.",
+      "obrigatorio_para_registro": true
+    },
+    "recusou_email": {
+      "tipo": "string",
+      "valores": [
+        "sim",
+        "não"
+      ],
+      "descricao": "Indica recusa explícita em informar e-mail."
+    },
+    "interesse_animal": {
+      "tipo": "string",
+      "descricao": "Animal escolhido pelo usuário.",
+      "obrigatorio_antes_da_adocao": true
+    },
+    "especie_animal": {
+      "tipo": "string",
+      "valores": [
+        "Cachorro",
+        "Gato"
+      ],
+      "descricao": "Espécie obtida da base ou de contexto confiável."
+    }
+  },
+  "condicoes_conclusao": [
+    {
+      "nome": "dados_com_email",
+      "requisitos": [
+        "adotante_nome preenchido",
+        "aceita_contato = sim",
+        "adotante_whatsapp preenchido",
+        "adotante_email preenchido"
+      ]
+    },
+    {
+      "nome": "email_recusado",
+      "requisitos": [
+        "adotante_nome preenchido",
+        "aceita_contato = sim",
+        "adotante_whatsapp preenchido",
+        "recusou_email = sim"
+      ]
+    }
+  ],
+  "condicao_cancelamento": {
+    "requisitos": [
+      "adotante_nome preenchido",
+      "aceita_contato = não"
+    ]
+  }
+}
