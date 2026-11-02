@@ -7,176 +7,123 @@
 - Júlio Cesar Lima dos Reis
 - João Pedro Strasser Santos
 
+Curso de Análise e Desenvolvimento de Sistemas — UNIBALSAS, Balsas (MA), 2026.
+
 ## Sobre o projeto
 
-O IAnjos de Patas é um projeto desenvolvido inicialmente na disciplina de Inteligência Artificial, a partir de uma problemática identificada na ONG Anjos de Patas.
+O IAnjos de Patas é um projeto desenvolvido inicialmente na disciplina de Inteligência Artificial, a partir de uma problemática identificada na Sociedade Protetora dos Animais Anjos de Patas.
 
 A proposta é facilitar a busca por animais para adoção de acordo com as preferências do interessado. O MVP permite que o usuário descreva o perfil de animal que procura em linguagem natural, transformando essa descrição em critérios estruturados que possam ser comparados com as informações cadastradas dos animais.
 
-Na disciplina de Big Data e Ciência de Dados, o projeto utiliza uma base pública para apoiar a seleção, compreensão, preparação e análise dos dados necessários aos testes do MVP.
+Na disciplina de Big Data e Ciência de Dados, o projeto utiliza a base pública **PetFinder.my mini** para apoiar a seleção, a preparação, a análise e, na TED 03, a modelagem com Machine Learning.
 
-## Conjunto de dados
+## Documento técnico
 
-Foi selecionado o conjunto de dados **PetFinder.my mini**, derivado de dados da plataforma PetFinder.my.
-
-A base original utilizada possui **11.537 registros e 15 atributos**, relacionados às características dos animais, incluindo:
-
-- tipo do animal;
-- idade;
-- raça;
-- sexo;
-- cores;
-- porte;
-- comprimento do pelo;
-- vacinação;
-- castração;
-- condição de saúde;
-- taxa de adoção;
-- descrição;
-- quantidade de fotos;
-- velocidade histórica de adoção.
-
-Essas informações permitem trabalhar com características semelhantes às utilizadas pelo MVP para localizar animais compatíveis com as preferências dos adotantes.
+| Etapa | Documento |
+|---|---|
+| **Versão 3.0 (TED 01 + TED 02 + TED 03)** | [`docs/TED03_Documento_Tecnico_v3.0.pdf`](docs/TED03_Documento_Tecnico_v3.0.pdf) |
+| Versão 3.0 editável (Word) | `docs/TED03_Documento_Tecnico_v3.0.docx` |
+| TED 02 revisada (base usada na TED 03) | `docs/TED02_Documento_Tecnico_v2_revisado.pdf` |
+| TED 02 (entrega de 26/09) | `docs/TED02_BigData_IAnjos.pdf` / `.docx` |
+| TED 01 | `docs/TED01_BigData_IAnjos.pdf` / `.docx` e `docs/TED01_IA_Original.pdf` |
 
 ## Fonte de dados
 
-**PetFinder.my mini**, arquivo `petfinder-mini.csv` disponibilizado no tutorial oficial do TensorFlow sobre dados estruturados.
+**PetFinder.my mini**, arquivo `petfinder-mini.csv`, disponibilizado no tutorial do TensorFlow sobre dados estruturados.
 
 - Documentação: https://www.tensorflow.org/tutorials/structured_data/preprocessing_layers
-- Download da base: https://storage.googleapis.com/download.tensorflow.org/data/petfinder-mini.zip
+- Download: https://storage.googleapis.com/download.tensorflow.org/data/petfinder-mini.zip
 - Base original: https://www.kaggle.com/competitions/petfinder-adoption-prediction/data
 
-Na inspeção inicial foram identificados **11.537 registros e 15 colunas**.
+A base possui **11.537 registros e 15 colunas**. Os CSVs não são versionados, pois a licença de redistribuição não foi confirmada; o SHA-256 da versão usada está em `data/manifesto_ted02.json`.
 
-## TED01 — Seleção e inspeção inicial dos dados
+## TED 01 — Seleção e inspeção inicial
 
-No TED01 foi realizada a seleção do conjunto de dados e sua inspeção inicial.
+Seleção do conjunto de dados e inspeção inicial: 11.537 registros, 15 atributos, 9 descrições ausentes, 143 linhas integralmente repetidas excedentes e valores `Not Sure` em `Vaccinated` e `Sterilized`.
 
-Foram identificados:
+## TED 02 — Limpeza, preparação e análise exploratória
 
-- 11.537 registros;
-- 15 atributos;
-- 9 valores ausentes em `Description`;
-- 143 ocorrências excedentes de linhas integralmente repetidas;
-- valores `Not Sure` em `Vaccinated` e `Sterilized`;
-- valores numéricos que exigiam análise antes de qualquer tratamento.
+A entrega de 26/09 (`notebooks/TED02/ted02_limpeza_eda.ipynb`) removeu as duplicatas e gerou uma base de 11.394 registros.
 
-A etapa também permitiu avaliar a adequação e as limitações da base em relação às necessidades do MVP.
+Para a TED 03, a preparação foi revisada em `src/ted02.py` (`notebooks/TED02/TED02_Petfinder.ipynb`): os **11.537 registros são preservados** e recebem seis colunas auxiliares (21 no total), como `linha_origem` e `duplicata_excedente`. Assim, as duplicatas ficam marcadas em vez de apagadas, o que permite agrupá-las na divisão dos dados e ocultá-las na exibição sem perder a rastreabilidade. Essa é a base utilizada na TED 03: `data/processed/petfinder_mini_tratado.csv`.
 
-## TED02 — Limpeza, preparação e análise exploratória
+## TED 03 — Modelagem preditiva e Machine Learning
 
-No TED02 foram realizadas a limpeza, a preparação e a análise exploratória do conjunto de dados.
+### Experimento A: classificação da espécie pela descrição
 
-Durante o tratamento:
+- **Tarefa:** classificação supervisionada binária. Entrada: `Description`. Alvo: `Type` (Cat/Dog).
+- **Divisão:** `StratifiedGroupKFold` por grupo de descrição normalizada (sem o mesmo texto em treino, validação e teste).
+- **Modelos:** linha de base majoritária, Naive Bayes + TF-IDF e Regressão Logística + TF-IDF, com escolha por F1 macro na validação.
 
-- as 143 ocorrências excedentes de linhas integralmente repetidas foram removidas, mantendo uma ocorrência de cada registro;
-- os 9 valores ausentes em `Description` foram substituídos por `Sem descrição`;
-- as categorias das variáveis categóricas foram verificadas;
-- valores como `Not Sure` e `No Color` foram preservados por possuírem significado próprio;
-- possíveis valores extremos das variáveis numéricas foram analisados sem remoção automática;
-- os 15 atributos originais foram mantidos.
+| Resultado no teste (2.303 registros) | Valor |
+|---|---|
+| Acurácia da Regressão Logística | **92,71%** |
+| F1 macro | **92,57%** |
+| F1 macro da linha de base | 36,42% |
+| F1 macro no treino final (sobreajuste) | 96,91% |
+| F1 macro com termos de espécie ocultos (sensibilidade) | 83,79% |
 
-Após o tratamento, a base processada passou a possuir **11.394 registros, 15 atributos, nenhum valor ausente e nenhuma linha integralmente duplicada**.
+### Experimento B: recuperação e ordenação por similaridade
 
-A análise exploratória investigou a distribuição de características como tipo, idade e porte, além de relações entre essas características e a variável histórica `AdoptionSpeed`.
+- **Tarefa:** aplicar filtros obrigatórios e ordenar os candidatos por k-NN (cosseno) em relação às preferências opcionais.
+- **Representação:** OneHotEncoder (peso 3) + TF-IDF (peso 1). Sem variável-alvo; `AdoptionSpeed` não é usado.
+- **Avaliação:** 17 cenários escritos pela equipe (`reports/TED03_recomendacao/consultas_avaliacao.json`), comparando ordem original, regra explícita e k-NN.
 
-`AdoptionSpeed` foi utilizada somente para análise exploratória dos dados históricos. Ela não constitui critério de compatibilidade, indicador de disponibilidade atual ou mecanismo de previsão de adoção no MVP.
+| Preferências atendidas no top-5 (16 cenários com candidatos) | Valor |
+|---|---|
+| Ordem original | 41,04% |
+| Regra explícita | **96,25%** |
+| k-NN | **96,25%** (empate em todos os cenários) |
+| Filtros obrigatórios respeitados | 100% |
 
-## Limitações
+**Conclusão:** para atributos estruturados confirmados, a ordenação por regras é tão eficaz quanto o k-NN e mais fácil de auditar; o Machine Learning fica reservado para casos com ganho demonstrável, como textos livres. Nenhum modelo foi integrado ao site da ONG.
 
-A base não representa os animais atualmente cadastrados pela ONG Anjos de Patas, pois os dados são provenientes da PetFinder.my, na Malásia.
-
-Além disso, não possui atributos estruturados específicos sobre temperamento, convivência com crianças, convivência com outros animais ou disponibilidade atual, informações relevantes para representar integralmente algumas preferências dos adotantes.
-
-Também foram identificadas possíveis inconsistências em alguns valores de idade. Esses registros foram preservados porque não foi encontrada uma regra suficientemente segura para realizar correções automáticas sem risco de modificar valores válidos.
-
-Por essas razões, a base é utilizada para exploração e testes dos filtros básicos do MVP, não para representar os animais atualmente disponíveis na ONG.
-
-## Estrutura do projeto
+## Estrutura
 
 ```text
 data/
-├── raw/
-└── processed/
-
-docs/
-├── TED01_BigData_IAnjos.docx
-├── TED01_BigData_IAnjos.pdf
-├── TED01_IA_Original.pdf
-├── TED02_BigData_IAnjos.docx
-└── TED02_BigData_IAnjos.pdf
-
+├── README.md, manifesto.json, manifesto_ted02.json
+├── raw/                 (petfinder-mini.csv, local)
+└── processed/           (petfinder_mini_tratado.csv, local)
+docs/                    documentos técnicos das TEDs 01, 02 e 03
 notebooks/
-├── TED01/
-└── TED02/
-    └── ted02_limpeza_eda.ipynb
-
+├── TED02/               ted02_limpeza_eda.ipynb, TED02_Petfinder.ipynb
+└── TED03/               TED03_Machine_Learning.ipynb, TED03_Recomendacao_por_Similaridade.ipynb
 reports/
-├── inspecao.json
-└── metodo.md
-
+├── inspecao.json, metodo.md
+├── TED02/               tabelas e figuras da análise exploratória
+├── TED03/               Experimento A: métricas, partições, predições, sobreajuste, termos e figuras
+└── TED03_recomendacao/  Experimento B: cenários, métricas por consulta, top-5 e figuras
 src/
-├── inspecionar_dados.py
-└── obter_dados.py
+├── obter_dados.py, inspecionar_dados.py       TED 01
+├── ted02.py                                    TED 02 (gera a base tratada)
+├── ted03.py, ted03_termos_relevantes.py        TED 03 — Experimento A
+├── ted03_recomendacao.py, demo_recomendacao.py TED 03 — Experimento B
+└── verificar_projeto.py                        conferência de integridade
 ```
 
-Os arquivos CSV utilizados localmente não são versionados no repositório.
-
-## Materiais
-
-| Caminho | Conteúdo |
-|---|---|
-| `docs/TED01_IA_Original.pdf` | Trabalho original da disciplina de Inteligência Artificial |
-| `docs/TED01_BigData_IAnjos.pdf` | Documento da etapa TED01 |
-| `docs/TED01_BigData_IAnjos.docx` | Versão editável do documento TED01 |
-| `docs/TED02_BigData_IAnjos.pdf` | Documento Técnico v2.0 com a etapa TED02 |
-| `docs/TED02_BigData_IAnjos.docx` | Versão editável do Documento Técnico v2.0 |
-| `notebooks/TED02/ted02_limpeza_eda.ipynb` | Notebook de limpeza, preparação e análise exploratória |
-| `data/README.md` | Fonte e instruções para obtenção dos dados |
-| `data/manifesto.json` | Informações sobre o conjunto de dados utilizado |
-| `reports/inspecao.json` | Resultados da inspeção inicial |
-| `reports/metodo.md` | Procedimentos utilizados e limitações |
-| `src/inspecionar_dados.py` | Script utilizado na inspeção inicial |
-| `src/obter_dados.py` | Script utilizado para obtenção dos dados |
+Os CSVs de resultados não contêm o texto das descrições.
 
 ## Como reproduzir
 
-### 1. Obter os dados
+Windows (PowerShell):
 
-O conjunto de dados pode ser baixado a partir da fonte indicada anteriormente ou utilizando:
-
-```bash
-python src/obter_dados.py
+```powershell
+py -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+.\.venv\Scripts\python.exe src/ted02.py                    # baixa a base e gera data/processed
+.\.venv\Scripts\python.exe src/ted03.py                    # Experimento A
+.\.venv\Scripts\python.exe src/ted03_termos_relevantes.py  # sobreajuste e termos de maior peso
+.\.venv\Scripts\python.exe src/ted03_recomendacao.py       # Experimento B
+.\.venv\Scripts\python.exe src/demo_recomendacao.py Q01    # demonstração (Q17: consulta sem resultado)
+.\.venv\Scripts\python.exe src/verificar_projeto.py        # conferência de integridade
+.\.venv\Scripts\python.exe -m jupyterlab                   # notebooks
 ```
 
-O arquivo original deve ser mantido em:
+Linux/macOS: use `python3 -m venv .venv` e `.venv/bin/python` no lugar de `.\.venv\Scripts\python.exe`.
 
-```text
-data/raw/petfinder-mini.csv
-```
+`src/ted02.py` baixa a base se `data/raw/petfinder-mini.csv` não existir (requer internet). As versões exatas usadas na execução registrada estão em `requirements-reproducao.txt`; versões diferentes podem alterar ligeiramente as previsões.
 
-### 2. Executar a inspeção inicial
+## Limitações
 
-A inspeção desenvolvida no TED01 pode ser executada utilizando:
-
-```bash
-python src/inspecionar_dados.py data/raw/petfinder-mini.csv
-```
-
-### 3. Executar o TED02
-
-A limpeza, preparação e análise exploratória estão documentadas no notebook:
-
-```text
-notebooks/TED02/ted02_limpeza_eda.ipynb
-```
-
-O notebook utiliza Python, pandas e matplotlib.
-
-Após sua execução, a versão processada é armazenada localmente em:
-
-```text
-data/processed/petfinder-mini-tratado.csv
-```
-
-Os arquivos CSV das pastas `data/raw/` e `data/processed/` são mantidos localmente e ignorados pelo Git.
+A base não representa os animais da ONG Anjos de Patas: são anúncios históricos da PetFinder.my, na Malásia, com descrições majoritariamente em inglês. Não há atributos estruturados de temperamento, convivência com crianças ou com outros animais, nem de disponibilidade atual. Os experimentos são provas de conceito acadêmicas e não validam o chatbot em português.
