@@ -1,0 +1,64 @@
+{
+  "linhas_brutas": 11537,
+  "colunas_brutas": 15,
+  "linhas_tratadas": 11537,
+  "colunas_tratadas": 21,
+  "duplicatas_excedentes": 143,
+  "descricoes_ausentes": 9,
+  "idade_zero": 78,
+  "sem_fotos": 235,
+  "invalidos": {
+    "Age": 0,
+    "Fee": 0,
+    "PhotoAmt": 0,
+    "AdoptionSpeed": 0,
+    "Type": 0,
+    "Gender": 0,
+    "MaturitySize": 0,
+    "FurLength": 0,
+    "Vaccinated": 0,
+    "Sterilized": 0,
+    "Health": 0
+  },
+  "espacos_corrigidos": {
+    "Type": 0,
+    "Breed1": 0,
+    "Gender": 0,
+    "Color1": 0,
+    "Color2": 0,
+    "MaturitySize": 0,
+    "FurLength": 0,
+    "Vaccinated": 0,
+    "Sterilized": 0,
+    "Health": 0,
+    "Description": 127
+  },
+  "outliers": [
+    {
+      "variavel": "Age",
+      "q1": 2.0,
+      "q3": 12.0,
+      "limite_inferior": -13.0,
+      "limite_superior": 27.0,
+      "sinalizados": 1340
+    },
+    {
+      "variavel": "Fee",
+      "q1": 0.0,
+      "q3": 0.0,
+      "limite_inferior": 0.0,
+      "limite_superior": 0.0,
+      "sinalizados": 1965
+    },
+    {
+      "variavel": "PhotoAmt",
+      "q1": 2.0,
+      "q3": 5.0,
+      "limite_inferior": -2.5,
+      "limite_superior": 9.5,
+      "sinalizados": 565
+    }
+  ],
+  "maior_variacao_duplicatas_pp": 0.45797123887520996,
+  "sha256": "cbd6e52992182f29228be071e1e35a262ccfb204bbc85b3c02302461c2ed0150"
+}

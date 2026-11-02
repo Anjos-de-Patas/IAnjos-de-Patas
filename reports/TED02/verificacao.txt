@@ -1,0 +1,1 @@
+Script e notebook executados integralmente em 20/10/2026. CSV reaberto: 11.537 registros, 21 colunas. Inspeção inicial compatível com a TED 01. Ausências, idades e categorias preservadas. Conferência adicional em reports/verificacao_entrega.json.

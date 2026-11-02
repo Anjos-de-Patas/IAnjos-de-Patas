@@ -1,0 +1,6 @@
+{
+  "fonte": "https://storage.googleapis.com/download.tensorflow.org/data/petfinder-mini.zip",
+  "arquivo": "raw/petfinder-mini.csv",
+  "sha256": "cbd6e52992182f29228be071e1e35a262ccfb204bbc85b3c02302461c2ed0150",
+  "observacao": "Mesma base da TED 01. IDs de linha são técnicos e não identificam animais."
+}

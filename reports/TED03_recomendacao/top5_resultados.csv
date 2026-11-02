@@ -1,0 +1,241 @@
+﻿consulta,metodo,posicao,linha_origem,Type,Gender,MaturitySize,FurLength,Vaccinated,Sterilized,Health,Color1,Breed1,AgeBand,preferencias_atendidas,similaridade
+Q01,ordem_original,1,16,Cat,Female,Small,Short,Yes,Yes,Healthy,Brown,Domestic Short Hair,0-6 meses,2,
+Q01,ordem_original,2,493,Cat,Female,Small,Medium,Yes,Yes,Healthy,Black,Domestic Medium Hair,0-6 meses,1,
+Q01,ordem_original,3,770,Cat,Female,Small,Short,Yes,No,Healthy,Black,Domestic Short Hair,7-24 meses,1,
+Q01,ordem_original,4,951,Cat,Female,Small,Short,Yes,Yes,Healthy,Black,Domestic Short Hair,7-24 meses,2,
+Q01,ordem_original,5,1048,Cat,Female,Small,Short,Yes,Yes,Healthy,Gray,Domestic Short Hair,0-6 meses,2,
+Q01,regra,1,16,Cat,Female,Small,Short,Yes,Yes,Healthy,Brown,Domestic Short Hair,0-6 meses,2,
+Q01,regra,2,951,Cat,Female,Small,Short,Yes,Yes,Healthy,Black,Domestic Short Hair,7-24 meses,2,
+Q01,regra,3,1048,Cat,Female,Small,Short,Yes,Yes,Healthy,Gray,Domestic Short Hair,0-6 meses,2,
+Q01,regra,4,1230,Cat,Female,Small,Short,Yes,Yes,Minor Injury,Black,Calico,7-24 meses,2,
+Q01,regra,5,1744,Cat,Female,Small,Short,Yes,Yes,Healthy,Black,Domestic Short Hair,acima de 24 meses,2,
+Q01,knn,1,10394,Cat,Female,Small,Short,Yes,Yes,Healthy,White,Siamese,7-24 meses,2,0.7348
+Q01,knn,2,16,Cat,Female,Small,Short,Yes,Yes,Healthy,Brown,Domestic Short Hair,0-6 meses,2,0.7348
+Q01,knn,3,1744,Cat,Female,Small,Short,Yes,Yes,Healthy,Black,Domestic Short Hair,acima de 24 meses,2,0.7348
+Q01,knn,4,951,Cat,Female,Small,Short,Yes,Yes,Healthy,Black,Domestic Short Hair,7-24 meses,2,0.7348
+Q01,knn,5,3666,Cat,Female,Small,Short,Yes,Yes,Healthy,Golden,Calico,7-24 meses,2,0.7348
+Q02,ordem_original,1,4,Dog,Male,Medium,Medium,Yes,No,Healthy,Brown,Mixed Breed,0-6 meses,2,
+Q02,ordem_original,2,5,Dog,Female,Medium,Short,Yes,No,Healthy,Black,Mixed Breed,0-6 meses,2,
+Q02,ordem_original,3,44,Dog,Male,Large,Medium,No,No,Healthy,Cream,Mixed Breed,0-6 meses,0,
+Q02,ordem_original,4,69,Dog,Male,Medium,Short,No,No,Healthy,Brown,Mixed Breed,0-6 meses,1,
+Q02,ordem_original,5,82,Dog,Female,Medium,Short,No,No,Healthy,Black,Mixed Breed,0-6 meses,1,
+Q02,regra,1,4,Dog,Male,Medium,Medium,Yes,No,Healthy,Brown,Mixed Breed,0-6 meses,2,
+Q02,regra,2,5,Dog,Female,Medium,Short,Yes,No,Healthy,Black,Mixed Breed,0-6 meses,2,
+Q02,regra,3,115,Dog,Female,Medium,Medium,Yes,No,Healthy,Black,Mixed Breed,0-6 meses,2,
+Q02,regra,4,123,Dog,Female,Medium,Short,Yes,No,Healthy,Black,Mixed Breed,0-6 meses,2,
+Q02,regra,5,149,Dog,Male,Medium,Short,Yes,Yes,Healthy,Black,Mixed Breed,0-6 meses,2,
+Q02,knn,1,10799,Dog,Female,Medium,Short,Yes,No,Healthy,Brown,Shiba Inu,0-6 meses,2,0.6325
+Q02,knn,2,8893,Dog,Male,Medium,Medium,Yes,No,Minor Injury,Brown,Mixed Breed,0-6 meses,2,0.6
+Q02,knn,3,372,Dog,Female,Medium,Short,Yes,Yes,Healthy,Black,Mixed Breed,0-6 meses,2,0.6
+Q02,knn,4,1845,Dog,Female,Medium,Short,Yes,Yes,Healthy,Brown,Mixed Breed,0-6 meses,2,0.6
+Q02,knn,5,694,Dog,Female,Medium,Short,Yes,No,Healthy,Black,Mixed Breed,0-6 meses,2,0.6
+Q03,ordem_original,1,37,Dog,Female,Medium,Short,Yes,Yes,Healthy,Brown,Mixed Breed,acima de 24 meses,1,
+Q03,ordem_original,2,166,Dog,Female,Medium,Short,Yes,Yes,Healthy,Brown,Mixed Breed,acima de 24 meses,1,
+Q03,ordem_original,3,241,Dog,Female,Medium,Medium,Yes,Yes,Healthy,White,Spitz,acima de 24 meses,0,
+Q03,ordem_original,4,822,Dog,Female,Medium,Medium,Yes,Yes,Healthy,Brown,Mixed Breed,acima de 24 meses,0,
+Q03,ordem_original,5,1013,Dog,Female,Medium,Medium,Yes,Yes,Healthy,Brown,Mixed Breed,acima de 24 meses,0,
+Q03,regra,1,2058,Dog,Female,Medium,Short,No,Yes,Healthy,Black,Mixed Breed,acima de 24 meses,2,
+Q03,regra,2,3275,Dog,Female,Medium,Short,Yes,Yes,Healthy,Black,Rottweiler,acima de 24 meses,2,
+Q03,regra,3,4067,Dog,Female,Large,Short,Yes,Yes,Healthy,Black,Doberman Pinscher,acima de 24 meses,2,
+Q03,regra,4,5113,Dog,Female,Medium,Short,Yes,Yes,Healthy,Black,Beagle,acima de 24 meses,2,
+Q03,regra,5,5157,Dog,Female,Small,Short,Yes,Yes,Healthy,Black,Schnauzer,acima de 24 meses,2,
+Q03,knn,1,4067,Dog,Female,Large,Short,Yes,Yes,Healthy,Black,Doberman Pinscher,acima de 24 meses,2,0.7348
+Q03,knn,2,5113,Dog,Female,Medium,Short,Yes,Yes,Healthy,Black,Beagle,acima de 24 meses,2,0.7348
+Q03,knn,3,3275,Dog,Female,Medium,Short,Yes,Yes,Healthy,Black,Rottweiler,acima de 24 meses,2,0.7348
+Q03,knn,4,5613,Dog,Female,Large,Short,Not Sure,Yes,Healthy,Black,Rottweiler,acima de 24 meses,2,0.7348
+Q03,knn,5,9474,Dog,Female,Medium,Short,Yes,Yes,Healthy,Black,Basset Hound,acima de 24 meses,2,0.7348
+Q04,ordem_original,1,22,Cat,Male,Large,Medium,Yes,Yes,Healthy,Golden,Persian,acima de 24 meses,1,
+Q04,ordem_original,2,81,Cat,Male,Small,Medium,No,No,Healthy,Golden,Domestic Medium Hair,0-6 meses,0,
+Q04,ordem_original,3,124,Cat,Male,Medium,Short,Not Sure,No,Healthy,Yellow,Domestic Short Hair,0-6 meses,0,
+Q04,ordem_original,4,163,Cat,Male,Medium,Medium,No,No,Healthy,Yellow,Domestic Medium Hair,0-6 meses,0,
+Q04,ordem_original,5,178,Cat,Male,Small,Short,Yes,Not Sure,Healthy,Yellow,Domestic Short Hair,0-6 meses,1,
+Q04,regra,1,199,Cat,Male,Medium,Medium,Yes,Yes,Healthy,Black,Bengal,7-24 meses,2,
+Q04,regra,2,400,Cat,Male,Medium,Long,Yes,Not Sure,Healthy,Golden,Domestic Long Hair,7-24 meses,2,
+Q04,regra,3,713,Cat,Male,Medium,Short,Yes,Yes,Healthy,Cream,Domestic Short Hair,7-24 meses,2,
+Q04,regra,4,1053,Cat,Male,Medium,Medium,Yes,Yes,Healthy,Black,Domestic Medium Hair,7-24 meses,2,
+Q04,regra,5,1663,Cat,Male,Medium,Short,Yes,Yes,Healthy,Brown,Domestic Short Hair,7-24 meses,2,
+Q04,knn,1,5977,Cat,Male,Large,Long,Yes,Yes,Healthy,Gray,Domestic Long Hair,7-24 meses,2,0.6708
+Q04,knn,2,2554,Cat,Male,Large,Short,Yes,No,Healthy,Brown,Domestic Short Hair,7-24 meses,2,0.6708
+Q04,knn,3,6121,Cat,Male,Large,Medium,Yes,No,Healthy,Cream,Domestic Short Hair,7-24 meses,2,0.6708
+Q04,knn,4,2447,Cat,Male,Small,Short,Yes,Yes,Healthy,Black,Tabby,7-24 meses,2,0.6708
+Q04,knn,5,4073,Cat,Male,Medium,Medium,Yes,No,Healthy,Yellow,Domestic Short Hair,7-24 meses,2,0.6708
+Q05,ordem_original,1,25,Dog,Male,Large,Short,Yes,No,Healthy,Black,Rottweiler,7-24 meses,0,
+Q05,ordem_original,2,641,Dog,Male,Large,Medium,Yes,No,Healthy,Black,Mixed Breed,0-6 meses,1,
+Q05,ordem_original,3,748,Dog,Male,Large,Short,Yes,No,Healthy,Cream,Golden Retriever,7-24 meses,0,
+Q05,ordem_original,4,763,Dog,Female,Large,Short,Yes,Yes,Healthy,Brown,Mixed Breed,7-24 meses,1,
+Q05,ordem_original,5,1265,Dog,Male,Large,Long,Yes,Not Sure,Minor Injury,White,Samoyed,acima de 24 meses,0,
+Q05,regra,1,1418,Dog,Female,Large,Medium,Yes,Yes,Healthy,Cream,Mixed Breed,7-24 meses,2,
+Q05,regra,2,1747,Dog,Male,Large,Medium,Yes,Yes,Healthy,Black,German Shepherd Dog,7-24 meses,2,
+Q05,regra,3,4553,Dog,Female,Large,Medium,Yes,Yes,Healthy,Black,Terrier,7-24 meses,2,
+Q05,regra,4,6085,Dog,Female,Large,Medium,Yes,Yes,Healthy,Golden,Golden Retriever,acima de 24 meses,2,
+Q05,regra,5,7291,Dog,Male,Large,Medium,Yes,Yes,Healthy,Brown,Mixed Breed,7-24 meses,2,
+Q05,knn,1,1747,Dog,Male,Large,Medium,Yes,Yes,Healthy,Black,German Shepherd Dog,7-24 meses,2,0.6708
+Q05,knn,2,4553,Dog,Female,Large,Medium,Yes,Yes,Healthy,Black,Terrier,7-24 meses,2,0.6708
+Q05,knn,3,7544,Dog,Female,Large,Medium,Yes,Yes,Healthy,Black,Mixed Breed,0-6 meses,2,0.6708
+Q05,knn,4,8715,Dog,Female,Large,Medium,Yes,Yes,Healthy,Golden,Labrador Retriever,7-24 meses,2,0.6708
+Q05,knn,5,10243,Dog,Female,Large,Medium,Yes,Yes,Healthy,Brown,Husky,acima de 24 meses,2,0.6708
+Q06,ordem_original,1,12,Cat,Female,Large,Long,Yes,No,Healthy,Black,Domestic Long Hair,0-6 meses,0,
+Q06,ordem_original,2,167,Cat,Female,Small,Long,No,Not Sure,Healthy,Black,Ragdoll,0-6 meses,0,
+Q06,ordem_original,3,642,Cat,Female,Small,Long,No,No,Healthy,Brown,Domestic Medium Hair,0-6 meses,0,
+Q06,ordem_original,4,855,Cat,Male,Medium,Long,No,No,Healthy,White,Persian,0-6 meses,1,
+Q06,ordem_original,5,1103,Cat,Female,Medium,Long,Yes,No,Healthy,Yellow,Persian,0-6 meses,0,
+Q06,regra,1,855,Cat,Male,Medium,Long,No,No,Healthy,White,Persian,0-6 meses,1,
+Q06,regra,2,10593,Cat,Male,Medium,Long,No,No,Healthy,White,Persian,0-6 meses,1,
+Q06,regra,3,12,Cat,Female,Large,Long,Yes,No,Healthy,Black,Domestic Long Hair,0-6 meses,0,
+Q06,regra,4,167,Cat,Female,Small,Long,No,Not Sure,Healthy,Black,Ragdoll,0-6 meses,0,
+Q06,regra,5,642,Cat,Female,Small,Long,No,No,Healthy,Brown,Domestic Medium Hair,0-6 meses,0,
+Q06,knn,1,855,Cat,Male,Medium,Long,No,No,Healthy,White,Persian,0-6 meses,1,0.6
+Q06,knn,2,10593,Cat,Male,Medium,Long,No,No,Healthy,White,Persian,0-6 meses,1,0.6
+Q06,knn,3,10199,Cat,Male,Medium,Long,Yes,No,Healthy,Brown,Ragdoll,0-6 meses,0,0.45
+Q06,knn,4,1103,Cat,Female,Medium,Long,Yes,No,Healthy,Yellow,Persian,0-6 meses,0,0.45
+Q06,knn,5,4136,Cat,Female,Medium,Long,No,Yes,Healthy,Black,Calico,0-6 meses,0,0.45
+Q07,ordem_original,1,20,Dog,Female,Medium,Medium,Yes,Yes,Healthy,Black,Mixed Breed,7-24 meses,1,
+Q07,ordem_original,2,37,Dog,Female,Medium,Short,Yes,Yes,Healthy,Brown,Mixed Breed,acima de 24 meses,2,
+Q07,ordem_original,3,125,Dog,Male,Medium,Medium,Yes,Yes,Healthy,Black,Mixed Breed,7-24 meses,1,
+Q07,ordem_original,4,149,Dog,Male,Medium,Short,Yes,Yes,Healthy,Black,Mixed Breed,0-6 meses,1,
+Q07,ordem_original,5,166,Dog,Female,Medium,Short,Yes,Yes,Healthy,Brown,Mixed Breed,acima de 24 meses,2,
+Q07,regra,1,37,Dog,Female,Medium,Short,Yes,Yes,Healthy,Brown,Mixed Breed,acima de 24 meses,2,
+Q07,regra,2,166,Dog,Female,Medium,Short,Yes,Yes,Healthy,Brown,Mixed Breed,acima de 24 meses,2,
+Q07,regra,3,208,Dog,Female,Medium,Short,Yes,Yes,Minor Injury,Brown,Mixed Breed,7-24 meses,2,
+Q07,regra,4,717,Dog,Male,Medium,Short,Yes,Yes,Healthy,Brown,Mixed Breed,7-24 meses,2,
+Q07,regra,5,822,Dog,Female,Medium,Medium,Yes,Yes,Healthy,Brown,Mixed Breed,acima de 24 meses,2,
+Q07,knn,1,1845,Dog,Female,Medium,Short,Yes,Yes,Healthy,Brown,Mixed Breed,0-6 meses,2,0.7348
+Q07,knn,2,5145,Dog,Male,Medium,Short,Yes,Yes,Healthy,Brown,Mixed Breed,7-24 meses,2,0.7348
+Q07,knn,3,5610,Dog,Female,Medium,Short,Yes,Yes,Healthy,Brown,Mixed Breed,0-6 meses,2,0.7348
+Q07,knn,4,3881,Dog,Male,Medium,Short,Yes,Yes,Healthy,Brown,Mixed Breed,acima de 24 meses,2,0.7348
+Q07,knn,5,7007,Dog,Male,Medium,Medium,Yes,Yes,Healthy,Brown,Mixed Breed,7-24 meses,2,0.7348
+Q08,ordem_original,1,522,Cat,Female,Large,Short,No,No,Healthy,Brown,Domestic Short Hair,acima de 24 meses,1,
+Q08,ordem_original,2,634,Cat,Female,Medium,Long,Yes,Yes,Healthy,Black,Maine Coon,acima de 24 meses,2,
+Q08,ordem_original,3,1290,Cat,Female,Medium,Medium,Not Sure,Yes,Healthy,Brown,Japanese Bobtail,acima de 24 meses,1,
+Q08,ordem_original,4,1349,Cat,Female,Medium,Short,Yes,No,Healthy,Black,Calico,acima de 24 meses,2,
+Q08,ordem_original,5,1744,Cat,Female,Small,Short,Yes,Yes,Healthy,Black,Domestic Short Hair,acima de 24 meses,3,
+Q08,regra,1,1744,Cat,Female,Small,Short,Yes,Yes,Healthy,Black,Domestic Short Hair,acima de 24 meses,3,
+Q08,regra,2,1784,Cat,Female,Large,Short,Yes,Yes,Healthy,Black,Domestic Short Hair,acima de 24 meses,3,
+Q08,regra,3,2622,Cat,Female,Medium,Short,Yes,Yes,Healthy,Brown,Tabby,acima de 24 meses,3,
+Q08,regra,4,3231,Cat,Female,Medium,Short,Yes,Yes,Healthy,Yellow,Domestic Short Hair,acima de 24 meses,3,
+Q08,regra,5,3360,Cat,Female,Large,Short,Yes,Yes,Healthy,Black,Domestic Short Hair,acima de 24 meses,3,
+Q08,knn,1,2622,Cat,Female,Medium,Short,Yes,Yes,Healthy,Brown,Tabby,acima de 24 meses,3,0.7348
+Q08,knn,2,3231,Cat,Female,Medium,Short,Yes,Yes,Healthy,Yellow,Domestic Short Hair,acima de 24 meses,3,0.7348
+Q08,knn,3,5301,Cat,Female,Medium,Short,Yes,Yes,Healthy,Brown,Domestic Short Hair,acima de 24 meses,3,0.7348
+Q08,knn,4,1784,Cat,Female,Large,Short,Yes,Yes,Healthy,Black,Domestic Short Hair,acima de 24 meses,3,0.7348
+Q08,knn,5,1744,Cat,Female,Small,Short,Yes,Yes,Healthy,Black,Domestic Short Hair,acima de 24 meses,3,0.7348
+Q09,ordem_original,1,267,Dog,Male,Small,Medium,Not Sure,No,Healthy,Brown,Poodle,acima de 24 meses,1,
+Q09,ordem_original,2,369,Dog,Female,Small,Short,Yes,Not Sure,Healthy,Brown,Poodle,7-24 meses,2,
+Q09,ordem_original,3,398,Dog,Male,Small,Short,Not Sure,Not Sure,Healthy,Brown,Miniature Pinscher,acima de 24 meses,1,
+Q09,ordem_original,4,453,Dog,Male,Small,Short,Not Sure,Not Sure,Healthy,Black,Mixed Breed,7-24 meses,2,
+Q09,ordem_original,5,550,Dog,Male,Small,Medium,Yes,No,Healthy,Black,Chihuahua,7-24 meses,3,
+Q09,regra,1,550,Dog,Male,Small,Medium,Yes,No,Healthy,Black,Chihuahua,7-24 meses,3,
+Q09,regra,2,754,Dog,Male,Small,Medium,Yes,Yes,Healthy,Golden,Mixed Breed,7-24 meses,3,
+Q09,regra,3,998,Dog,Male,Small,Long,Yes,Yes,Healthy,Black,Shih Tzu,7-24 meses,3,
+Q09,regra,4,2525,Dog,Male,Small,Short,Yes,Yes,Healthy,Brown,Poodle,7-24 meses,3,
+Q09,regra,5,3117,Dog,Male,Small,Medium,Yes,Yes,Healthy,Cream,Poodle,7-24 meses,3,
+Q09,knn,1,3799,Dog,Male,Small,Medium,Yes,No,Healthy,Black,Poodle,7-24 meses,3,0.6708
+Q09,knn,2,550,Dog,Male,Small,Medium,Yes,No,Healthy,Black,Chihuahua,7-24 meses,3,0.6708
+Q09,knn,3,2525,Dog,Male,Small,Short,Yes,Yes,Healthy,Brown,Poodle,7-24 meses,3,0.6708
+Q09,knn,4,998,Dog,Male,Small,Long,Yes,Yes,Healthy,Black,Shih Tzu,7-24 meses,3,0.6708
+Q09,knn,5,10538,Dog,Male,Small,Long,Yes,No,Healthy,White,Pomeranian,7-24 meses,3,0.6708
+Q10,ordem_original,1,16,Cat,Female,Small,Short,Yes,Yes,Healthy,Brown,Domestic Short Hair,0-6 meses,0,
+Q10,ordem_original,2,22,Cat,Male,Large,Medium,Yes,Yes,Healthy,Golden,Persian,acima de 24 meses,0,
+Q10,ordem_original,3,158,Cat,Female,Medium,Short,Yes,Yes,Healthy,Brown,Domestic Short Hair,7-24 meses,0,
+Q10,ordem_original,4,199,Cat,Male,Medium,Medium,Yes,Yes,Healthy,Black,Bengal,7-24 meses,0,
+Q10,ordem_original,5,280,Cat,Male,Medium,Medium,Yes,Yes,Healthy,Gray,Domestic Medium Hair,0-6 meses,1,
+Q10,regra,1,280,Cat,Male,Medium,Medium,Yes,Yes,Healthy,Gray,Domestic Medium Hair,0-6 meses,1,
+Q10,regra,2,1048,Cat,Female,Small,Short,Yes,Yes,Healthy,Gray,Domestic Short Hair,0-6 meses,1,
+Q10,regra,3,1470,Cat,Female,Medium,Short,Yes,Yes,Healthy,Gray,Domestic Short Hair,0-6 meses,1,
+Q10,regra,4,2038,Cat,Male,Medium,Short,Yes,Yes,Healthy,Gray,Siamese,7-24 meses,1,
+Q10,regra,5,2474,Cat,Female,Medium,Short,Yes,Yes,Healthy,Gray,Domestic Short Hair,7-24 meses,1,
+Q10,knn,1,5977,Cat,Male,Large,Long,Yes,Yes,Healthy,Gray,Domestic Long Hair,7-24 meses,1,0.6
+Q10,knn,2,1470,Cat,Female,Medium,Short,Yes,Yes,Healthy,Gray,Domestic Short Hair,0-6 meses,1,0.6
+Q10,knn,3,3014,Cat,Female,Medium,Medium,Yes,Yes,Healthy,Gray,Siamese,7-24 meses,1,0.6
+Q10,knn,4,2038,Cat,Male,Medium,Short,Yes,Yes,Healthy,Gray,Siamese,7-24 meses,1,0.6
+Q10,knn,5,2474,Cat,Female,Medium,Short,Yes,Yes,Healthy,Gray,Domestic Short Hair,7-24 meses,1,0.6
+Q11,ordem_original,1,5,Dog,Female,Medium,Short,Yes,No,Healthy,Black,Mixed Breed,0-6 meses,2,
+Q11,ordem_original,2,82,Dog,Female,Medium,Short,No,No,Healthy,Black,Mixed Breed,0-6 meses,1,
+Q11,ordem_original,3,115,Dog,Female,Medium,Medium,Yes,No,Healthy,Black,Mixed Breed,0-6 meses,2,
+Q11,ordem_original,4,120,Dog,Female,Large,Short,Not Sure,Not Sure,Healthy,Brown,Mixed Breed,0-6 meses,0,
+Q11,ordem_original,5,123,Dog,Female,Medium,Short,Yes,No,Healthy,Black,Mixed Breed,0-6 meses,2,
+Q11,regra,1,5,Dog,Female,Medium,Short,Yes,No,Healthy,Black,Mixed Breed,0-6 meses,2,
+Q11,regra,2,115,Dog,Female,Medium,Medium,Yes,No,Healthy,Black,Mixed Breed,0-6 meses,2,
+Q11,regra,3,123,Dog,Female,Medium,Short,Yes,No,Healthy,Black,Mixed Breed,0-6 meses,2,
+Q11,regra,4,202,Dog,Female,Medium,Medium,Yes,No,Healthy,Black,Mixed Breed,0-6 meses,2,
+Q11,regra,5,215,Dog,Female,Medium,Short,Yes,No,Healthy,Black,Mixed Breed,0-6 meses,2,
+Q11,knn,1,372,Dog,Female,Medium,Short,Yes,Yes,Healthy,Black,Mixed Breed,0-6 meses,2,0.6708
+Q11,knn,2,694,Dog,Female,Medium,Short,Yes,No,Healthy,Black,Mixed Breed,0-6 meses,2,0.6708
+Q11,knn,3,10964,Dog,Female,Small,Short,Yes,Not Sure,Healthy,Black,Poodle,0-6 meses,2,0.6708
+Q11,knn,4,115,Dog,Female,Medium,Medium,Yes,No,Healthy,Black,Mixed Breed,0-6 meses,2,0.6708
+Q11,knn,5,5902,Dog,Female,Medium,Medium,Yes,No,Healthy,Black,Mixed Breed,0-6 meses,2,0.6708
+Q12,ordem_original,1,592,Dog,Female,Small,Long,Yes,No,Healthy,Cream,Shih Tzu,acima de 24 meses,1,
+Q12,ordem_original,2,851,Dog,Male,Small,Long,Yes,Yes,Healthy,Brown,Shih Tzu,acima de 24 meses,2,
+Q12,ordem_original,3,998,Dog,Male,Small,Long,Yes,Yes,Healthy,Black,Shih Tzu,7-24 meses,2,
+Q12,ordem_original,4,1265,Dog,Male,Large,Long,Yes,Not Sure,Minor Injury,White,Samoyed,acima de 24 meses,0,
+Q12,ordem_original,5,1365,Dog,Female,Medium,Long,Yes,No,Healthy,Yellow,Glen of Imaal Terrier,7-24 meses,0,
+Q12,regra,1,851,Dog,Male,Small,Long,Yes,Yes,Healthy,Brown,Shih Tzu,acima de 24 meses,2,
+Q12,regra,2,998,Dog,Male,Small,Long,Yes,Yes,Healthy,Black,Shih Tzu,7-24 meses,2,
+Q12,regra,3,1381,Dog,Female,Small,Long,Not Sure,Yes,Minor Injury,Cream,Silky Terrier,acima de 24 meses,2,
+Q12,regra,4,3208,Dog,Male,Small,Long,Yes,Yes,Healthy,White,Maltese,acima de 24 meses,2,
+Q12,regra,5,4670,Dog,Female,Small,Long,Yes,Yes,Healthy,Brown,Labrador Retriever,7-24 meses,2,
+Q12,knn,1,6039,Dog,Male,Small,Long,Yes,Yes,Minor Injury,Cream,Shih Tzu,acima de 24 meses,2,0.6
+Q12,knn,2,9561,Dog,Male,Small,Long,Yes,Yes,Minor Injury,Cream,Poodle,acima de 24 meses,2,0.6
+Q12,knn,3,998,Dog,Male,Small,Long,Yes,Yes,Healthy,Black,Shih Tzu,7-24 meses,2,0.6
+Q12,knn,4,1381,Dog,Female,Small,Long,Not Sure,Yes,Minor Injury,Cream,Silky Terrier,acima de 24 meses,2,0.6
+Q12,knn,5,6338,Dog,Female,Small,Long,Yes,Yes,Healthy,Brown,Pekingese,7-24 meses,2,0.6
+Q13,ordem_original,1,16,Cat,Female,Small,Short,Yes,Yes,Healthy,Brown,Domestic Short Hair,0-6 meses,2,
+Q13,ordem_original,2,89,Cat,Female,Small,Short,No,No,Healthy,Black,Domestic Short Hair,0-6 meses,1,
+Q13,ordem_original,3,121,Cat,Female,Medium,Short,No,No,Healthy,Black,Domestic Short Hair,0-6 meses,1,
+Q13,ordem_original,4,124,Cat,Male,Medium,Short,Not Sure,No,Healthy,Yellow,Domestic Short Hair,0-6 meses,0,
+Q13,ordem_original,5,128,Cat,Female,Medium,Medium,No,No,Healthy,Black,Domestic Short Hair,0-6 meses,1,
+Q13,regra,1,158,Cat,Female,Medium,Short,Yes,Yes,Healthy,Brown,Domestic Short Hair,7-24 meses,3,
+Q13,regra,2,581,Cat,Female,Medium,Short,Yes,Yes,Healthy,Black,Domestic Short Hair,7-24 meses,3,
+Q13,regra,3,601,Cat,Female,Medium,Short,Yes,Yes,Healthy,White,Domestic Short Hair,7-24 meses,3,
+Q13,regra,4,770,Cat,Female,Small,Short,Yes,No,Healthy,Black,Domestic Short Hair,7-24 meses,3,
+Q13,regra,5,951,Cat,Female,Small,Short,Yes,Yes,Healthy,Black,Domestic Short Hair,7-24 meses,3,
+Q13,knn,1,8732,Cat,Female,Medium,Short,Yes,Yes,Healthy,Black,Domestic Short Hair,7-24 meses,3,0.7071
+Q13,knn,2,4241,Cat,Female,Medium,Short,Yes,Yes,Healthy,Black,Domestic Short Hair,7-24 meses,3,0.6708
+Q13,knn,3,1841,Cat,Female,Medium,Short,Yes,Yes,Healthy,Brown,Domestic Short Hair,7-24 meses,3,0.6708
+Q13,knn,4,6245,Cat,Female,Medium,Short,Yes,No,Healthy,Black,Domestic Short Hair,7-24 meses,3,0.6708
+Q13,knn,5,770,Cat,Female,Small,Short,Yes,No,Healthy,Black,Domestic Short Hair,7-24 meses,3,0.6708
+Q14,ordem_original,1,267,Dog,Male,Small,Medium,Not Sure,No,Healthy,Brown,Poodle,acima de 24 meses,0,
+Q14,ordem_original,2,271,Dog,Male,Medium,Short,Yes,Yes,Healthy,Black,Schnauzer,acima de 24 meses,2,
+Q14,ordem_original,3,288,Dog,Male,Medium,Medium,Yes,Not Sure,Healthy,White,Mixed Breed,acima de 24 meses,1,
+Q14,ordem_original,4,294,Dog,Male,Medium,Short,Not Sure,Not Sure,Healthy,Brown,Mixed Breed,acima de 24 meses,0,
+Q14,ordem_original,5,345,Dog,Male,Medium,Medium,Yes,Yes,Healthy,Black,Terrier,acima de 24 meses,2,
+Q14,regra,1,4496,Dog,Male,Large,Short,Yes,Yes,Healthy,Cream,Bullmastiff,acima de 24 meses,3,
+Q14,regra,2,4508,Dog,Male,Large,Long,Yes,Yes,Healthy,Golden,Golden Retriever,acima de 24 meses,3,
+Q14,regra,3,5887,Dog,Male,Large,Long,Yes,Yes,Healthy,White,Terrier,acima de 24 meses,3,
+Q14,regra,4,6953,Dog,Male,Large,Long,Yes,Yes,Healthy,Brown,Irish Setter,acima de 24 meses,3,
+Q14,regra,5,8616,Dog,Male,Large,Short,Yes,Yes,Healthy,Brown,Mixed Breed,acima de 24 meses,3,
+Q14,knn,1,6953,Dog,Male,Large,Long,Yes,Yes,Healthy,Brown,Irish Setter,acima de 24 meses,3,0.7937
+Q14,knn,2,4508,Dog,Male,Large,Long,Yes,Yes,Healthy,Golden,Golden Retriever,acima de 24 meses,3,0.7937
+Q14,knn,3,8616,Dog,Male,Large,Short,Yes,Yes,Healthy,Brown,Mixed Breed,acima de 24 meses,3,0.7937
+Q14,knn,4,5887,Dog,Male,Large,Long,Yes,Yes,Healthy,White,Terrier,acima de 24 meses,3,0.7937
+Q14,knn,5,4496,Dog,Male,Large,Short,Yes,Yes,Healthy,Cream,Bullmastiff,acima de 24 meses,3,0.7937
+Q15,ordem_original,1,121,Cat,Female,Medium,Short,No,No,Healthy,Black,Domestic Short Hair,0-6 meses,0,
+Q15,ordem_original,2,124,Cat,Male,Medium,Short,Not Sure,No,Healthy,Yellow,Domestic Short Hair,0-6 meses,0,
+Q15,ordem_original,3,128,Cat,Female,Medium,Medium,No,No,Healthy,Black,Domestic Short Hair,0-6 meses,1,
+Q15,ordem_original,4,158,Cat,Female,Medium,Short,Yes,Yes,Healthy,Brown,Domestic Short Hair,7-24 meses,0,
+Q15,ordem_original,5,163,Cat,Male,Medium,Medium,No,No,Healthy,Yellow,Domestic Medium Hair,0-6 meses,1,
+Q15,regra,1,789,Cat,Female,Medium,Medium,No,No,Healthy,Cream,Siamese,0-6 meses,2,
+Q15,regra,2,1668,Cat,Female,Medium,Medium,No,No,Healthy,Cream,Domestic Medium Hair,7-24 meses,2,
+Q15,regra,3,2230,Cat,Female,Medium,Medium,Yes,No,Healthy,Cream,Domestic Medium Hair,0-6 meses,2,
+Q15,regra,4,4361,Cat,Female,Medium,Medium,No,No,Healthy,Cream,Oriental Short Hair,0-6 meses,2,
+Q15,regra,5,6752,Cat,Male,Medium,Medium,Yes,No,Healthy,Cream,Persian,acima de 24 meses,2,
+Q15,knn,1,10109,Cat,Female,Medium,Medium,No,No,Healthy,Cream,Domestic Medium Hair,0-6 meses,2,0.6
+Q15,knn,2,1668,Cat,Female,Medium,Medium,No,No,Healthy,Cream,Domestic Medium Hair,7-24 meses,2,0.6
+Q15,knn,3,9724,Cat,Male,Medium,Medium,No,No,Serious Injury,Cream,Domestic Medium Hair,7-24 meses,2,0.6
+Q15,knn,4,9715,Cat,Male,Medium,Medium,No,No,Healthy,Cream,Oriental Short Hair,0-6 meses,2,0.6
+Q15,knn,5,2230,Cat,Female,Medium,Medium,Yes,No,Healthy,Cream,Domestic Medium Hair,0-6 meses,2,0.6
+Q16,ordem_original,1,20,Dog,Female,Medium,Medium,Yes,Yes,Healthy,Black,Mixed Breed,7-24 meses,1,
+Q16,ordem_original,2,25,Dog,Male,Large,Short,Yes,No,Healthy,Black,Rottweiler,7-24 meses,0,
+Q16,ordem_original,3,32,Dog,Male,Medium,Medium,Yes,No,Healthy,Cream,Mixed Breed,7-24 meses,0,
+Q16,ordem_original,4,125,Dog,Male,Medium,Medium,Yes,Yes,Healthy,Black,Mixed Breed,7-24 meses,0,
+Q16,ordem_original,5,208,Dog,Female,Medium,Short,Yes,Yes,Minor Injury,Brown,Mixed Breed,7-24 meses,1,
+Q16,regra,1,4208,Dog,Female,Medium,Short,Yes,Yes,Healthy,Golden,Hound,7-24 meses,2,
+Q16,regra,2,4347,Dog,Female,Medium,Short,Yes,Yes,Healthy,Golden,Mixed Breed,7-24 meses,2,
+Q16,regra,3,5496,Dog,Female,Small,Medium,Yes,Yes,Healthy,Golden,Mixed Breed,7-24 meses,2,
+Q16,regra,4,5886,Dog,Female,Medium,Short,Yes,Yes,Healthy,Golden,Labrador Retriever,7-24 meses,2,
+Q16,regra,5,7187,Dog,Female,Medium,Medium,Yes,Yes,Healthy,Golden,Mixed Breed,7-24 meses,2,
+Q16,knn,1,5496,Dog,Female,Small,Medium,Yes,Yes,Healthy,Golden,Mixed Breed,7-24 meses,2,0.6708
+Q16,knn,2,5886,Dog,Female,Medium,Short,Yes,Yes,Healthy,Golden,Labrador Retriever,7-24 meses,2,0.6708
+Q16,knn,3,4347,Dog,Female,Medium,Short,Yes,Yes,Healthy,Golden,Mixed Breed,7-24 meses,2,0.6708
+Q16,knn,4,8715,Dog,Female,Large,Medium,Yes,Yes,Healthy,Golden,Labrador Retriever,7-24 meses,2,0.6708
+Q16,knn,5,10851,Dog,Female,Medium,Medium,Yes,Yes,Healthy,Golden,Mixed Breed,7-24 meses,2,0.6708

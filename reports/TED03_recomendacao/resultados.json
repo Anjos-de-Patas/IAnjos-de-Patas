@@ -1,0 +1,66 @@
+{
+  "titulo": "TED 03 - Experimento B: recuperação e ordenação por similaridade",
+  "seed": 42,
+  "top_k": 5,
+  "pesos": {
+    "categorico": 3.0,
+    "texto": 1.0
+  },
+  "campos": [
+    "Type",
+    "Gender",
+    "MaturitySize",
+    "FurLength",
+    "Vaccinated",
+    "Sterilized",
+    "Health",
+    "Color1",
+    "Breed1",
+    "AgeBand"
+  ],
+  "campos_excluidos": [
+    "AdoptionSpeed",
+    "indicadores auxiliares de qualidade"
+  ],
+  "base": {
+    "registros": 11537,
+    "colunas_originais": 21
+  },
+  "divisao": {
+    "estrategia": "GroupShuffleSplit 80/20 por grupo de descrição normalizada",
+    "ajuste": 9287,
+    "catalogo_teste": 2250,
+    "catalogo_sem_duplicatas_exibidas": 2233,
+    "grupos_compartilhados": 0
+  },
+  "cenarios": {
+    "definidos": 17,
+    "com_candidatos": 16,
+    "sem_candidatos": 1
+  },
+  "metricas": {
+    "ordem_original": {
+      "aderencia_media": 0.41041666666666665,
+      "todas_preferencias_media": 0.2,
+      "obrigatorios_respeitados": 1.0
+    },
+    "regra": {
+      "aderencia_media": 0.9625,
+      "todas_preferencias_media": 0.9625,
+      "obrigatorios_respeitados": 1.0
+    },
+    "knn": {
+      "aderencia_media": 0.9625,
+      "todas_preferencias_media": 0.9625,
+      "obrigatorios_respeitados": 1.0
+    }
+  },
+  "empates_regra_knn": 16,
+  "alerta": "Métricas operacionais calculadas sobre os mesmos campos usados para filtrar e ordenar; não medem relevância percebida, compatibilidade ou sucesso de adoção.",
+  "bibliotecas": {
+    "python": "3.13.18",
+    "scikit-learn": "1.9.1",
+    "pandas": "3.0.5",
+    "numpy": "2.5.3"
+  }
+}

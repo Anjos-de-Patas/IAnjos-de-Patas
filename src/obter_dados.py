@@ -8,7 +8,7 @@ URL = "https://storage.googleapis.com/download.tensorflow.org/data/petfinder-min
 ARQUIVO_ZIP = "petfinder-mini/petfinder-mini.csv"
 
 ROOT = Path(__file__).resolve().parents[1]
-DESTINO = ROOT / "data" / "petfinder-mini.csv"
+DESTINO = ROOT / "data" / "raw" / "petfinder-mini.csv"
 
 
 def obter_dados():

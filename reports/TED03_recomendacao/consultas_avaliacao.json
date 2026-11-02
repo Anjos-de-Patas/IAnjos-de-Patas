@@ -1,0 +1,227 @@
+[
+  {
+    "id": "Q01",
+    "pedido": "Quero uma gata pequena e vacinada; de preferência castrada e de pelo curto.",
+    "obrigatorio": {
+      "Type": "Cat",
+      "Gender": "Female",
+      "MaturitySize": "Small",
+      "Vaccinated": "Yes"
+    },
+    "preferencias": {
+      "Sterilized": "Yes",
+      "FurLength": "Short"
+    }
+  },
+  {
+    "id": "Q02",
+    "pedido": "Procuro um cachorro filhote; se possível vacinado e de porte médio.",
+    "obrigatorio": {
+      "Type": "Dog",
+      "AgeBand": "0-6 meses"
+    },
+    "preferencias": {
+      "Vaccinated": "Yes",
+      "MaturitySize": "Medium"
+    }
+  },
+  {
+    "id": "Q03",
+    "pedido": "Uma cadela adulta castrada; prefiro pelagem curta e cor preta.",
+    "obrigatorio": {
+      "Type": "Dog",
+      "Gender": "Female",
+      "AgeBand": "acima de 24 meses",
+      "Sterilized": "Yes"
+    },
+    "preferencias": {
+      "FurLength": "Short",
+      "Color1": "Black"
+    }
+  },
+  {
+    "id": "Q04",
+    "pedido": "Gato macho saudável; de preferência jovem e já vacinado.",
+    "obrigatorio": {
+      "Type": "Cat",
+      "Gender": "Male",
+      "Health": "Healthy"
+    },
+    "preferencias": {
+      "AgeBand": "7-24 meses",
+      "Vaccinated": "Yes"
+    }
+  },
+  {
+    "id": "Q05",
+    "pedido": "Cachorro de porte grande, vacinado; se der, castrado e de pelo médio.",
+    "obrigatorio": {
+      "Type": "Dog",
+      "MaturitySize": "Large",
+      "Vaccinated": "Yes"
+    },
+    "preferencias": {
+      "Sterilized": "Yes",
+      "FurLength": "Medium"
+    }
+  },
+  {
+    "id": "Q06",
+    "pedido": "Gatinho filhote de pelo longo; tanto faz o sexo, prefiro branco.",
+    "obrigatorio": {
+      "Type": "Cat",
+      "AgeBand": "0-6 meses",
+      "FurLength": "Long"
+    },
+    "preferencias": {
+      "Color1": "White"
+    }
+  },
+  {
+    "id": "Q07",
+    "pedido": "Cão sem raça definida, vacinado e castrado; preferência por cor marrom e porte médio.",
+    "obrigatorio": {
+      "Type": "Dog",
+      "Breed1": "Mixed Breed",
+      "Vaccinated": "Yes",
+      "Sterilized": "Yes"
+    },
+    "preferencias": {
+      "Color1": "Brown",
+      "MaturitySize": "Medium"
+    }
+  },
+  {
+    "id": "Q08",
+    "pedido": "Gata adulta; prefiro castrada, vacinada e de pelo curto.",
+    "obrigatorio": {
+      "Type": "Cat",
+      "Gender": "Female",
+      "AgeBand": "acima de 24 meses"
+    },
+    "preferencias": {
+      "Sterilized": "Yes",
+      "Vaccinated": "Yes",
+      "FurLength": "Short"
+    }
+  },
+  {
+    "id": "Q09",
+    "pedido": "Cachorro pequeno; se possível macho, jovem e vacinado.",
+    "obrigatorio": {
+      "Type": "Dog",
+      "MaturitySize": "Small"
+    },
+    "preferencias": {
+      "Gender": "Male",
+      "AgeBand": "7-24 meses",
+      "Vaccinated": "Yes"
+    }
+  },
+  {
+    "id": "Q10",
+    "pedido": "Gato vacinado e castrado; preferência por cor cinza.",
+    "obrigatorio": {
+      "Type": "Cat",
+      "Vaccinated": "Yes",
+      "Sterilized": "Yes"
+    },
+    "preferencias": {
+      "Color1": "Gray"
+    }
+  },
+  {
+    "id": "Q11",
+    "pedido": "Cadela filhote; de preferência vacinada e de cor preta.",
+    "obrigatorio": {
+      "Type": "Dog",
+      "Gender": "Female",
+      "AgeBand": "0-6 meses"
+    },
+    "preferencias": {
+      "Vaccinated": "Yes",
+      "Color1": "Black"
+    }
+  },
+  {
+    "id": "Q12",
+    "pedido": "Cachorro de pelo longo; preferência por porte pequeno e castrado.",
+    "obrigatorio": {
+      "Type": "Dog",
+      "FurLength": "Long"
+    },
+    "preferencias": {
+      "MaturitySize": "Small",
+      "Sterilized": "Yes"
+    }
+  },
+  {
+    "id": "Q13",
+    "pedido": "Gato da raça Domestic Short Hair; prefiro fêmea jovem e vacinada.",
+    "obrigatorio": {
+      "Type": "Cat",
+      "Breed1": "Domestic Short Hair"
+    },
+    "preferencias": {
+      "Gender": "Female",
+      "AgeBand": "7-24 meses",
+      "Vaccinated": "Yes"
+    }
+  },
+  {
+    "id": "Q14",
+    "pedido": "Cão macho adulto, saudável; de preferência castrado, vacinado e grande.",
+    "obrigatorio": {
+      "Type": "Dog",
+      "Gender": "Male",
+      "AgeBand": "acima de 24 meses",
+      "Health": "Healthy"
+    },
+    "preferencias": {
+      "Sterilized": "Yes",
+      "Vaccinated": "Yes",
+      "MaturitySize": "Large"
+    }
+  },
+  {
+    "id": "Q15",
+    "pedido": "Gato de porte médio; preferência por cor creme e pelo médio.",
+    "obrigatorio": {
+      "Type": "Cat",
+      "MaturitySize": "Medium"
+    },
+    "preferencias": {
+      "Color1": "Cream",
+      "FurLength": "Medium"
+    }
+  },
+  {
+    "id": "Q16",
+    "pedido": "Cachorro jovem vacinado; preferência por fêmea dourada.",
+    "obrigatorio": {
+      "Type": "Dog",
+      "AgeBand": "7-24 meses",
+      "Vaccinated": "Yes"
+    },
+    "preferencias": {
+      "Gender": "Female",
+      "Color1": "Golden"
+    }
+  },
+  {
+    "id": "Q17",
+    "pedido": "Gata filhote, grande, de pelo longo, castrada e com ferimento grave.",
+    "obrigatorio": {
+      "Type": "Cat",
+      "Gender": "Female",
+      "AgeBand": "0-6 meses",
+      "MaturitySize": "Large",
+      "FurLength": "Long",
+      "Sterilized": "Yes",
+      "Health": "Serious Injury"
+    },
+    "preferencias": {
+      "Color1": "White"
+    }
+  }
+]

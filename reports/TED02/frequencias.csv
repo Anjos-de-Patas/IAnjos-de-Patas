@@ -1,0 +1,20 @@
+﻿variavel,categoria,quantidade,percentual
+Type,Dog,6601,57.22
+Type,Cat,4936,42.78
+Gender,Female,6466,56.05
+Gender,Male,5071,43.95
+MaturitySize,Medium,8016,69.48
+MaturitySize,Small,2480,21.5
+MaturitySize,Large,1041,9.02
+FurLength,Short,6676,57.87
+FurLength,Medium,4152,35.99
+FurLength,Long,709,6.15
+Vaccinated,Yes,5060,43.86
+Vaccinated,No,4962,43.01
+Vaccinated,Not Sure,1515,13.13
+Sterilized,No,7497,64.98
+Sterilized,Yes,2697,23.38
+Sterilized,Not Sure,1343,11.64
+Health,Healthy,11098,96.19
+Health,Minor Injury,409,3.55
+Health,Serious Injury,30,0.26

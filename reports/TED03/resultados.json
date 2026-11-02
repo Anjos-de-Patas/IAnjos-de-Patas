@@ -1,0 +1,185 @@
+{
+  "titulo": "TED 03 - Classificação da espécie a partir de descrições",
+  "objetivo": "Conferência exploratória de cadastros; não determina compatibilidade nem disponibilidade.",
+  "origem": "data/processed/petfinder_mini_tratado.csv",
+  "seed": 42,
+  "registros_base_ted02": 11537,
+  "sem_descricao_excluidos": 9,
+  "registros_modelagem": 11528,
+  "grupos_duplicados_com_classes_conflitantes": 7,
+  "estrategia": "StratifiedGroupKFold 5 folds -> teste; StratifiedGroupKFold 8 folds -> validacao; grupos por descricao NFKC/espacos/casefold, SHA-256; escolha por F1 macro na validacao, retreino em treino+validacao.",
+  "variavel_alvo": "Type (Cat, Dog)",
+  "variavel_entrada": [
+    "Description"
+  ],
+  "atributos_excluidos": "Breed1, MaturitySize e demais colunas não usados; AdoptionSpeed não é alvo.",
+  "distribuicao": {
+    "treino": {
+      "total": 8074,
+      "Gato": 3453,
+      "Cão": 4621,
+      "descricoes_distintas": 7528
+    },
+    "validacao": {
+      "total": 1151,
+      "Gato": 492,
+      "Cão": 659,
+      "descricoes_distintas": 1052
+    },
+    "teste": {
+      "total": 2303,
+      "Gato": 984,
+      "Cão": 1319,
+      "descricoes_distintas": 2091
+    },
+    "treino_final": {
+      "total": 9225,
+      "Gato": 3945,
+      "Cão": 5280,
+      "descricoes_distintas": 8580
+    }
+  },
+  "validacao": {
+    "Maioria (baseline)": {
+      "n": 1151,
+      "accuracy": 0.5725456125108601,
+      "f1_macro": 0.36408839779005525,
+      "classes": {
+        "Cat": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "suporte": 492
+        },
+        "Dog": {
+          "precision": 0.5725456125108601,
+          "recall": 1.0,
+          "f1": 0.7281767955801105,
+          "suporte": 659
+        }
+      }
+    },
+    "Naive Bayes + TF-IDF": {
+      "n": 1151,
+      "accuracy": 0.894005212858384,
+      "f1_macro": 0.8881662780177632,
+      "classes": {
+        "Cat": {
+          "precision": 0.9671717171717171,
+          "recall": 0.7784552845528455,
+          "f1": 0.8626126126126126,
+          "suporte": 492
+        },
+        "Dog": {
+          "precision": 0.8556291390728477,
+          "recall": 0.9802731411229135,
+          "f1": 0.9137199434229137,
+          "suporte": 659
+        }
+      }
+    },
+    "Regressão Logística + TF-IDF": {
+      "n": 1151,
+      "accuracy": 0.9122502172024327,
+      "f1_macro": 0.9106507261247343,
+      "classes": {
+        "Cat": {
+          "precision": 0.8871287128712871,
+          "recall": 0.9105691056910569,
+          "f1": 0.8986960882647944,
+          "suporte": 492
+        },
+        "Dog": {
+          "precision": 0.9318885448916409,
+          "recall": 0.91350531107739,
+          "f1": 0.9226053639846743,
+          "suporte": 659
+        }
+      }
+    }
+  },
+  "modelo_selecionado": "Regressão Logística + TF-IDF",
+  "teste": {
+    "modelo_selecionado": {
+      "n": 2303,
+      "accuracy": 0.9270516717325228,
+      "f1_macro": 0.9256966657755736,
+      "classes": {
+        "Cat": {
+          "precision": 0.9047619047619048,
+          "recall": 0.926829268292683,
+          "f1": 0.9156626506024096,
+          "suporte": 984
+        },
+        "Dog": {
+          "precision": 0.9444015444015444,
+          "recall": 0.9272175890826384,
+          "f1": 0.9357306809487376,
+          "suporte": 1319
+        }
+      }
+    },
+    "baseline_maioria": {
+      "n": 2303,
+      "accuracy": 0.5727312201476336,
+      "f1_macro": 0.3641634456101601,
+      "classes": {
+        "Cat": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "suporte": 984
+        },
+        "Dog": {
+          "precision": 0.5727312201476336,
+          "recall": 1.0,
+          "f1": 0.7283268912203202,
+          "suporte": 1319
+        }
+      }
+    },
+    "teste_com_termos_de_especie_ocultos": {
+      "n": 2303,
+      "accuracy": 0.8419452887537994,
+      "f1_macro": 0.8378728592360167,
+      "classes": {
+        "Cat": {
+          "precision": 0.8249475890985325,
+          "recall": 0.7997967479674797,
+          "f1": 0.8121775025799793,
+          "suporte": 984
+        },
+        "Dog": {
+          "precision": 0.8539659006671608,
+          "recall": 0.8733889310083397,
+          "f1": 0.863568215892054,
+          "suporte": 1319
+        }
+      }
+    }
+  },
+  "matriz_confusao": {
+    "rotulos": [
+      "Cat",
+      "Dog"
+    ],
+    "valores": [
+      [
+        912,
+        72
+      ],
+      [
+        96,
+        1223
+      ]
+    ]
+  },
+  "alerta": "O teste com palavras ocultas altera artificialmente a distribuicao de entrada; e um diagnostico auxiliar, nao outra estimativa imparcial de generalizacao.",
+  "bibliotecas": {
+    "python": "3.13.18",
+    "scikit-learn": "1.9.1",
+    "pandas": "3.0.5",
+    "numpy": "2.5.3",
+    "matplotlib": "3.11.2"
+  }
+}
