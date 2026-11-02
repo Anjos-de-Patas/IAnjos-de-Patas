@@ -17,6 +17,17 @@ A proposta é facilitar a busca por animais para adoção de acordo com as prefe
 
 Na disciplina de Big Data e Ciência de Dados, o projeto utiliza a base pública **PetFinder.my mini** para apoiar a seleção, a preparação, a análise e, na TED 03, a modelagem com Machine Learning.
 
+## Tecnologias
+
+| Tecnologia | Uso |
+|---|---|
+| Python 3 | Linguagem de todos os scripts e notebooks |
+| pandas e NumPy | Leitura, limpeza e preparação dos dados |
+| scikit-learn | TF-IDF, OneHotEncoder, Regressão Logística, Naive Bayes, k-NN, divisão dos dados e métricas |
+| matplotlib | Gráficos das TEDs 02 e 03 |
+| Jupyter (JupyterLab) | Notebooks comentados de cada etapa |
+| Git e GitHub | Versionamento e entrega |
+
 ## Documento técnico
 
 | Etapa | Documento |
