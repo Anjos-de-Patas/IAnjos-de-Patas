@@ -22,7 +22,7 @@ Na disciplina de Big Data e Ciência de Dados, o projeto utiliza a base pública
 | Etapa | Documento |
 |---|---|
 | **Versão 3.0 (TED 01 + TED 02 + TED 03)** | [`docs/TED03_Documento_Tecnico_v3.0.pdf`](docs/TED03_Documento_Tecnico_v3.0.pdf) |
-| Seções da TED 03 em formato editável | `docs/TED03_Documento_Tecnico_v3.0_secoes18-24.docx` |
+| Versão 3.0 editável (Word) | `docs/TED03_Documento_Tecnico_v3.0.docx` |
 | TED 02 revisada (base usada na TED 03) | `docs/TED02_Documento_Tecnico_v2_revisado.pdf` |
 | TED 02 (entrega de 26/09) | `docs/TED02_BigData_IAnjos.pdf` / `.docx` |
 | TED 01 | `docs/TED01_BigData_IAnjos.pdf` / `.docx` e `docs/TED01_IA_Original.pdf` |
