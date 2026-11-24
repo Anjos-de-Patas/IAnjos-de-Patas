@@ -32,7 +32,10 @@ Na disciplina de Big Data e Ciência de Dados, o projeto utiliza a base pública
 
 | Etapa | Documento |
 |---|---|
-| **Versão 3.0 (TED 01 + TED 02 + TED 03)** | [`docs/TED03_Documento_Tecnico_v3.0.pdf`](docs/TED03_Documento_Tecnico_v3.0.pdf) |
+| **Versão Final 4.0 (TEDs 01 a 04)** | [`docs/TED04_Documento_Tecnico_Final_v4.0.pdf`](docs/TED04_Documento_Tecnico_Final_v4.0.pdf) |
+| Versão Final editável (Word) | `docs/TED04_Documento_Tecnico_Final_v4.0.docx` |
+| **Apresentação final (Data Storytelling)** | [`presentation/apresentacao-final.pdf`](presentation/apresentacao-final.pdf) e `presentation/apresentacao-final.pptx` |
+| Versão 3.0 (TED 01 + TED 02 + TED 03) | [`docs/TED03_Documento_Tecnico_v3.0.pdf`](docs/TED03_Documento_Tecnico_v3.0.pdf) |
 | Versão 3.0 editável (Word) | `docs/TED03_Documento_Tecnico_v3.0.docx` |
 | TED 02 revisada (base usada na TED 03) | `docs/TED02_Documento_Tecnico_v2_revisado.pdf` |
 | TED 02 (entrega de 26/09) | `docs/TED02_BigData_IAnjos.pdf` / `.docx` |
@@ -89,6 +92,19 @@ Para a TED 03, a preparação foi revisada em `src/ted02.py` (`notebooks/TED02/T
 
 **Conclusão:** para atributos estruturados confirmados, a ordenação por regras é tão eficaz quanto o k-NN e mais fácil de auditar; o Machine Learning fica reservado para casos com ganho demonstrável, como textos livres. Nenhum modelo foi integrado ao site da ONG.
 
+## TED 04 — Integração dos resultados, ética, LGPD e Data Storytelling
+
+A versão final do Documento Técnico preserva as seções 1 a 24 da versão 3.0 e acrescenta as seções 25 a 38: contexto, dados, preparação, análise exploratória, modelagem, resultados, interpretação integrada, análise ética, privacidade e LGPD, limitações, Data Storytelling, conclusões, evolução da solução e histórico de versões.
+
+Principais pontos:
+
+- **Interpretação integrada:** a IA deve interpretar a linguagem livre do pedido; filtros e regras sobre dados confirmados devem decidir quais animais mostrar. É a arquitetura adotada no assistente da aplicação web do projeto (https://anjos-de-patas.netlify.app).
+- **Privacidade:** a base não tem colunas com dados de pessoas, mas 4 descrições livres contêm telefone e nome de contato. Por isso os CSV não são publicados e os arquivos de resultados não contêm descrições.
+- **Reprodutibilidade:** em 23/11/2026 os scripts das TEDs 02 e 03 foram executados novamente a partir da fonte oficial (SHA-256 conferido) e geraram arquivos de resultados idênticos aos versionados.
+- **Figura-síntese:** `src/ted04_storytelling.py` lê os JSON de resultados e gera `reports/TED04/figures/01_sintese_resultados.png`.
+
+O documento é gerado a partir da versão 3.0 por `src/gerar_documento_final.py` (python-docx).
+
 ## Estrutura
 
 ```text
@@ -96,7 +112,7 @@ data/
 ├── README.md, manifesto.json, manifesto_ted02.json
 ├── raw/                 (petfinder-mini.csv, local)
 └── processed/           (petfinder_mini_tratado.csv, local)
-docs/                    documentos técnicos das TEDs 01, 02 e 03
+docs/                    documentos técnicos das TEDs 01 a 04 (versão final: TED04_Documento_Tecnico_Final_v4.0)
 notebooks/
 ├── TED02/               ted02_limpeza_eda.ipynb, TED02_Petfinder.ipynb
 └── TED03/               TED03_Machine_Learning.ipynb, TED03_Recomendacao_por_Similaridade.ipynb
@@ -104,12 +120,17 @@ reports/
 ├── inspecao.json, metodo.md
 ├── TED02/               tabelas e figuras da análise exploratória
 ├── TED03/               Experimento A: métricas, partições, predições, sobreajuste, termos e figuras
-└── TED03_recomendacao/  Experimento B: cenários, métricas por consulta, top-5 e figuras
+├── TED03_recomendacao/  Experimento B: cenários, métricas por consulta, top-5 e figuras
+└── TED04/               figura-síntese de Data Storytelling
+presentation/            apresentação final (PDF e PowerPoint)
 src/
 ├── obter_dados.py, inspecionar_dados.py       TED 01
 ├── ted02.py                                    TED 02 (gera a base tratada)
 ├── ted03.py, ted03_termos_relevantes.py        TED 03 — Experimento A
 ├── ted03_recomendacao.py, demo_recomendacao.py TED 03 — Experimento B
+├── ted04_storytelling.py                       TED 04 — figura-síntese
+├── gerar_documento_final.py                    TED 04 — documento técnico final (a partir da v3.0)
+├── formatar_tabelas.py                         TED 04 — padroniza as tabelas do documento final
 └── verificar_projeto.py                        conferência de integridade
 ```
 
@@ -127,6 +148,7 @@ py -m venv .venv
 .\.venv\Scripts\python.exe src/ted03_termos_relevantes.py  # sobreajuste e termos de maior peso
 .\.venv\Scripts\python.exe src/ted03_recomendacao.py       # Experimento B
 .\.venv\Scripts\python.exe src/demo_recomendacao.py Q01    # demonstração (Q17: consulta sem resultado)
+.\.venv\Scripts\python.exe src/ted04_storytelling.py      # TED 04: figura-síntese
 .\.venv\Scripts\python.exe src/verificar_projeto.py        # conferência de integridade
 .\.venv\Scripts\python.exe -m jupyterlab                   # notebooks
 ```
@@ -137,4 +159,4 @@ Linux/macOS: use `python3 -m venv .venv` e `.venv/bin/python` no lugar de `.\.ve
 
 ## Limitações
 
-A base não representa os animais da ONG Anjos de Patas: são anúncios históricos da PetFinder.my, na Malásia, com descrições majoritariamente em inglês. Não há atributos estruturados de temperamento, convivência com crianças ou com outros animais, nem de disponibilidade atual. Os experimentos são provas de conceito acadêmicas e não validam o chatbot em português.
+A base não representa os animais da ONG Anjos de Patas: são anúncios históricos da PetFinder.my, na Malásia, com descrições majoritariamente em inglês. Não há atributos estruturados de temperamento, convivência com crianças ou com outros animais, nem de disponibilidade atual. Os experimentos são provas de conceito acadêmicas e não validam o chatbot em português. Algumas descrições contêm dados pessoais de contato; não publique os CSV nem as descrições em novos relatórios.
